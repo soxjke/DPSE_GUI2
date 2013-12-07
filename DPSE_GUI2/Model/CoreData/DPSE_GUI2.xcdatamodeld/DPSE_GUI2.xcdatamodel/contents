@@ -6,7 +6,7 @@
         </attribute>
         <userInfo/>
     </entity>
-    <entity name="Graph" syncable="YES">
+    <entity name="Graph" representedClassName="Graph" syncable="YES">
         <attribute name="createdAt" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="hasNumericAttributes" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="localFilename" optional="YES" attributeType="String" syncable="YES"/>
@@ -20,8 +20,8 @@
         <relationship name="graph" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Graph" inverseName="simulations" inverseEntity="Graph" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Event" positionX="592" positionY="72" width="128" height="60"/>
-        <element name="Graph" positionX="394" positionY="-111" width="128" height="118"/>
-        <element name="Simulation" positionX="151" positionY="-81" width="128" height="103"/>
+        <element name="Event" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Graph" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Simulation" positionX="0" positionY="0" width="0" height="0"/>
     </elements>
 </model>

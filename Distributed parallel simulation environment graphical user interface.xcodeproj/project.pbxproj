@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5B683366185389DC00CAD141 /* Graph.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B683365185389DC00CAD141 /* Graph.m */; };
 		5BD15B82184BE96A007F25BD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BD15B81184BE96A007F25BD /* Foundation.framework */; };
 		5BD15B84184BE96A007F25BD /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BD15B83184BE96A007F25BD /* CoreGraphics.framework */; };
 		5BD15B86184BE96A007F25BD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BD15B85184BE96A007F25BD /* UIKit.framework */; };
@@ -47,6 +48,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5B683364185389DC00CAD141 /* Graph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Graph.h; sourceTree = "<group>"; };
+		5B683365185389DC00CAD141 /* Graph.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Graph.m; sourceTree = "<group>"; };
 		5BD15B7E184BE96A007F25BD /* DPSE_GUI2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DPSE_GUI2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BD15B81184BE96A007F25BD /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		5BD15B83184BE96A007F25BD /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -200,6 +203,8 @@
 			isa = PBXGroup;
 			children = (
 				5BD15BE318533018007F25BD /* DPSE_GUI2.xcdatamodeld */,
+				5B683364185389DC00CAD141 /* Graph.h */,
+				5B683365185389DC00CAD141 /* Graph.m */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -268,7 +273,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 5BD15B79184BE96A007F25BD /* Build configuration list for PBXProject "DPSE_GUI2" */;
+			buildConfigurationList = 5BD15B79184BE96A007F25BD /* Build configuration list for PBXProject "Distributed parallel simulation environment graphical user interface" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -317,6 +322,7 @@
 				5BD15B94184BE96B007F25BD /* DPAppDelegate.m in Sources */,
 				5BD15B90184BE96B007F25BD /* main.m in Sources */,
 				5BD15BF418537BC1007F25BD /* Reachability.m in Sources */,
+				5B683366185389DC00CAD141 /* Graph.m in Sources */,
 				5BD15BA0184BE96B007F25BD /* DPDetailViewController.m in Sources */,
 				5BD15BE91853313E007F25BD /* DPSSHConnection.m in Sources */,
 				5BD15B9D184BE96B007F25BD /* DPMasterViewController.m in Sources */,
@@ -535,7 +541,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		5BD15B79184BE96A007F25BD /* Build configuration list for PBXProject "DPSE_GUI2" */ = {
+		5BD15B79184BE96A007F25BD /* Build configuration list for PBXProject "Distributed parallel simulation environment graphical user interface" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				5BD15BB7184BE96B007F25BD /* Debug */,
