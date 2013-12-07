@@ -26,24 +26,95 @@
 
 #import "DPGradientButton.h"
 
+#import <QuartzCore/QuartzCore.h>
+
+@interface DPGradientButton ()
+{
+    CAGradientLayer *_gradientLayer;
+}
+
+@end
+
 @implementation DPGradientButton
 
-- (id)initWithFrame:(CGRect)frame
+@synthesize topColor    = _topColor;
+@synthesize bottomColor = _bottomColor;
+@synthesize startPoint  = _startPoint;
+@synthesize endPoint    = _endPoint;
+
+#pragma mark - init / frame management
+
+- (void)awakeFromNib
 {
-    self = [super initWithFrame:frame];
-    if (self) {
-        // Initialization code
-    }
-    return self;
+    // Init defaults
+    
+    _topColor       = [UIColor buttonTopGradientColor];
+    _bottomColor    = [UIColor buttonBottomGradientColor];
+    _startPoint     = CGPointMake(0.5f, 0.0f);
+    _endPoint       = CGPointMake(0.5f, 1.0f);
+    
+    // Init gradient layer
+    
+    _gradientLayer = [CAGradientLayer layer];
+    _gradientLayer.frame = self.bounds;
+
+    _gradientLayer.colors       = @[(id)_topColor.CGColor, (id)_bottomColor.CGColor];
+    _gradientLayer.startPoint   = _startPoint;
+    _gradientLayer.endPoint     = _endPoint;
+
+    [self.layer insertSublayer:_gradientLayer atIndex:0];
 }
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
+- (void)setFrame:(CGRect)frame
 {
-    // Drawing code
+    [super          setFrame:frame];
+    [_gradientLayer setFrame:self.bounds];
 }
-*/
+
+#pragma mark - setter / getter
+
+- (void)setTopColor:(UIColor *)topColor
+{
+    _topColor               = topColor;
+    _gradientLayer.colors   = @[(id)topColor.CGColor, (id)_bottomColor.CGColor];
+}
+
+- (void)setBottomColor:(UIColor *)bottomColor
+{
+    _bottomColor            = bottomColor;
+    _gradientLayer.colors   = @[(id)_topColor.CGColor, (id)bottomColor.CGColor];
+}
+
+- (void)setStartPoint:(CGPoint)startPoint
+{
+    _startPoint                 = startPoint;
+    _gradientLayer.startPoint   = startPoint;
+}
+
+- (void)setEndPoint:(CGPoint)endPoint
+{
+    _endPoint                   = endPoint;
+    _gradientLayer.endPoint     = endPoint;
+}
+
+- (UIColor*)topColor
+{
+    return _topColor;
+}
+
+- (UIColor*)bottomColor
+{
+    return _bottomColor;
+}
+
+- (CGPoint)startPoint
+{
+    return _startPoint;
+}
+
+- (CGPoint)endPoint
+{
+    return _endPoint;
+}
 
 @end

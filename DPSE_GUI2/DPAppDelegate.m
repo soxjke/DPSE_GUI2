@@ -54,6 +54,7 @@
     [DPSSHConnection sharedObject];
     
     // Override point for customization after application launch.
+/*
     UISplitViewController *splitViewController = (UISplitViewController *)self.window.rootViewController;
     UINavigationController *navigationController = [splitViewController.viewControllers lastObject];
     splitViewController.delegate = (id)navigationController.topViewController;
@@ -61,6 +62,7 @@
     UINavigationController *masterNavigationController = splitViewController.viewControllers[0];
     DPMasterViewController *controller = (DPMasterViewController *)masterNavigationController.topViewController;
     controller.managedObjectContext = self.managedObjectContext;
+*/
     
     return YES;
 }

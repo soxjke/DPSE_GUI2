@@ -1,10 +1,10 @@
 //
-//  DPGradientButton.h
+//  UIColor+ApplicationColorScheme.m
 //  Distributed parallel simulation environment graphical user interface
 //
 //  Created by Petro Korienev on 12/7/13.
 
-//    Copyright (c) 2013 Petro Korienev. All rights reserved.
+//    Copyright (c) 2013 Petro Korienev. All rights reserved. 
 
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -12,10 +12,10 @@
 //  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 //  copies of the Software, and to permit persons to whom the Software is
 //  furnished to do so, subject to the following conditions:
-//
+//  
 //  The above copyright notice and this permission notice shall be included in
 //  all copies or substantial portions of the Software.
-//
+//  
 //  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 //  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 //  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -24,13 +24,37 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-#import <UIKit/UIKit.h>
+#import "UIColor+ApplicationColorScheme.h"
 
-@interface DPGradientButton : UIButton
+#define INT_COMPONENT_TO_FLOAT 255.0f
 
-@property (nonatomic) UIColor *topColor;
-@property (nonatomic) UIColor *bottomColor;
-@property (nonatomic) CGPoint startPoint;
-@property (nonatomic) CGPoint endPoint;
+#define COLOR_FLOAT(r, g, b, a) \
+do \
+{ \
+    static UIColor *color = nil; \
+    if (!color) \
+    { \
+        color = [UIColor colorWithRed:r green:g blue:b alpha:a]; \
+    } \
+    return color; \
+} while (0);
+
+#define COLOR_INT(r, g, b, a) COLOR_FLOAT(  ((CGFloat)r) / INT_COMPONENT_TO_FLOAT, \
+                                            ((CGFloat)g) / INT_COMPONENT_TO_FLOAT, \
+                                            ((CGFloat)b) / INT_COMPONENT_TO_FLOAT, \
+                                            ((CGFloat)a) / INT_COMPONENT_TO_FLOAT);
+        
+
+@implementation UIColor (ApplicationColorScheme)
+
++ (UIColor*)buttonTopGradientColor
+{
+    COLOR_INT(226, 230, 124, 255);
+}
+
++ (UIColor*)buttonBottomGradientColor
+{
+    COLOR_INT(112, 115, 22, 255);
+}
 
 @end

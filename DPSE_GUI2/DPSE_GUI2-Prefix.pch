@@ -18,3 +18,4 @@
 
 #import "DPAppDelegate.h"
 #import "DPSSHConnection.h"
+#import "UIColor+ApplicationColorScheme.h"
