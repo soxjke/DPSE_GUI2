@@ -44,11 +44,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
-    self.navigationItem.leftBarButtonItem = self.editButtonItem;
 
     UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
     self.navigationItem.rightBarButtonItem = addButton;
+    
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStylePlain target:self action:@selector(backButtonPressed:)];
     self.detailViewController = (DPDetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
     
     self.managedObjectContext = [APP_DELEGATE managedObjectContext];
@@ -237,6 +237,11 @@
 {
     NSManagedObject *object = [self.fetchedResultsController objectAtIndexPath:indexPath];
     cell.textLabel.text = [[object valueForKey:@"timeStamp"] description];
+}
+
+- (void)backButtonPressed:(id)sender
+{
+    [self performSegueWithIdentifier:@"unwindToMainMenu" sender:self];
 }
 
 @end
