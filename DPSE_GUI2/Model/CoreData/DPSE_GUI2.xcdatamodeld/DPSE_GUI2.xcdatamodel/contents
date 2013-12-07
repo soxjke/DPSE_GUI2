@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="3396" systemVersion="12E55" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Event">
+        <attribute name="timeStamp" optional="YES" attributeType="Date">
+            <userInfo/>
+        </attribute>
+        <userInfo/>
+    </entity>
+    <entity name="Graph" syncable="YES">
+        <attribute name="createdAt" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="hasNumericAttributes" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="localFilename" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="updatedAt" optional="YES" attributeType="Date" syncable="YES"/>
+        <relationship name="simulations" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Simulation" inverseName="graph" inverseEntity="Simulation" syncable="YES"/>
+    </entity>
+    <entity name="Simulation" syncable="YES">
+        <attribute name="endTimestamp" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="localFilename" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="startTimestamp" optional="YES" attributeType="Date" syncable="YES"/>
+        <relationship name="graph" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Graph" inverseName="simulations" inverseEntity="Graph" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Event" positionX="592" positionY="72" width="128" height="60"/>
+        <element name="Graph" positionX="394" positionY="-111" width="128" height="118"/>
+        <element name="Simulation" positionX="151" positionY="-81" width="128" height="103"/>
+    </elements>
+</model>
