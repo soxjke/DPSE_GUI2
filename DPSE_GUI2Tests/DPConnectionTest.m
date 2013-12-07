@@ -113,7 +113,7 @@
     {
         if (!error)
         {
-            if ([((DPAppDelegate*)[[UIApplication sharedApplication] delegate]) isHostReachable])
+            if ([APP_DELEGATE isHostReachable])
             {
                 XCTFail(@"Connection didn't return error for wrong password");
             }

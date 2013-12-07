@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="3396" systemVersion="12E55" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
-    <entity name="Event">
+    <entity name="Event" representedClassName="Event">
         <attribute name="timeStamp" optional="YES" attributeType="Date">
             <userInfo/>
         </attribute>
@@ -13,7 +13,7 @@
         <attribute name="updatedAt" optional="YES" attributeType="Date" syncable="YES"/>
         <relationship name="simulations" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Simulation" inverseName="graph" inverseEntity="Simulation" syncable="YES"/>
     </entity>
-    <entity name="Simulation" syncable="YES">
+    <entity name="Simulation" representedClassName="Simulation" syncable="YES">
         <attribute name="endTimestamp" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="localFilename" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="startTimestamp" optional="YES" attributeType="Date" syncable="YES"/>

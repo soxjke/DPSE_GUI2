@@ -63,6 +63,12 @@
     _gradientLayer.endPoint     = _endPoint;
 
     [self.layer insertSublayer:_gradientLayer atIndex:0];
+    
+    self.layer.cornerRadius     = 15.0f;
+    self.layer.masksToBounds    = YES;
+    
+    self.layer.borderColor      = [UIColor blackColor].CGColor;
+    self.layer.borderWidth      = 2.0f;
 }
 
 - (void)setFrame:(CGRect)frame

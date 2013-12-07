@@ -50,6 +50,8 @@
     UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
     self.navigationItem.rightBarButtonItem = addButton;
     self.detailViewController = (DPDetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
+    
+    self.managedObjectContext = [APP_DELEGATE managedObjectContext];
 }
 
 - (void)didReceiveMemoryWarning

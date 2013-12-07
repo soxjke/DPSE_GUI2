@@ -19,3 +19,5 @@
 #import "DPAppDelegate.h"
 #import "DPSSHConnection.h"
 #import "UIColor+ApplicationColorScheme.h"
+
+#define APP_DELEGATE ((DPAppDelegate*)[[UIApplication sharedApplication] delegate])

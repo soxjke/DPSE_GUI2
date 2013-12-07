@@ -38,6 +38,8 @@
 		5BD15BF11853785F007F25BD /* DPAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BD15B93184BE96B007F25BD /* DPAppDelegate.m */; };
 		5BD15BF418537BC1007F25BD /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BD15BF318537BC1007F25BD /* Reachability.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		5BD15BF518537BC1007F25BD /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BD15BF318537BC1007F25BD /* Reachability.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		5BE5F3991853C3600007A4A8 /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5F3981853C3600007A4A8 /* Event.m */; };
+		5BE5F39C1853C3610007A4A8 /* Simulation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5F39B1853C3610007A4A8 /* Simulation.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,6 +90,10 @@
 		5BD15BED18534107007F25BD /* DPConnectionTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPConnectionTest.m; sourceTree = "<group>"; };
 		5BD15BF218537BC1007F25BD /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		5BD15BF318537BC1007F25BD /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		5BE5F3971853C3600007A4A8 /* Event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Event.h; sourceTree = "<group>"; };
+		5BE5F3981853C3600007A4A8 /* Event.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Event.m; sourceTree = "<group>"; };
+		5BE5F39A1853C3610007A4A8 /* Simulation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Simulation.h; sourceTree = "<group>"; };
+		5BE5F39B1853C3610007A4A8 /* Simulation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Simulation.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -234,6 +240,10 @@
 			isa = PBXGroup;
 			children = (
 				5BD15BE318533018007F25BD /* DPSE_GUI2.xcdatamodeld */,
+				5BE5F39A1853C3610007A4A8 /* Simulation.h */,
+				5BE5F39B1853C3610007A4A8 /* Simulation.m */,
+				5BE5F3971853C3600007A4A8 /* Event.h */,
+				5BE5F3981853C3600007A4A8 /* Event.m */,
 				5B683364185389DC00CAD141 /* Graph.h */,
 				5B683365185389DC00CAD141 /* Graph.m */,
 			);
@@ -349,6 +359,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5BE5F3991853C3600007A4A8 /* Event.m in Sources */,
 				5B6833691853964A00CAD141 /* DPMainMenuViewController.m in Sources */,
 				5BD15BE518533018007F25BD /* DPSE_GUI2.xcdatamodeld in Sources */,
 				5BD15B94184BE96B007F25BD /* DPAppDelegate.m in Sources */,
@@ -358,6 +369,7 @@
 				5B683366185389DC00CAD141 /* Graph.m in Sources */,
 				5BD15BA0184BE96B007F25BD /* DPDetailViewController.m in Sources */,
 				5B68337118539DE400CAD141 /* UIColor+ApplicationColorScheme.m in Sources */,
+				5BE5F39C1853C3610007A4A8 /* Simulation.m in Sources */,
 				5BD15BE91853313E007F25BD /* DPSSHConnection.m in Sources */,
 				5BD15B9D184BE96B007F25BD /* DPMasterViewController.m in Sources */,
 			);

@@ -17,7 +17,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8fS-aE-onr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="448" y="-630"/>
+            <point key="canvasLocation" x="1422" y="-630"/>
         </scene>
         <!--Detail View Controller - Detail-->
         <scene sceneID="yUG-lL-AsK">
@@ -69,28 +69,86 @@
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wyO-3p-6e3" customClass="DPGradientButton">
-                                <rect key="frame" x="235" y="136" width="600" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wyO-3p-6e3" customClass="DPGradientButton">
+                                <rect key="frame" x="235" y="100" width="600" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="New network">
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="100" id="0SB-XK-IGX"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="600" id="qV0-MA-3JN"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <state key="normal" title="New dynamic system">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="H1p-Uh-vWS" kind="popover" popoverAnchorView="wyO-3p-6e3" id="Zsm-S8-Mcb">
+                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                    </segue>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ueh-eA-QNK" customClass="DPGradientButton">
+                                <rect key="frame" x="235" y="300" width="600" height="100"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <state key="normal" title="Load dynamic system">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0n9-4Z-qJp" customClass="DPGradientButton">
+                                <rect key="frame" x="235" y="500" width="600" height="100"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <state key="normal" title="Settings">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qa6-Z7-DuC" customClass="DPGradientButton">
+                                <rect key="frame" x="944" y="688" width="60" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="Ax5-hd-ZhM"/>
+                                    <constraint firstAttribute="height" constant="60" id="mXv-e7-9XD"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <state key="normal" title="?">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.66274509803921566" green="1" blue="0.96862745098039216" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="0n9-4Z-qJp" firstAttribute="height" secondItem="Ueh-eA-QNK" secondAttribute="height" id="3Zp-rq-FsE"/>
+                            <constraint firstItem="0n9-4Z-qJp" firstAttribute="height" secondItem="wyO-3p-6e3" secondAttribute="height" id="4fS-mD-L5t"/>
+                            <constraint firstItem="0n9-4Z-qJp" firstAttribute="width" secondItem="wyO-3p-6e3" secondAttribute="width" id="6e6-47-4X2"/>
+                            <constraint firstAttribute="centerY" secondItem="Ueh-eA-QNK" secondAttribute="centerY" constant="34" id="9cM-YG-6GI"/>
+                            <constraint firstAttribute="centerX" secondItem="wyO-3p-6e3" secondAttribute="centerX" constant="-23" id="DLh-uK-dK1"/>
+                            <constraint firstItem="Ueh-eA-QNK" firstAttribute="top" secondItem="wyO-3p-6e3" secondAttribute="bottom" constant="100" id="Fhf-0P-o1T"/>
+                            <constraint firstItem="l92-Wk-TtU" firstAttribute="top" secondItem="qa6-Z7-DuC" secondAttribute="bottom" constant="20" id="Yeh-rp-ejn"/>
+                            <constraint firstAttribute="centerX" secondItem="0n9-4Z-qJp" secondAttribute="centerX" constant="-23" id="ikN-7A-3mg"/>
+                            <constraint firstAttribute="centerX" secondItem="Ueh-eA-QNK" secondAttribute="centerX" constant="-23" id="lFn-Tj-IFM"/>
+                            <constraint firstAttribute="trailing" secondItem="qa6-Z7-DuC" secondAttribute="trailing" constant="20" id="pea-lk-oUM"/>
+                            <constraint firstItem="0n9-4Z-qJp" firstAttribute="width" secondItem="Ueh-eA-QNK" secondAttribute="width" id="q8A-9d-aP3"/>
+                            <constraint firstItem="0n9-4Z-qJp" firstAttribute="top" secondItem="Ueh-eA-QNK" secondAttribute="bottom" constant="100" id="tby-Qp-r3X"/>
+                        </constraints>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
+                    <navigationItem key="navigationItem" id="A2A-Si-V1t"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gUX-dy-Vme" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1932" y="-630"/>
+            <point key="canvasLocation" x="-958" y="-630"/>
         </scene>
         <!--Split View Controller-->
         <scene sceneID="Nki-YV-4Qg">
             <objects>
                 <splitViewController id="H1p-Uh-vWS" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" id="5Db-Ml-0g6"/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackOpaque"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <connections>
@@ -100,7 +158,7 @@
                 </splitViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cZU-Oi-B1e" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-687" y="-630"/>
+            <point key="canvasLocation" x="287" y="-630"/>
         </scene>
         <!--Master View Controller - Master-->
         <scene sceneID="smW-Zh-WAh">
@@ -141,7 +199,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rux-fX-hf1" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="859" y="-631"/>
+            <point key="canvasLocation" x="1833" y="-631"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="r7l-gg-dq7">
