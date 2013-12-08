@@ -78,10 +78,10 @@
             </objects>
             <point key="canvasLocation" x="1760" y="2411"/>
         </scene>
-        <!--Table View Controller - Root View Controller-->
+        <!--Settings Master View Controller - Root View Controller-->
         <scene sceneID="ccs-mu-aCr">
             <objects>
-                <tableViewController clearsSelectionOnViewWillAppear="NO" id="Cug-TA-avG" sceneMemberID="viewController">
+                <tableViewController clearsSelectionOnViewWillAppear="NO" id="Cug-TA-avG" customClass="DPSettingsMasterViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="7s7-Gi-fHH">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -106,6 +106,7 @@
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LZZ-Jx-sMm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="PEX-El-o6g" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2440" y="1279"/>
         </scene>
@@ -138,6 +139,16 @@
                     </connections>
                 </splitViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dUV-IX-xXG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="KDk-a1-W1j">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" title="FakeButton">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <segue destination="PEX-El-o6g" kind="unwind" identifier="unwindToMainMenu" unwindAction="unwindToMainMenu:" id="Vgz-Hq-465"/>
+                    </connections>
+                </button>
             </objects>
             <point key="canvasLocation" x="314" y="1754"/>
         </scene>
@@ -590,16 +601,6 @@ Cg
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
-                        <button key="tableFooterView" hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="J37-jn-fv9">
-                            <rect key="frame" x="0.0" y="130" width="320" height="44"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <state key="normal" title="FakeButton">
-                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                            </state>
-                            <connections>
-                                <segue destination="2MM-KK-LYK" kind="unwind" identifier="unwindToMainMenu" unwindAction="unwindToMainMenu:" id="Vuy-Wq-Kvt"/>
-                            </connections>
-                        </button>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" textLabel="Arm-wq-HPj" style="IBUITableViewCellStyleDefault" id="WCw-Qf-5nD">
                                 <rect key="frame" x="0.0" y="86" width="320" height="44"/>
@@ -629,6 +630,16 @@ Cg
                     <navigationItem key="navigationItem" title="Master" id="Zdf-7t-Un8"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rux-fX-hf1" sceneMemberID="firstResponder"/>
+                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="J37-jn-fv9">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" title="FakeButton">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <segue destination="2MM-KK-LYK" kind="unwind" identifier="unwindToMainMenu" unwindAction="unwindToMainMenu:" id="Vuy-Wq-Kvt"/>
+                    </connections>
+                </button>
                 <exit id="2MM-KK-LYK" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="991" y="-1590"/>

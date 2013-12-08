@@ -28,6 +28,8 @@
 
 #import "DPDetailViewController.h"
 
+#import "Graph.h"
+
 @interface DPMasterViewController ()
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath;
 @end
@@ -37,7 +39,6 @@
 - (void)awakeFromNib
 {
     self.clearsSelectionOnViewWillAppear = NO;
-    self.preferredContentSize = CGSizeMake(320.0, 600.0);
     [super awakeFromNib];
 }
 
@@ -64,18 +65,14 @@
 {
     NSManagedObjectContext *context = [self.fetchedResultsController managedObjectContext];
     NSEntityDescription *entity = [[self.fetchedResultsController fetchRequest] entity];
-    NSManagedObject *newManagedObject = [NSEntityDescription insertNewObjectForEntityForName:[entity name] inManagedObjectContext:context];
+    Graph *newManagedObject = [NSEntityDescription insertNewObjectForEntityForName:[entity name] inManagedObjectContext:context];
     
-    // If appropriate, configure the new managed object.
-    // Normally you should use accessor methods, but using KVC here avoids the need to add a custom class to the template.
-    [newManagedObject setValue:[NSDate date] forKey:@"timeStamp"];
+    newManagedObject.createdAt = [NSDate date];
     
-    // Save the context.
     NSError *error = nil;
-    if (![context save:&error]) {
-         // Replace this implementation with code to handle the error appropriately.
-         // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development. 
-        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+    if (![context save:&error])
+    {
+        NSAssert(NO, @"Unresolved error %@, %@", error, [error userInfo]);
         abort();
     }
 }
@@ -102,29 +99,26 @@
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Return NO if you do not want the specified item to be editable.
     return YES;
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
+    if (editingStyle == UITableViewCellEditingStyleDelete)
+    {
         NSManagedObjectContext *context = [self.fetchedResultsController managedObjectContext];
         [context deleteObject:[self.fetchedResultsController objectAtIndexPath:indexPath]];
         
         NSError *error = nil;
-        if (![context save:&error]) {
-             // Replace this implementation with code to handle the error appropriately.
-             // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development. 
-            NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-            abort();
+        if (![context save:&error])
+        {
+            NSAssert(NO, @"Unresolved error %@, %@", error, [error userInfo]);
         }
     }   
 }
 
 - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // The table view should not be re-orderable.
     return NO;
 }
 
@@ -138,36 +132,34 @@
 
 - (NSFetchedResultsController *)fetchedResultsController
 {
-    if (_fetchedResultsController != nil) {
+    if (_fetchedResultsController != nil)
+    {
         return _fetchedResultsController;
     }
     
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    // Edit the entity name as appropriate.
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Event" inManagedObjectContext:self.managedObjectContext];
+
+    NSEntityDescription *entity = [NSEntityDescription entityForName:NSStringFromClass([Graph class]) inManagedObjectContext:self.managedObjectContext];
     [fetchRequest setEntity:entity];
     
-    // Set the batch size to a suitable number.
     [fetchRequest setFetchBatchSize:20];
     
-    // Edit the sort key as appropriate.
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"timeStamp" ascending:NO];
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"createdAt" ascending:NO];
     NSArray *sortDescriptors = @[sortDescriptor];
     
     [fetchRequest setSortDescriptors:sortDescriptors];
     
-    // Edit the section name key path and cache name if appropriate.
-    // nil for section name key path means "no sections".
-    NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:@"Master"];
+    NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
+                                                                                                managedObjectContext:self.managedObjectContext
+                                                                                                  sectionNameKeyPath:nil
+                                                                                                           cacheName:@"Master"];
     aFetchedResultsController.delegate = self;
     self.fetchedResultsController = aFetchedResultsController;
     
 	NSError *error = nil;
-	if (![self.fetchedResultsController performFetch:&error]) {
-	     // Replace this implementation with code to handle the error appropriately.
-	     // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development. 
-	    NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-	    abort();
+	if (![self.fetchedResultsController performFetch:&error])
+    {
+        NSAssert(NO, @"Unresolved error %@, %@", error, [error userInfo]);
 	}
     
     return _fetchedResultsController;
@@ -176,20 +168,6 @@
 - (void)controllerWillChangeContent:(NSFetchedResultsController *)controller
 {
     [self.tableView beginUpdates];
-}
-
-- (void)controller:(NSFetchedResultsController *)controller didChangeSection:(id <NSFetchedResultsSectionInfo>)sectionInfo
-           atIndex:(NSUInteger)sectionIndex forChangeType:(NSFetchedResultsChangeType)type
-{
-    switch(type) {
-        case NSFetchedResultsChangeInsert:
-            [self.tableView insertSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
-            break;
-            
-        case NSFetchedResultsChangeDelete:
-            [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
-            break;
-    }
 }
 
 - (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject
@@ -235,8 +213,8 @@
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
 {
-    NSManagedObject *object = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    cell.textLabel.text = [[object valueForKey:@"timeStamp"] description];
+    Graph *object = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    cell.textLabel.text = [object.createdAt description];
 }
 
 - (void)backButtonPressed:(id)sender

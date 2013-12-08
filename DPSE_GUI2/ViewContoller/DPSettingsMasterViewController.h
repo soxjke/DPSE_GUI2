@@ -1,5 +1,5 @@
 //
-//  DPSettingsSplitViewController.m
+//  DPSettingsMasterViewController.h
 //  Distributed parallel simulation environment graphical user interface
 //
 //  Created by Petro Korienev on 12/8/13.
@@ -23,31 +23,8 @@
 //  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
+#import <UIKit/UIKit.h>
 
-#import "DPSettingsSplitViewController.h"
-
-@interface DPSettingsSplitViewController ()
-
-@end
-
-@implementation DPSettingsSplitViewController
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    self.title = NSLocalizedString(@"Settings", @"Settings");
-    
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Back", @"Back")
-                                                                             style:UIBarButtonItemStylePlain
-                                                                            target:self
-                                                                            action:@selector(backButtonPressed:)];
-}
-
-#pragma mark - actions
-
-- (void)backButtonPressed:(id)sender
-{
-    [self performSegueWithIdentifier:@"unwindToMainMenu" sender:self];
-}
+@interface DPSettingsMasterViewController : UITableViewController
 
 @end

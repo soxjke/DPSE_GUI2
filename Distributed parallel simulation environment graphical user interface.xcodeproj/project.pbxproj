@@ -12,6 +12,7 @@
 		5B01E8111853FA25000ECD6C /* DPMainMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B01E80C1853FA25000ECD6C /* DPMainMenuViewController.m */; };
 		5B01E8121853FA25000ECD6C /* DPMasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B01E80E1853FA25000ECD6C /* DPMasterViewController.m */; };
 		5B1C89BD18546B8700DB5CF1 /* DPSettingsSplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B1C89BC18546B8700DB5CF1 /* DPSettingsSplitViewController.m */; };
+		5B1C89C018546D5C00DB5CF1 /* DPSettingsMasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B1C89BF18546D5C00DB5CF1 /* DPSettingsMasterViewController.m */; };
 		5B683366185389DC00CAD141 /* Graph.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B683365185389DC00CAD141 /* Graph.m */; };
 		5B68336D18539C2600CAD141 /* DPGradientButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B68336C18539C2600CAD141 /* DPGradientButton.m */; };
 		5B68337118539DE400CAD141 /* UIColor+ApplicationColorScheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B68337018539DE400CAD141 /* UIColor+ApplicationColorScheme.m */; };
@@ -67,6 +68,8 @@
 		5B01E80E1853FA25000ECD6C /* DPMasterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPMasterViewController.m; sourceTree = "<group>"; };
 		5B1C89BB18546B8700DB5CF1 /* DPSettingsSplitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPSettingsSplitViewController.h; sourceTree = "<group>"; };
 		5B1C89BC18546B8700DB5CF1 /* DPSettingsSplitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPSettingsSplitViewController.m; sourceTree = "<group>"; };
+		5B1C89BE18546D5C00DB5CF1 /* DPSettingsMasterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPSettingsMasterViewController.h; sourceTree = "<group>"; };
+		5B1C89BF18546D5C00DB5CF1 /* DPSettingsMasterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPSettingsMasterViewController.m; sourceTree = "<group>"; };
 		5B683364185389DC00CAD141 /* Graph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Graph.h; sourceTree = "<group>"; };
 		5B683365185389DC00CAD141 /* Graph.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Graph.m; sourceTree = "<group>"; };
 		5B68336B18539C2600CAD141 /* DPGradientButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPGradientButton.h; sourceTree = "<group>"; };
@@ -151,6 +154,8 @@
 				5B01E80E1853FA25000ECD6C /* DPMasterViewController.m */,
 				5B1C89BB18546B8700DB5CF1 /* DPSettingsSplitViewController.h */,
 				5B1C89BC18546B8700DB5CF1 /* DPSettingsSplitViewController.m */,
+				5B1C89BE18546D5C00DB5CF1 /* DPSettingsMasterViewController.h */,
+				5B1C89BF18546D5C00DB5CF1 /* DPSettingsMasterViewController.m */,
 			);
 			path = ViewContoller;
 			sourceTree = "<group>";
@@ -405,6 +410,7 @@
 				5BE5F3A31853CE870007A4A8 /* DPDismissSegue.m in Sources */,
 				5B68336D18539C2600CAD141 /* DPGradientButton.m in Sources */,
 				5B01E80F1853FA25000ECD6C /* DPAboutViewController.m in Sources */,
+				5B1C89C018546D5C00DB5CF1 /* DPSettingsMasterViewController.m in Sources */,
 				5B683366185389DC00CAD141 /* Graph.m in Sources */,
 				5B01E8111853FA25000ECD6C /* DPMainMenuViewController.m in Sources */,
 				5B01E8101853FA25000ECD6C /* DPDetailViewController.m in Sources */,
