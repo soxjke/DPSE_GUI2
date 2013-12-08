@@ -31,36 +31,71 @@
                         <rect key="frame" x="0.0" y="0.0" width="703" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="Detail view content goes here" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="0XM-y9-sOw">
-                                <rect key="frame" x="20" y="376" width="663" height="17"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BmG-S0-5P5">
+                                <rect key="frame" x="20" y="84" width="400" height="400"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="400" id="Zr1-gh-6J2"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="400" id="zLC-x1-lRH"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a49-DO-ryI" customClass="DPGradientButton">
+                                <rect key="frame" x="443" y="144" width="240" height="42"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <state key="normal" title="Load">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zZC-SO-bcZ" customClass="DPGradientButton">
+                                <rect key="frame" x="443" y="236" width="240" height="42"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <state key="normal" title="Delete">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="8cv-ro-lWt">
+                                <rect key="frame" x="0.0" y="492" width="703" height="276"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" size="system"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="276" id="Qc9-40-gAk"/>
+                                    <constraint firstAttribute="height" constant="276" id="ioz-vm-7bh"/>
+                                </constraints>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="0XM-y9-sOw" firstAttribute="leading" secondItem="svH-Pt-448" secondAttribute="leading" constant="20" symbolic="YES" id="Tsc-yG-G1q"/>
-                            <constraint firstItem="0XM-y9-sOw" firstAttribute="centerY" secondItem="svH-Pt-448" secondAttribute="centerY" id="jWN-iV-94e"/>
-                            <constraint firstAttribute="trailing" secondItem="0XM-y9-sOw" secondAttribute="trailing" constant="20" symbolic="YES" id="tHV-ZD-HQj"/>
+                            <constraint firstItem="8cv-ro-lWt" firstAttribute="top" secondItem="BmG-S0-5P5" secondAttribute="bottom" constant="8" id="F5p-bP-Qeh"/>
+                            <constraint firstItem="a49-DO-ryI" firstAttribute="top" secondItem="WbH-oN-4YD" secondAttribute="bottom" constant="80" id="FGI-Us-iDE"/>
+                            <constraint firstAttribute="trailing" secondItem="a49-DO-ryI" secondAttribute="trailing" constant="20" id="Kul-hS-Egf"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="zZC-SO-bcZ" secondAttribute="trailing" constant="20" id="Tr4-4q-uy3"/>
+                            <constraint firstItem="BmG-S0-5P5" firstAttribute="top" secondItem="WbH-oN-4YD" secondAttribute="bottom" constant="20" id="VMv-zD-oZp"/>
+                            <constraint firstAttribute="trailing" secondItem="8cv-ro-lWt" secondAttribute="trailing" id="aGS-Nd-bCQ"/>
+                            <constraint firstItem="8cv-ro-lWt" firstAttribute="leading" secondItem="svH-Pt-448" secondAttribute="leading" id="hCA-L3-Kz3"/>
+                            <constraint firstItem="bLf-T5-EZN" firstAttribute="top" secondItem="8cv-ro-lWt" secondAttribute="bottom" id="kQU-ek-Bhg"/>
+                            <constraint firstItem="BmG-S0-5P5" firstAttribute="leading" secondItem="svH-Pt-448" secondAttribute="leading" constant="20" id="l9Z-Pq-0Fd"/>
+                            <constraint firstItem="zZC-SO-bcZ" firstAttribute="top" secondItem="a49-DO-ryI" secondAttribute="bottom" constant="50" id="mV2-9k-Pyy"/>
+                            <constraint firstItem="zZC-SO-bcZ" firstAttribute="leading" secondItem="BmG-S0-5P5" secondAttribute="trailing" constant="23" id="p86-ee-XT2"/>
+                            <constraint firstAttribute="trailing" secondItem="zZC-SO-bcZ" secondAttribute="trailing" constant="20" id="uEU-d4-1uG"/>
+                            <constraint firstItem="a49-DO-ryI" firstAttribute="leading" secondItem="BmG-S0-5P5" secondAttribute="trailing" constant="23" id="uzL-Pe-zDD"/>
                         </constraints>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Detail" id="mOI-FS-AaM"/>
-                    <connections>
-                        <outlet property="detailDescriptionLabel" destination="0XM-y9-sOw" id="deQ-Na-JPF"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FJe-Yq-33r" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1172" y="292"/>
         </scene>
-        <!--View Controller-->
+        <!--Settings Detail View Controller-->
         <scene sceneID="IUT-Hw-O7Y">
             <objects>
-                <viewController id="V7j-jn-Sf3" sceneMemberID="viewController">
+                <viewController id="V7j-jn-Sf3" customClass="DPSettingsDetailViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="EMY-Gc-06O"/>
                         <viewControllerLayoutGuide type="bottom" id="vXY-Gb-r1f"/>
@@ -89,7 +124,7 @@
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="oS4-PO-pTZ">
-                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="oS4-PO-pTZ" id="QtB-lm-MEe">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -575,10 +610,10 @@ Cg
             </objects>
             <point key="canvasLocation" x="-918" y="-630"/>
         </scene>
-        <!--Split View Controller-->
+        <!--Load Split View Controller-->
         <scene sceneID="Nki-YV-4Qg">
             <objects>
-                <splitViewController id="H1p-Uh-vWS" sceneMemberID="viewController">
+                <splitViewController id="H1p-Uh-vWS" customClass="DPLoadSplitViewController" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="5Db-Ml-0g6"/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackOpaque"/>
@@ -603,7 +638,7 @@ Cg
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" textLabel="Arm-wq-HPj" style="IBUITableViewCellStyleDefault" id="WCw-Qf-5nD">
-                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WCw-Qf-5nD" id="h3v-YD-qOF">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>

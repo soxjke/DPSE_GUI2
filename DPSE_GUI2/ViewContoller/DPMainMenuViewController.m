@@ -27,6 +27,8 @@
 #import "DPMainMenuViewController.h"
 
 #import "DPAboutViewController.h"
+#import "DPLoadSplitViewController.h"
+#import "DPSettingsSplitViewController.h"
 
 @interface DPMainMenuViewController ()
 {
@@ -52,6 +54,15 @@
         [popover setPopoverContentSize:popoverSize];
         
         _aboutBox = segue.destinationViewController;
+        
+        return;
+    }
+    if ([segue.destinationViewController isKindOfClass:[UISplitViewController class]])
+    {
+        DPLoadSplitViewController *splitViewController = segue.destinationViewController;
+        UINavigationController *navigationController = [splitViewController.viewControllers lastObject];
+        splitViewController.delegate = (id)navigationController.topViewController;
+        return;
     }
 }
 

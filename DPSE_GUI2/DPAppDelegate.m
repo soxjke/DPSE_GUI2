@@ -49,14 +49,9 @@
     NSSetUncaughtExceptionHandler(&uncaughtExceptionHandler);
 #endif
 
-    // Was ist einmal einzustellen...
     [self setupReachability];
     [DPSSHConnection sharedObject];
     
-    UISplitViewController *splitViewController = (UISplitViewController *)self.window.rootViewController;
-    UINavigationController *navigationController = [splitViewController.viewControllers lastObject];
-    splitViewController.delegate = (id)navigationController.topViewController;
-
     return YES;
 }
 
