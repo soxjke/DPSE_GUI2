@@ -7,8 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5B01E80F1853FA25000ECD6C /* DPAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B01E8081853FA25000ECD6C /* DPAboutViewController.m */; };
+		5B01E8101853FA25000ECD6C /* DPDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B01E80A1853FA25000ECD6C /* DPDetailViewController.m */; };
+		5B01E8111853FA25000ECD6C /* DPMainMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B01E80C1853FA25000ECD6C /* DPMainMenuViewController.m */; };
+		5B01E8121853FA25000ECD6C /* DPMasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B01E80E1853FA25000ECD6C /* DPMasterViewController.m */; };
 		5B683366185389DC00CAD141 /* Graph.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B683365185389DC00CAD141 /* Graph.m */; };
-		5B6833691853964A00CAD141 /* DPMainMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B6833681853964A00CAD141 /* DPMainMenuViewController.m */; };
 		5B68336D18539C2600CAD141 /* DPGradientButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B68336C18539C2600CAD141 /* DPGradientButton.m */; };
 		5B68337118539DE400CAD141 /* UIColor+ApplicationColorScheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B68337018539DE400CAD141 /* UIColor+ApplicationColorScheme.m */; };
 		5BD15B82184BE96A007F25BD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BD15B81184BE96A007F25BD /* Foundation.framework */; };
@@ -19,8 +22,6 @@
 		5BD15B90184BE96B007F25BD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BD15B8F184BE96B007F25BD /* main.m */; };
 		5BD15B94184BE96B007F25BD /* DPAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BD15B93184BE96B007F25BD /* DPAppDelegate.m */; };
 		5BD15B97184BE96B007F25BD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5BD15B95184BE96B007F25BD /* Main.storyboard */; };
-		5BD15B9D184BE96B007F25BD /* DPMasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BD15B9C184BE96B007F25BD /* DPMasterViewController.m */; };
-		5BD15BA0184BE96B007F25BD /* DPDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BD15B9F184BE96B007F25BD /* DPDetailViewController.m */; };
 		5BD15BA2184BE96B007F25BD /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5BD15BA1184BE96B007F25BD /* Images.xcassets */; };
 		5BD15BA9184BE96B007F25BD /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BD15BA8184BE96B007F25BD /* XCTest.framework */; };
 		5BD15BAA184BE96B007F25BD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BD15B81184BE96A007F25BD /* Foundation.framework */; };
@@ -42,7 +43,6 @@
 		5BE5F39C1853C3610007A4A8 /* Simulation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5F39B1853C3610007A4A8 /* Simulation.m */; };
 		5BE5F3A01853C50D0007A4A8 /* DPPresentSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5F39F1853C50D0007A4A8 /* DPPresentSegue.m */; };
 		5BE5F3A31853CE870007A4A8 /* DPDismissSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5F3A21853CE870007A4A8 /* DPDismissSegue.m */; };
-		5BE5F3A61853E0EF0007A4A8 /* DPAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5F3A51853E0EF0007A4A8 /* DPAboutViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,10 +56,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5B01E8071853FA25000ECD6C /* DPAboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPAboutViewController.h; sourceTree = "<group>"; };
+		5B01E8081853FA25000ECD6C /* DPAboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPAboutViewController.m; sourceTree = "<group>"; };
+		5B01E8091853FA25000ECD6C /* DPDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPDetailViewController.h; sourceTree = "<group>"; };
+		5B01E80A1853FA25000ECD6C /* DPDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPDetailViewController.m; sourceTree = "<group>"; };
+		5B01E80B1853FA25000ECD6C /* DPMainMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPMainMenuViewController.h; sourceTree = "<group>"; };
+		5B01E80C1853FA25000ECD6C /* DPMainMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPMainMenuViewController.m; sourceTree = "<group>"; };
+		5B01E80D1853FA25000ECD6C /* DPMasterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPMasterViewController.h; sourceTree = "<group>"; };
+		5B01E80E1853FA25000ECD6C /* DPMasterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPMasterViewController.m; sourceTree = "<group>"; };
 		5B683364185389DC00CAD141 /* Graph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Graph.h; sourceTree = "<group>"; };
 		5B683365185389DC00CAD141 /* Graph.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Graph.m; sourceTree = "<group>"; };
-		5B6833671853964A00CAD141 /* DPMainMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPMainMenuViewController.h; sourceTree = "<group>"; };
-		5B6833681853964A00CAD141 /* DPMainMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPMainMenuViewController.m; sourceTree = "<group>"; };
 		5B68336B18539C2600CAD141 /* DPGradientButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPGradientButton.h; sourceTree = "<group>"; };
 		5B68336C18539C2600CAD141 /* DPGradientButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPGradientButton.m; sourceTree = "<group>"; };
 		5B68336F18539DE400CAD141 /* UIColor+ApplicationColorScheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+ApplicationColorScheme.h"; sourceTree = "<group>"; };
@@ -76,10 +82,6 @@
 		5BD15B92184BE96B007F25BD /* DPAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DPAppDelegate.h; sourceTree = "<group>"; };
 		5BD15B93184BE96B007F25BD /* DPAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DPAppDelegate.m; sourceTree = "<group>"; };
 		5BD15B96184BE96B007F25BD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		5BD15B9B184BE96B007F25BD /* DPMasterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DPMasterViewController.h; sourceTree = "<group>"; };
-		5BD15B9C184BE96B007F25BD /* DPMasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DPMasterViewController.m; sourceTree = "<group>"; };
-		5BD15B9E184BE96B007F25BD /* DPDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DPDetailViewController.h; sourceTree = "<group>"; };
-		5BD15B9F184BE96B007F25BD /* DPDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DPDetailViewController.m; sourceTree = "<group>"; };
 		5BD15BA1184BE96B007F25BD /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		5BD15BA7184BE96B007F25BD /* DPSE_GUI2Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DPSE_GUI2Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BD15BA8184BE96B007F25BD /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -101,8 +103,6 @@
 		5BE5F39F1853C50D0007A4A8 /* DPPresentSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPPresentSegue.m; sourceTree = "<group>"; };
 		5BE5F3A11853CE870007A4A8 /* DPDismissSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPDismissSegue.h; sourceTree = "<group>"; };
 		5BE5F3A21853CE870007A4A8 /* DPDismissSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPDismissSegue.m; sourceTree = "<group>"; };
-		5BE5F3A41853E0EF0007A4A8 /* DPAboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPAboutViewController.h; sourceTree = "<group>"; };
-		5BE5F3A51853E0EF0007A4A8 /* DPAboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPAboutViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,6 +135,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5B01E8061853FA25000ECD6C /* ViewContoller */ = {
+			isa = PBXGroup;
+			children = (
+				5B01E8071853FA25000ECD6C /* DPAboutViewController.h */,
+				5B01E8081853FA25000ECD6C /* DPAboutViewController.m */,
+				5B01E8091853FA25000ECD6C /* DPDetailViewController.h */,
+				5B01E80A1853FA25000ECD6C /* DPDetailViewController.m */,
+				5B01E80B1853FA25000ECD6C /* DPMainMenuViewController.h */,
+				5B01E80C1853FA25000ECD6C /* DPMainMenuViewController.m */,
+				5B01E80D1853FA25000ECD6C /* DPMasterViewController.h */,
+				5B01E80E1853FA25000ECD6C /* DPMasterViewController.m */,
+			);
+			path = ViewContoller;
+			sourceTree = "<group>";
+		};
 		5B68336A18539BF300CAD141 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -190,21 +205,14 @@
 			isa = PBXGroup;
 			children = (
 				5B68336E18539DB100CAD141 /* Category */,
-				5BD15B92184BE96B007F25BD /* DPAppDelegate.h */,
-				5BD15B93184BE96B007F25BD /* DPAppDelegate.m */,
-				5BE5F3A41853E0EF0007A4A8 /* DPAboutViewController.h */,
-				5BE5F3A51853E0EF0007A4A8 /* DPAboutViewController.m */,
-				5B6833671853964A00CAD141 /* DPMainMenuViewController.h */,
-				5B6833681853964A00CAD141 /* DPMainMenuViewController.m */,
-				5BD15B95184BE96B007F25BD /* Main.storyboard */,
-				5BD15B9B184BE96B007F25BD /* DPMasterViewController.h */,
-				5BD15B9C184BE96B007F25BD /* DPMasterViewController.m */,
-				5BD15B9E184BE96B007F25BD /* DPDetailViewController.h */,
-				5BD15B9F184BE96B007F25BD /* DPDetailViewController.m */,
-				5BD15BA1184BE96B007F25BD /* Images.xcassets */,
+				5BD15BE118532F8C007F25BD /* Model */,
 				5BE5F39D1853C4E50007A4A8 /* Segue */,
 				5B68336A18539BF300CAD141 /* View */,
-				5BD15BE118532F8C007F25BD /* Model */,
+				5B01E8061853FA25000ECD6C /* ViewContoller */,
+				5BD15B92184BE96B007F25BD /* DPAppDelegate.h */,
+				5BD15B93184BE96B007F25BD /* DPAppDelegate.m */,
+				5BD15B95184BE96B007F25BD /* Main.storyboard */,
+				5BD15BA1184BE96B007F25BD /* Images.xcassets */,
 				5BD15B8A184BE96B007F25BD /* Supporting Files */,
 			);
 			path = DPSE_GUI2;
@@ -382,22 +390,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5BE5F3A61853E0EF0007A4A8 /* DPAboutViewController.m in Sources */,
 				5BE5F3991853C3600007A4A8 /* Event.m in Sources */,
-				5B6833691853964A00CAD141 /* DPMainMenuViewController.m in Sources */,
 				5BD15BE518533018007F25BD /* DPSE_GUI2.xcdatamodeld in Sources */,
+				5B01E8121853FA25000ECD6C /* DPMasterViewController.m in Sources */,
 				5BD15B94184BE96B007F25BD /* DPAppDelegate.m in Sources */,
 				5BD15B90184BE96B007F25BD /* main.m in Sources */,
 				5BD15BF418537BC1007F25BD /* Reachability.m in Sources */,
 				5BE5F3A31853CE870007A4A8 /* DPDismissSegue.m in Sources */,
 				5B68336D18539C2600CAD141 /* DPGradientButton.m in Sources */,
+				5B01E80F1853FA25000ECD6C /* DPAboutViewController.m in Sources */,
 				5B683366185389DC00CAD141 /* Graph.m in Sources */,
-				5BD15BA0184BE96B007F25BD /* DPDetailViewController.m in Sources */,
+				5B01E8111853FA25000ECD6C /* DPMainMenuViewController.m in Sources */,
+				5B01E8101853FA25000ECD6C /* DPDetailViewController.m in Sources */,
 				5BE5F3A01853C50D0007A4A8 /* DPPresentSegue.m in Sources */,
 				5B68337118539DE400CAD141 /* UIColor+ApplicationColorScheme.m in Sources */,
 				5BE5F39C1853C3610007A4A8 /* Simulation.m in Sources */,
 				5BD15BE91853313E007F25BD /* DPSSHConnection.m in Sources */,
-				5BD15B9D184BE96B007F25BD /* DPMasterViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
