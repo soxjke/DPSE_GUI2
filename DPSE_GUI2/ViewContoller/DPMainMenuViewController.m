@@ -57,9 +57,9 @@
         
         return;
     }
-    if ([segue.destinationViewController isKindOfClass:[UISplitViewController class]])
+    if ([[(UINavigationController*)segue.destinationViewController topViewController] isKindOfClass:[UISplitViewController class]])
     {
-        DPLoadSplitViewController *splitViewController = segue.destinationViewController;
+        UISplitViewController *splitViewController = (UISplitViewController*)[(UINavigationController*)segue.destinationViewController topViewController];
         UINavigationController *navigationController = [splitViewController.viewControllers lastObject];
         splitViewController.delegate = (id)navigationController.topViewController;
         return;

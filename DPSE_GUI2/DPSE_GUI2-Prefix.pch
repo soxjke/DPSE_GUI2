@@ -16,8 +16,12 @@
     #import <CoreData/CoreData.h>
 #endif
 
+// Singleton
 #import "DPAppDelegate.h"
 #import "DPSSHConnection.h"
+
+// Helper category
 #import "UIColor+ApplicationColorScheme.h"
+#import "NSLayoutConstraint+Setter.h"
 
 #define APP_DELEGATE ((DPAppDelegate*)[[UIApplication sharedApplication] delegate])

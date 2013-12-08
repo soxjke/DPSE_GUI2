@@ -32,6 +32,13 @@
 
 - (void)configureView;
 
+@property (nonatomic, weak) IBOutlet NSLayoutConstraint *buttonsContainerTopAnchor;
+@property (nonatomic, weak) IBOutlet NSLayoutConstraint *buttonsContainerLeftAnchor;
+
+@property (nonatomic, weak) IBOutlet UIImageView    * previewImageView;
+@property (nonatomic, weak) IBOutlet UIView         * buttonsPreviewView;
+@property (nonatomic, weak) IBOutlet UITableView    * infoTableView;
+
 @end
 
 @implementation DPLoadDetailViewController
@@ -43,7 +50,6 @@
     if (![_detailItem isEqual:newDetailItem])
     {
         _detailItem = newDetailItem;
-        
         // Update the view.
         [self configureView];
     }
@@ -64,6 +70,31 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     [self configureView];
+}
+
+- (void)viewWillLayoutSubviews
+{
+    UIDeviceOrientation orientation = [[UIDevice currentDevice] orientation];
+    if (UIDeviceOrientationIsLandscape(orientation))
+    {
+//        NSLayoutConstraint *newConstraint = [NSLayoutConstraint constraintWithItem:self.buttonsContainerLeftAnchor.firstItem
+//                                                                         attribute:self.buttonsContainerLeftAnchor.firstAttribute
+//                                                                         relatedBy:self.buttonsContainerLeftAnchor.relation
+//                                                                            toItem:self.previewImageView
+//                                                                         attribute:self.buttonsContainerLeftAnchor.secondAttribute
+//                                                                        multiplier:self.buttonsContainerLeftAnchor.multiplier
+//                                                                          constant:self.buttonsContainerLeftAnchor.constant];
+//        [self.buttonsPreviewView removeConstraint:self.buttonsContainerLeftAnchor];
+//        [self.buttonsPreviewView addConstraint:newConstraint];
+//        self.buttonsContainerLeftAnchor = newConstraint;
+        self.buttonsContainerLeftAnchor.secondItem  = self.previewImageView;
+        self.buttonsContainerTopAnchor.secondItem   = self.topLayoutGuide;
+    }
+    else if (UIDeviceOrientationIsPortrait(orientation))
+    {
+        self.buttonsContainerLeftAnchor.secondItem  = self.view;
+        self.buttonsContainerTopAnchor.secondItem   = self.previewImageView;
+    }
 }
 
 #pragma mark - Split view
