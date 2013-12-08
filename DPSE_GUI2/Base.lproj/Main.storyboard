@@ -125,10 +125,10 @@
             </objects>
             <point key="canvasLocation" x="1784" y="1287"/>
         </scene>
-        <!--Split View Controller-->
+        <!--Settings Split View Controller-->
         <scene sceneID="nbS-ov-tfu">
             <objects>
-                <splitViewController id="EmB-51-N2P" sceneMemberID="viewController">
+                <splitViewController id="EmB-51-N2P" customClass="DPSettingsSplitViewController" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="2Cg-uW-qbp"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
