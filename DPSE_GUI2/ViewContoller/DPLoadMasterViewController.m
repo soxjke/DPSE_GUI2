@@ -1,5 +1,5 @@
 //
-//  DPMasterViewController.h
+//  DPLoadMasterViewController.h
 //  Distributed parallel simulation environment graphical user interface
 //
 //  Created by Petro Korienev on 12/7/13.
@@ -24,17 +24,17 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-#import "DPMasterViewController.h"
+#import "DPLoadMasterViewController.h"
 
-#import "DPDetailViewController.h"
+#import "DPLoadDetailViewController.h"
 
 #import "Graph.h"
 
-@interface DPMasterViewController ()
+@interface DPLoadMasterViewController ()
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath;
 @end
 
-@implementation DPMasterViewController
+@implementation DPLoadMasterViewController
 
 - (void)awakeFromNib
 {
@@ -50,7 +50,7 @@
     self.navigationItem.rightBarButtonItem = addButton;
     
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStylePlain target:self action:@selector(backButtonPressed:)];
-    self.detailViewController = (DPDetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
+    self.detailViewController = (DPLoadDetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
     
     self.managedObjectContext = [APP_DELEGATE managedObjectContext];
 }

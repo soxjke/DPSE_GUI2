@@ -1,5 +1,5 @@
 //
-//  DPDetailViewController.h
+//  DPLoadDetailViewController.h
 //  Distributed parallel simulation environment graphical user interface
 //
 //  Created by Petro Korienev on 12/7/13.
@@ -26,7 +26,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DPDetailViewController : UIViewController <UISplitViewControllerDelegate>
+@interface DPLoadDetailViewController : UIViewController <UISplitViewControllerDelegate>
 
 @property (strong, nonatomic) id detailItem;
 

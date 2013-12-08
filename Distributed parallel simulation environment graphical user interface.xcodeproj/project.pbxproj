@@ -8,9 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		5B01E80F1853FA25000ECD6C /* DPAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B01E8081853FA25000ECD6C /* DPAboutViewController.m */; };
-		5B01E8101853FA25000ECD6C /* DPDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B01E80A1853FA25000ECD6C /* DPDetailViewController.m */; };
+		5B01E8101853FA25000ECD6C /* DPLoadDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B01E80A1853FA25000ECD6C /* DPLoadDetailViewController.m */; };
 		5B01E8111853FA25000ECD6C /* DPMainMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B01E80C1853FA25000ECD6C /* DPMainMenuViewController.m */; };
-		5B01E8121853FA25000ECD6C /* DPMasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B01E80E1853FA25000ECD6C /* DPMasterViewController.m */; };
+		5B01E8121853FA25000ECD6C /* DPLoadMasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B01E80E1853FA25000ECD6C /* DPLoadMasterViewController.m */; };
 		5B1C89BD18546B8700DB5CF1 /* DPSettingsSplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B1C89BC18546B8700DB5CF1 /* DPSettingsSplitViewController.m */; };
 		5B1C89C018546D5C00DB5CF1 /* DPSettingsMasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B1C89BF18546D5C00DB5CF1 /* DPSettingsMasterViewController.m */; };
 		5B683366185389DC00CAD141 /* Graph.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B683365185389DC00CAD141 /* Graph.m */; };
@@ -60,12 +60,12 @@
 /* Begin PBXFileReference section */
 		5B01E8071853FA25000ECD6C /* DPAboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPAboutViewController.h; sourceTree = "<group>"; };
 		5B01E8081853FA25000ECD6C /* DPAboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPAboutViewController.m; sourceTree = "<group>"; };
-		5B01E8091853FA25000ECD6C /* DPDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPDetailViewController.h; sourceTree = "<group>"; };
-		5B01E80A1853FA25000ECD6C /* DPDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPDetailViewController.m; sourceTree = "<group>"; };
+		5B01E8091853FA25000ECD6C /* DPLoadDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPLoadDetailViewController.h; sourceTree = "<group>"; };
+		5B01E80A1853FA25000ECD6C /* DPLoadDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPLoadDetailViewController.m; sourceTree = "<group>"; };
 		5B01E80B1853FA25000ECD6C /* DPMainMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPMainMenuViewController.h; sourceTree = "<group>"; };
 		5B01E80C1853FA25000ECD6C /* DPMainMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPMainMenuViewController.m; sourceTree = "<group>"; };
-		5B01E80D1853FA25000ECD6C /* DPMasterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPMasterViewController.h; sourceTree = "<group>"; };
-		5B01E80E1853FA25000ECD6C /* DPMasterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPMasterViewController.m; sourceTree = "<group>"; };
+		5B01E80D1853FA25000ECD6C /* DPLoadMasterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPLoadMasterViewController.h; sourceTree = "<group>"; };
+		5B01E80E1853FA25000ECD6C /* DPLoadMasterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPLoadMasterViewController.m; sourceTree = "<group>"; };
 		5B1C89BB18546B8700DB5CF1 /* DPSettingsSplitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPSettingsSplitViewController.h; sourceTree = "<group>"; };
 		5B1C89BC18546B8700DB5CF1 /* DPSettingsSplitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPSettingsSplitViewController.m; sourceTree = "<group>"; };
 		5B1C89BE18546D5C00DB5CF1 /* DPSettingsMasterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPSettingsMasterViewController.h; sourceTree = "<group>"; };
@@ -146,12 +146,12 @@
 			children = (
 				5B01E8071853FA25000ECD6C /* DPAboutViewController.h */,
 				5B01E8081853FA25000ECD6C /* DPAboutViewController.m */,
-				5B01E8091853FA25000ECD6C /* DPDetailViewController.h */,
-				5B01E80A1853FA25000ECD6C /* DPDetailViewController.m */,
+				5B01E8091853FA25000ECD6C /* DPLoadDetailViewController.h */,
+				5B01E80A1853FA25000ECD6C /* DPLoadDetailViewController.m */,
 				5B01E80B1853FA25000ECD6C /* DPMainMenuViewController.h */,
 				5B01E80C1853FA25000ECD6C /* DPMainMenuViewController.m */,
-				5B01E80D1853FA25000ECD6C /* DPMasterViewController.h */,
-				5B01E80E1853FA25000ECD6C /* DPMasterViewController.m */,
+				5B01E80D1853FA25000ECD6C /* DPLoadMasterViewController.h */,
+				5B01E80E1853FA25000ECD6C /* DPLoadMasterViewController.m */,
 				5B1C89BB18546B8700DB5CF1 /* DPSettingsSplitViewController.h */,
 				5B1C89BC18546B8700DB5CF1 /* DPSettingsSplitViewController.m */,
 				5B1C89BE18546D5C00DB5CF1 /* DPSettingsMasterViewController.h */,
@@ -402,7 +402,7 @@
 			files = (
 				5BE5F3991853C3600007A4A8 /* Event.m in Sources */,
 				5BD15BE518533018007F25BD /* DPSE_GUI2.xcdatamodeld in Sources */,
-				5B01E8121853FA25000ECD6C /* DPMasterViewController.m in Sources */,
+				5B01E8121853FA25000ECD6C /* DPLoadMasterViewController.m in Sources */,
 				5B1C89BD18546B8700DB5CF1 /* DPSettingsSplitViewController.m in Sources */,
 				5BD15B94184BE96B007F25BD /* DPAppDelegate.m in Sources */,
 				5BD15B90184BE96B007F25BD /* main.m in Sources */,
@@ -413,7 +413,7 @@
 				5B1C89C018546D5C00DB5CF1 /* DPSettingsMasterViewController.m in Sources */,
 				5B683366185389DC00CAD141 /* Graph.m in Sources */,
 				5B01E8111853FA25000ECD6C /* DPMainMenuViewController.m in Sources */,
-				5B01E8101853FA25000ECD6C /* DPDetailViewController.m in Sources */,
+				5B01E8101853FA25000ECD6C /* DPLoadDetailViewController.m in Sources */,
 				5BE5F3A01853C50D0007A4A8 /* DPPresentSegue.m in Sources */,
 				5B68337118539DE400CAD141 /* UIColor+ApplicationColorScheme.m in Sources */,
 				5BE5F39C1853C3610007A4A8 /* Simulation.m in Sources */,

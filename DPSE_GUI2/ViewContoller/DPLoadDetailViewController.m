@@ -1,5 +1,5 @@
 //
-//  DPMasterViewController.m
+//  DPLoadMasterViewController.m
 //  Distributed parallel simulation environment graphical user interface
 //
 //  Created by Petro Korienev on 12/7/13.
@@ -24,31 +24,29 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-#import "DPDetailViewController.h"
+#import "DPLoadDetailViewController.h"
 
 #import "Graph.h"
 
-@interface DPDetailViewController ()
-@property (strong, nonatomic) UIPopoverController *masterPopoverController;
+@interface DPLoadDetailViewController ()
+
 - (void)configureView;
+
 @end
 
-@implementation DPDetailViewController
+@implementation DPLoadDetailViewController
 
 #pragma mark - Managing the detail item
 
 - (void)setDetailItem:(id)newDetailItem
 {
-    if (_detailItem != newDetailItem) {
+    if (![_detailItem isEqual:newDetailItem])
+    {
         _detailItem = newDetailItem;
         
         // Update the view.
         [self configureView];
     }
-
-    if (self.masterPopoverController != nil) {
-        [self.masterPopoverController dismissPopoverAnimated:YES];
-    }        
 }
 
 - (void)configureView

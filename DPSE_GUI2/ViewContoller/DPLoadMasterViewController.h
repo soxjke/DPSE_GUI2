@@ -1,5 +1,5 @@
 //
-//  DPMasterViewController.h
+//  DPLoadMasterViewController.h
 //  Distributed parallel simulation environment graphical user interface
 //
 //  Created by Petro Korienev on 12/7/13.
@@ -26,13 +26,13 @@
 
 #import <UIKit/UIKit.h>
 
-@class DPDetailViewController;
+@class DPLoadDetailViewController;
 
 #import <CoreData/CoreData.h>
 
-@interface DPMasterViewController : UITableViewController <NSFetchedResultsControllerDelegate>
+@interface DPLoadMasterViewController : UITableViewController <NSFetchedResultsControllerDelegate>
 
-@property (strong, nonatomic) DPDetailViewController *detailViewController;
+@property (strong, nonatomic) DPLoadDetailViewController *detailViewController;
 
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
