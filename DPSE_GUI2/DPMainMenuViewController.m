@@ -26,7 +26,12 @@
 
 #import "DPMainMenuViewController.h"
 
+#import "DPAboutViewController.h"
+
 @interface DPMainMenuViewController ()
+{
+    DPAboutViewController *_aboutBox;
+}
 
 - (IBAction)unwindToMainMenu:(UIStoryboardSegue*)segue;
 
@@ -34,23 +39,44 @@
 
 @implementation DPMainMenuViewController
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-	// Do any additional setup after loading the view.
-}
+#pragma mark - segues
 
-- (void)didReceiveMemoryWarning
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    if ([segue isKindOfClass:[UIStoryboardPopoverSegue class]])
+    {
+        UIPopoverController *popover = ((UIStoryboardPopoverSegue*)segue).popoverController;
+        
+        CGSize popoverSize = CGSizeMake(700, 700);
+        
+        [popover setPopoverContentSize:popoverSize];
+        
+        _aboutBox = segue.destinationViewController;
+    }
 }
 
 #pragma mark - unwind segues
 
 - (IBAction)unwindToMainMenu:(UIStoryboardSegue*)segue
 {
-    
+    _aboutBox = nil;
+}
+
+#pragma mark - popover management
+
+- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
+{
+    if (_aboutBox)
+    {
+        [_aboutBox performSegueWithIdentifier:@"unwindToMainMenu" sender:self];
+        
+        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(duration * NSEC_PER_SEC));
+        
+        dispatch_after(popTime, dispatch_get_main_queue(), ^(void)
+        {
+            [self performSegueWithIdentifier:@"showAboutDialogBox" sender:self.view];
+        });
+    }
 }
 
 @end

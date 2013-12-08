@@ -42,6 +42,7 @@
 		5BE5F39C1853C3610007A4A8 /* Simulation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5F39B1853C3610007A4A8 /* Simulation.m */; };
 		5BE5F3A01853C50D0007A4A8 /* DPPresentSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5F39F1853C50D0007A4A8 /* DPPresentSegue.m */; };
 		5BE5F3A31853CE870007A4A8 /* DPDismissSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5F3A21853CE870007A4A8 /* DPDismissSegue.m */; };
+		5BE5F3A61853E0EF0007A4A8 /* DPAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5F3A51853E0EF0007A4A8 /* DPAboutViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -100,6 +101,8 @@
 		5BE5F39F1853C50D0007A4A8 /* DPPresentSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPPresentSegue.m; sourceTree = "<group>"; };
 		5BE5F3A11853CE870007A4A8 /* DPDismissSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPDismissSegue.h; sourceTree = "<group>"; };
 		5BE5F3A21853CE870007A4A8 /* DPDismissSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPDismissSegue.m; sourceTree = "<group>"; };
+		5BE5F3A41853E0EF0007A4A8 /* DPAboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPAboutViewController.h; sourceTree = "<group>"; };
+		5BE5F3A51853E0EF0007A4A8 /* DPAboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPAboutViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -189,6 +192,8 @@
 				5B68336E18539DB100CAD141 /* Category */,
 				5BD15B92184BE96B007F25BD /* DPAppDelegate.h */,
 				5BD15B93184BE96B007F25BD /* DPAppDelegate.m */,
+				5BE5F3A41853E0EF0007A4A8 /* DPAboutViewController.h */,
+				5BE5F3A51853E0EF0007A4A8 /* DPAboutViewController.m */,
 				5B6833671853964A00CAD141 /* DPMainMenuViewController.h */,
 				5B6833681853964A00CAD141 /* DPMainMenuViewController.m */,
 				5BD15B95184BE96B007F25BD /* Main.storyboard */,
@@ -377,6 +382,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5BE5F3A61853E0EF0007A4A8 /* DPAboutViewController.m in Sources */,
 				5BE5F3991853C3600007A4A8 /* Event.m in Sources */,
 				5B6833691853964A00CAD141 /* DPMainMenuViewController.m in Sources */,
 				5BD15BE518533018007F25BD /* DPSE_GUI2.xcdatamodeld in Sources */,
