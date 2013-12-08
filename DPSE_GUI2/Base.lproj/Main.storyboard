@@ -57,6 +57,90 @@
             </objects>
             <point key="canvasLocation" x="1172" y="292"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="IUT-Hw-O7Y">
+            <objects>
+                <viewController id="V7j-jn-Sf3" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="EMY-Gc-06O"/>
+                        <viewControllerLayoutGuide type="bottom" id="vXY-Gb-r1f"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="DyK-q5-4qj">
+                        <rect key="frame" x="0.0" y="0.0" width="703" height="768"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    </view>
+                    <toolbarItems/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Rby-Uc-vwD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1760" y="2411"/>
+        </scene>
+        <!--Table View Controller - Root View Controller-->
+        <scene sceneID="ccs-mu-aCr">
+            <objects>
+                <tableViewController clearsSelectionOnViewWillAppear="NO" id="Cug-TA-avG" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="7s7-Gi-fHH">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="768"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="oS4-PO-pTZ">
+                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="oS4-PO-pTZ" id="QtB-lm-MEe">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Cug-TA-avG" id="y7v-0I-TVU"/>
+                            <outlet property="delegate" destination="Cug-TA-avG" id="HZJ-aV-kYn"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Root View Controller" id="u8S-3j-1aS"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LZZ-Jx-sMm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2440" y="1279"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="60M-uw-jJU">
+            <objects>
+                <navigationController id="Xr3-xz-fwz" sceneMemberID="viewController">
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    <navigationBar key="navigationBar" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="xVF-95-ts7">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="Cug-TA-avG" kind="relationship" relationship="rootViewController" id="wXI-Rb-H3w"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sYe-Rc-GDf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1784" y="1287"/>
+        </scene>
+        <!--Split View Controller-->
+        <scene sceneID="nbS-ov-tfu">
+            <objects>
+                <splitViewController id="EmB-51-N2P" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="2Cg-uW-qbp"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    <connections>
+                        <segue destination="Xr3-xz-fwz" kind="relationship" relationship="masterViewController" id="8Ek-zm-ayh"/>
+                        <segue destination="V7j-jn-Sf3" kind="relationship" relationship="detailViewController" id="8R4-cF-Z3x"/>
+                    </connections>
+                </splitViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dUV-IX-xXG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="314" y="1754"/>
+        </scene>
         <!--Main Menu View Controller-->
         <scene sceneID="pKQ-gE-K30">
             <objects>
@@ -102,6 +186,9 @@
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <segue destination="HNr-yO-KTi" kind="custom" customClass="DPPresentSegue" id="EhG-eK-gf0"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qa6-Z7-DuC" customClass="DPGradientButton">
                                 <rect key="frame" x="944" y="688" width="60" height="60"/>
@@ -475,7 +562,7 @@ Cg
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hz3-Me-kwC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-982" y="-630"/>
+            <point key="canvasLocation" x="-918" y="-630"/>
         </scene>
         <!--Split View Controller-->
         <scene sceneID="Nki-YV-4Qg">
@@ -560,6 +647,22 @@ Cg
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SLD-UC-DBI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="287" y="292"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="y6Q-Kd-3x2">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="HNr-yO-KTi" sceneMemberID="viewController">
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="yEg-cU-3ER">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="EmB-51-N2P" kind="relationship" relationship="rootViewController" id="cGV-Qy-8aU"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="H5v-w0-ZZW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-918" y="1754"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
