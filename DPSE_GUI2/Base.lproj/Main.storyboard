@@ -62,12 +62,12 @@
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zZC-SO-bcZ" customClass="DPGradientButton">
-                                        <rect key="frame" x="6" y="335" width="240" height="60"/>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zZC-SO-bcZ" customClass="DPGradientButton">
+                                        <rect key="frame" x="5" y="335" width="240" height="60"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <constraints>
+                                            <constraint firstAttribute="width" constant="240" id="0GR-g6-rsb"/>
                                             <constraint firstAttribute="height" constant="60" id="e6z-vt-VBP"/>
-                                            <constraint firstAttribute="width" constant="240" id="eW0-5j-2kI"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                         <state key="normal" title="Delete">
@@ -76,13 +76,13 @@
                                         </state>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.1176470588" green="0.56470588239999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="a49-DO-ryI" firstAttribute="top" secondItem="rcC-5G-uTa" secondAttribute="top" constant="5" id="9Fy-cI-bvA"/>
                                     <constraint firstItem="a49-DO-ryI" firstAttribute="leading" secondItem="rcC-5G-uTa" secondAttribute="leading" constant="5" id="DoN-fY-yRc"/>
                                     <constraint firstAttribute="trailing" secondItem="zZC-SO-bcZ" secondAttribute="trailing" constant="5" id="Hzq-N6-eSU"/>
                                     <constraint firstAttribute="bottom" secondItem="zZC-SO-bcZ" secondAttribute="bottom" constant="5" id="KYI-Xs-PwI"/>
-                                    <constraint firstAttribute="height" constant="400" id="SDF-W6-bqX"/>
+                                    <constraint firstAttribute="height" constant="400" id="M2x-X6-UfE"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -103,10 +103,13 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Detail" id="mOI-FS-AaM"/>
                     <connections>
+                        <outlet property="buttonsContainerHeightAnchor" destination="M2x-X6-UfE" id="SVQ-MR-R0t"/>
                         <outlet property="buttonsContainerLeftAnchor" destination="LZS-5P-ml9" id="OyS-nN-oFd"/>
                         <outlet property="buttonsContainerTopAnchor" destination="TuQ-H0-vEv" id="BDf-4Z-Y4F"/>
                         <outlet property="buttonsPreviewView" destination="rcC-5G-uTa" id="F9t-vu-1g6"/>
+                        <outlet property="deleteButtonWidthAnchor" destination="0GR-g6-rsb" id="Nnc-2C-quu"/>
                         <outlet property="infoTableView" destination="8cv-ro-lWt" id="L6J-MN-dsP"/>
+                        <outlet property="loadButtonWidthAnchor" destination="yxn-wl-YZv" id="ZW6-Eq-WbA"/>
                         <outlet property="previewImageView" destination="BmG-S0-5P5" id="s5f-Gi-GWC"/>
                     </connections>
                 </viewController>

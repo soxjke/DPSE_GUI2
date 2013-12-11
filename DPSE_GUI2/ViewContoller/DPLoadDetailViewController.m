@@ -34,9 +34,12 @@
 
 @property (nonatomic, weak) IBOutlet NSLayoutConstraint *buttonsContainerTopAnchor;
 @property (nonatomic, weak) IBOutlet NSLayoutConstraint *buttonsContainerLeftAnchor;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *buttonsContainerHeightAnchor;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *loadButtonWidthAnchor;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *deleteButtonWidthAnchor;
 
 @property (nonatomic, weak) IBOutlet UIImageView    * previewImageView;
-@property (nonatomic, weak) IBOutlet UIView         * buttonsPreviewView;
+@property (nonatomic, strong) IBOutlet UIView         * buttonsPreviewView;
 @property (nonatomic, weak) IBOutlet UITableView    * infoTableView;
 
 @end
@@ -74,26 +77,59 @@
 
 - (void)viewWillLayoutSubviews
 {
-    UIDeviceOrientation orientation = [[UIDevice currentDevice] orientation];
-    if (UIDeviceOrientationIsLandscape(orientation))
+    UIInterfaceOrientation toInterfaceOrientation = [[UIDevice currentDevice] orientation];
+    
+    if (UIDeviceOrientationIsLandscape(toInterfaceOrientation))
     {
-//        NSLayoutConstraint *newConstraint = [NSLayoutConstraint constraintWithItem:self.buttonsContainerLeftAnchor.firstItem
-//                                                                         attribute:self.buttonsContainerLeftAnchor.firstAttribute
-//                                                                         relatedBy:self.buttonsContainerLeftAnchor.relation
-//                                                                            toItem:self.previewImageView
-//                                                                         attribute:self.buttonsContainerLeftAnchor.secondAttribute
-//                                                                        multiplier:self.buttonsContainerLeftAnchor.multiplier
-//                                                                          constant:self.buttonsContainerLeftAnchor.constant];
-//        [self.buttonsPreviewView removeConstraint:self.buttonsContainerLeftAnchor];
-//        [self.buttonsPreviewView addConstraint:newConstraint];
-//        self.buttonsContainerLeftAnchor = newConstraint;
-        self.buttonsContainerLeftAnchor.secondItem  = self.previewImageView;
-        self.buttonsContainerTopAnchor.secondItem   = self.topLayoutGuide;
+        //        NSLayoutConstraint *newConstraint = [NSLayoutConstraint constraintWithItem:self.buttonsContainerLeftAnchor.firstItem
+        //                                                                         attribute:self.buttonsContainerLeftAnchor.firstAttribute
+        //                                                                         relatedBy:self.buttonsContainerLeftAnchor.relation
+        //                                                                            toItem:self.previewImageView
+        //                                                                         attribute:self.buttonsContainerLeftAnchor.secondAttribute
+        //                                                                        multiplier:self.buttonsContainerLeftAnchor.multiplier
+        //                                                                          constant:self.buttonsContainerLeftAnchor.constant];
+        //        [self.buttonsPreviewView removeConstraint:self.buttonsContainerLeftAnchor];
+        //        [self.buttonsPreviewView addConstraint:newConstraint];
+        //        self.buttonsContainerLeftAnchor = newConstraint;
+        //        self.buttonsContainerLeftAnchor.secondItem  = self.previewImageView;
+        //        self.buttonsContainerTopAnchor.secondItem   = self.topLayoutGuide;
     }
-    else if (UIDeviceOrientationIsPortrait(orientation))
+    else if (UIDeviceOrientationIsPortrait(toInterfaceOrientation))
     {
-        self.buttonsContainerLeftAnchor.secondItem  = self.view;
-        self.buttonsContainerTopAnchor.secondItem   = self.previewImageView;
+        /*
+         self.buttonsContainerLeftAnchor.secondItem  = self.view;
+         self.buttonsContainerTopAnchor.secondItem   = self.previewImageView;
+         */
+        
+        self.buttonsContainerHeightAnchor.constant  = 70.0f;
+        self.loadButtonWidthAnchor.constant         = 160.0f;
+        self.deleteButtonWidthAnchor.constant       = 160.0f;
+        
+        NSLayoutConstraint *newConstraint = [NSLayoutConstraint constraintWithItem:self.buttonsContainerLeftAnchor.firstItem
+                                                                         attribute:self.buttonsContainerLeftAnchor.firstAttribute
+                                                                         relatedBy:self.buttonsContainerLeftAnchor.relation
+                                                                            toItem:self.view
+                                                                         attribute:self.buttonsContainerLeftAnchor.firstAttribute
+                                                                        multiplier:self.buttonsContainerLeftAnchor.multiplier
+                                                                          constant:self.buttonsContainerLeftAnchor.constant];
+        
+        [self.view removeConstraint:self.buttonsContainerLeftAnchor];
+        
+        NSLayoutConstraint *newConstraint2 = [NSLayoutConstraint constraintWithItem:self.buttonsContainerTopAnchor.firstItem
+                                                                          attribute:self.buttonsContainerTopAnchor.firstAttribute
+                                                                          relatedBy:self.buttonsContainerTopAnchor.relation
+                                                                             toItem:self.previewImageView
+                                                                          attribute:self.buttonsContainerTopAnchor.secondAttribute
+                                                                         multiplier:self.buttonsContainerTopAnchor.multiplier
+                                                                           constant:self.buttonsContainerTopAnchor.constant];
+        
+        [self.view removeConstraint:self.buttonsContainerTopAnchor];
+        
+        [self.view addConstraint:newConstraint2];
+        [self.view addConstraint:newConstraint];
+        self.buttonsContainerLeftAnchor = newConstraint;
+        
+        self.buttonsContainerTopAnchor = newConstraint2;
     }
 }
 
