@@ -1,8 +1,8 @@
 //
-//  DPEditViewController.m
+//  DPDrawObjectsScrollView.h
 //  Distributed parallel simulation environment graphical user interface
 //
-//  Created by Petro Korienev on 12/29/13.
+//  Created by Petro Korienev on 12/30/13.
 
 //    Copyright (c) 2013 Petro Korienev. All rights reserved. 
 
@@ -24,47 +24,22 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-#import "DPEditViewController.h"
-#import "DPDrawObjectsScrollView.h"
+#import <UIKit/UIKit.h>
 
-typedef NS_ENUM(NSUInteger, DPTouchMode)
-{
-    DPTouchModeCursor,
-    DPTouchModeNode,
-    DPTouchModeNet
-};
+@protocol DPDrawObjectsScrollViewDelegate;
 
-@interface DPEditViewController () <DPDrawObjectsScrollViewDelegate, UIScrollViewDelegate>
-{
-    DPTouchMode currentTouchMode;
-}
+@interface DPDrawObjectsScrollView : UIScrollView
 
-@property (weak, nonatomic) IBOutlet DPDrawObjectsScrollView *scrollView;
+@property (nonatomic, weak) IBOutlet id <DPDrawObjectsScrollViewDelegate> touchDelegate;
+@property (nonatomic, weak) IBOutlet UIView *contentView;
 
 @end
 
-@implementation DPEditViewController
+@protocol DPDrawObjectsScrollViewDelegate <NSObject>
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-}
-
-#pragma mark - DPDrawObjectsScrollViewDelegate
-
-- (BOOL)scrollView:(DPDrawObjectsScrollView *)scrollView shouldBeginTouches:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    return (currentTouchMode != DPTouchModeNet);
-}
-
-- (BOOL)scrollView:(DPDrawObjectsScrollView *)scrollView shouldMoveTouches:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    return (currentTouchMode != DPTouchModeNet);
-}
-
-- (BOOL)scrollView:(DPDrawObjectsScrollView *)scrollView shouldEndTouches:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    return (currentTouchMode != DPTouchModeNet);
-}
+@required
+- (BOOL)scrollView:(DPDrawObjectsScrollView*)scrollView shouldBeginTouches:(NSSet*)touches withEvent:(UIEvent*)event;
+- (BOOL)scrollView:(DPDrawObjectsScrollView*)scrollView shouldMoveTouches:(NSSet*)touches withEvent:(UIEvent*)event;
+- (BOOL)scrollView:(DPDrawObjectsScrollView*)scrollView shouldEndTouches:(NSSet*)touches withEvent:(UIEvent*)event;
 
 @end

@@ -1,8 +1,8 @@
 //
-//  DPEditViewController.m
+//  DPDrawObjectsScrollView.m
 //  Distributed parallel simulation environment graphical user interface
 //
-//  Created by Petro Korienev on 12/29/13.
+//  Created by Petro Korienev on 12/30/13.
 
 //    Copyright (c) 2013 Petro Korienev. All rights reserved. 
 
@@ -24,47 +24,33 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-#import "DPEditViewController.h"
 #import "DPDrawObjectsScrollView.h"
 
-typedef NS_ENUM(NSUInteger, DPTouchMode)
-{
-    DPTouchModeCursor,
-    DPTouchModeNode,
-    DPTouchModeNet
-};
+@interface DPDrawObjectsScrollView ()
 
-@interface DPEditViewController () <DPDrawObjectsScrollViewDelegate, UIScrollViewDelegate>
-{
-    DPTouchMode currentTouchMode;
-}
-
-@property (weak, nonatomic) IBOutlet DPDrawObjectsScrollView *scrollView;
+@property (nonatomic, weak) IBOutlet NSLayoutConstraint *contentWidth;
+@property (nonatomic, weak) IBOutlet NSLayoutConstraint *contentHeight;
 
 @end
 
-@implementation DPEditViewController
+@implementation DPDrawObjectsScrollView
 
-- (void)viewDidLoad
+- (id)initWithFrame:(CGRect)frame
 {
-    [super viewDidLoad];
+    self = [super initWithFrame:frame];
+    if (self) {
+        // Initialization code
+    }
+    return self;
 }
 
-#pragma mark - DPDrawObjectsScrollViewDelegate
-
-- (BOOL)scrollView:(DPDrawObjectsScrollView *)scrollView shouldBeginTouches:(NSSet *)touches withEvent:(UIEvent *)event
+/*
+// Only override drawRect: if you perform custom drawing.
+// An empty implementation adversely affects performance during animation.
+- (void)drawRect:(CGRect)rect
 {
-    return (currentTouchMode != DPTouchModeNet);
+    // Drawing code
 }
-
-- (BOOL)scrollView:(DPDrawObjectsScrollView *)scrollView shouldMoveTouches:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    return (currentTouchMode != DPTouchModeNet);
-}
-
-- (BOOL)scrollView:(DPDrawObjectsScrollView *)scrollView shouldEndTouches:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    return (currentTouchMode != DPTouchModeNet);
-}
+*/
 
 @end
