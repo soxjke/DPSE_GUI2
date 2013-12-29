@@ -34,7 +34,7 @@ NSMutableArray *alerts;
 
 @implementation DPBlockAlertView
 {
-    DPAlertCompletionBlock _completion;
+    DPAlertCompletionBlock __attribute((copy)) _completion;
 }
 
 + (void)load
