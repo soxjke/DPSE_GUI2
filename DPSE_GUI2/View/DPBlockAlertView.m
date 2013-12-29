@@ -34,7 +34,7 @@ NSMutableArray *alerts;
 
 @implementation DPBlockAlertView
 {
-    DPAlertCompletionBlock __attribute((copy)) _completion;
+    DPAlertCompletionBlock _completion;
 }
 
 + (void)load
@@ -48,7 +48,17 @@ NSMutableArray *alerts;
           cancelButtonTitle:(NSString *)cancelButtonTitle
           otherButtonTitles:(NSString *)otherButtonTitles, ... NS_REQUIRES_NIL_TERMINATION;
 {
-    DPBlockAlertView *alert = [[DPBlockAlertView alloc] initWithCompletion:completion title:title message:message cancelButtonTitle:cancelButtonTitle otherButtonTitles:otherButtonTitles, nil];
+    va_list titles;
+    va_start(titles, otherButtonTitles);
+    
+    DPBlockAlertView *alert = [[DPBlockAlertView alloc] initWithCompletion:completion title:title message:message cancelButtonTitle:cancelButtonTitle otherButtonTitles:nil];
+    
+    for (NSString *title = otherButtonTitles; title; title = va_arg(titles, NSString*))
+    {
+        [alert addButtonWithTitle:title];
+    }
+    
+    va_end(titles);
     [alert show];
 }
 
@@ -58,13 +68,24 @@ NSMutableArray *alerts;
                  cancelButtonTitle:(NSString *)cancelButtonTitle
                  otherButtonTitles:(NSString *)otherButtonTitles, ...
 {
-    self = [super initWithTitle:title message:message delegate:nil cancelButtonTitle:cancelButtonTitle otherButtonTitles:otherButtonTitles, nil];
+    va_list titles;
+    va_start(titles, otherButtonTitles);
+    
+    self = [super initWithTitle:title message:message delegate:nil cancelButtonTitle:cancelButtonTitle otherButtonTitles:nil];
     
     if (self)
     {
         self.delegate = self;
-        _completion = completion;
+        
+        for (NSString *title = otherButtonTitles; title; title = va_arg(titles, NSString*))
+        {
+            [self addButtonWithTitle:title];
+        }
+        
+        _completion = [completion copy];
     }
+    
+    va_end(titles);
     
     [alerts addObject:self];
     

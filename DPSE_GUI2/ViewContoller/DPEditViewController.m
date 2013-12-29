@@ -55,7 +55,36 @@ typedef NS_ENUM(NSUInteger, DPTouchMode)
 
 - (void)backButtonPressed:(id)sender
 {
+    [DPBlockAlertView alertWithCompletion:^(DPBlockAlertView *alertView, NSUInteger selectedOption)
+    {
+        if (selectedOption == 1) // User tapped "Save"
+        {
+            [self save];
+        }
+        
+        if (selectedOption != 0)    // User didn't tap cancel
+        {
+            [self performSegueWithIdentifier:@"unwindToMainMenu" sender:self];
+        }
+    }
+                                    title:@"Close model"
+                                  message:@"Are you sure you want to close this model? All changes will be lost."
+                        cancelButtonTitle:@"Cancel"
+                        otherButtonTitles:@"Save", @"Don't save", nil];
+}
 
+#pragma mark - business logic
+
+- (void)save
+{
+    
+}
+
+#pragma mark - segues
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    
 }
 
 #pragma mark - DPDrawObjectsScrollViewDelegate

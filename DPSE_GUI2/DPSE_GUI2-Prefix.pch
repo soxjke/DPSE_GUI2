@@ -24,4 +24,7 @@
 #import "UIColor+ApplicationColorScheme.h"
 #import "NSLayoutConstraint+Setter.h"
 
+// Helper class
+#import "DPBlockAlertView.h"
+
 #define APP_DELEGATE ((DPAppDelegate*)[[UIApplication sharedApplication] delegate])
