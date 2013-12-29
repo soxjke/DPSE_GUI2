@@ -77,9 +77,9 @@
 
 - (void)viewWillLayoutSubviews
 {
-    UIInterfaceOrientation toInterfaceOrientation = [[UIDevice currentDevice] orientation];
+    UIInterfaceOrientation toInterfaceOrientation = self.interfaceOrientation;
     
-    if (UIDeviceOrientationIsLandscape(toInterfaceOrientation))
+    if (UIInterfaceOrientationIsLandscape(toInterfaceOrientation))
     {
         //        NSLayoutConstraint *newConstraint = [NSLayoutConstraint constraintWithItem:self.buttonsContainerLeftAnchor.firstItem
         //                                                                         attribute:self.buttonsContainerLeftAnchor.firstAttribute
@@ -94,7 +94,7 @@
         //        self.buttonsContainerLeftAnchor.secondItem  = self.previewImageView;
         //        self.buttonsContainerTopAnchor.secondItem   = self.topLayoutGuide;
     }
-    else if (UIDeviceOrientationIsPortrait(toInterfaceOrientation))
+    else if (UIInterfaceOrientationIsPortrait(toInterfaceOrientation))
     {
         /*
          self.buttonsContainerLeftAnchor.secondItem  = self.view;

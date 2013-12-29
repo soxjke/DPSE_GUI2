@@ -48,6 +48,14 @@ typedef NS_ENUM(NSUInteger, DPTouchMode)
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStylePlain target:self action:@selector(backButtonPressed:)];
+}
+
+#pragma mark - actions
+
+- (void)backButtonPressed:(id)sender
+{
+
 }
 
 #pragma mark - DPDrawObjectsScrollViewDelegate
