@@ -77,7 +77,7 @@
     for (NSUInteger index = 0; index < numberOfSteps; index++)
     {
         UIView *view            = [[UIView alloc] initWithFrame:CGRectMake(0, 0, isHorizontal ? width : steps.count, isHorizontal ? steps.count : height)];
-        view.center             = CGPointMake(isHorizontal ? centerX : top + step * index, isHorizontal ? left + step * index : centerY);
+        view.center             = CGPointMake(isHorizontal ? centerX : left + step * index, isHorizontal ? top + step * index : centerY);
         view.backgroundColor    = aColors.firstObject;
         
         [self addSubview:view];

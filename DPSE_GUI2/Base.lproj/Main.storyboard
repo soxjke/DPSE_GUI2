@@ -16,14 +16,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" maximumZoomScale="100" translatesAutoresizingMaskIntoConstraints="NO" id="5rg-rZ-cuW" customClass="DPDrawObjectsScrollView">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gpT-MV-LB1" customClass="DPGridView">
+                                <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </view>
+                            <scrollView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" maximumZoomScale="100" translatesAutoresizingMaskIntoConstraints="NO" id="5rg-rZ-cuW" customClass="DPDrawObjectsScrollView">
                                 <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qU9-Sm-H78">
+                                    <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qU9-Sm-H78">
                                         <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="1024" id="7T3-C1-hra"/>
                                             <constraint firstAttribute="height" constant="768" id="v7w-sP-wOA"/>
@@ -48,8 +53,12 @@
                         <constraints>
                             <constraint firstItem="5rg-rZ-cuW" firstAttribute="top" secondItem="YeX-3V-X9z" secondAttribute="top" id="2LG-W6-6NZ"/>
                             <constraint firstItem="QT8-0n-kie" firstAttribute="top" secondItem="5rg-rZ-cuW" secondAttribute="bottom" id="3c6-Oq-eMs"/>
+                            <constraint firstAttribute="trailing" secondItem="gpT-MV-LB1" secondAttribute="trailing" id="4zf-Ax-rhH"/>
                             <constraint firstItem="5rg-rZ-cuW" firstAttribute="leading" secondItem="YeX-3V-X9z" secondAttribute="leading" id="8hD-4k-tTu"/>
+                            <constraint firstItem="gpT-MV-LB1" firstAttribute="leading" secondItem="YeX-3V-X9z" secondAttribute="leading" id="9r0-xk-Nok"/>
+                            <constraint firstItem="gpT-MV-LB1" firstAttribute="top" secondItem="YeX-3V-X9z" secondAttribute="top" id="WnJ-w8-jRU"/>
                             <constraint firstAttribute="trailing" secondItem="5rg-rZ-cuW" secondAttribute="trailing" id="ovq-mD-Lvv"/>
+                            <constraint firstItem="QT8-0n-kie" firstAttribute="top" secondItem="gpT-MV-LB1" secondAttribute="bottom" id="prN-5G-gDK"/>
                         </constraints>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
