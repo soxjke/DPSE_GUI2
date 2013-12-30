@@ -33,6 +33,9 @@
 @property (nonatomic, weak) IBOutlet id <DPDrawObjectsScrollViewDelegate> touchDelegate;
 @property (nonatomic, weak) IBOutlet UIView *contentView;
 
+- (void)extendContentHorizontally;
+- (void)extendContentVertically;
+
 @end
 
 @protocol DPDrawObjectsScrollViewDelegate <NSObject>

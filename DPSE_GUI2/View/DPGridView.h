@@ -1,5 +1,5 @@
 //
-//  DPDrawObjectsScrollView.m
+//  DPGridView.h
 //  Distributed parallel simulation environment graphical user interface
 //
 //  Created by Petro Korienev on 12/30/13.
@@ -24,41 +24,12 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-#import "DPDrawObjectsScrollView.h"
+#import <UIKit/UIKit.h>
 
-@interface DPDrawObjectsScrollView () <UIScrollViewDelegate>
+@interface DPGridView : UIView
 
-@property (nonatomic, weak) IBOutlet NSLayoutConstraint *contentWidth;
-@property (nonatomic, weak) IBOutlet NSLayoutConstraint *contentHeight;
+@property (nonatomic, strong) UIColor *baseColor;
 
-@end
-
-@implementation DPDrawObjectsScrollView
-
-#pragma mark - public
-
-- (void)extendContentHorizontally
-{
-    
-}
-
-- (void)extendContentVertically
-{
-    
-}
-
-#pragma mark - private
-
-- (void)awakeFromNib
-{
-    self.delegate = self;
-}
-
-#pragma mark - UIScrollViewDelegate
-
-- (UIView*)viewForZoomingInScrollView:(UIScrollView *)scrollView
-{
-    return self.contentView;
-}
+@property (nonatomic, strong) NSArray *gridSteps;
 
 @end

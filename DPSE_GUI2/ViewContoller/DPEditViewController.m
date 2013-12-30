@@ -34,7 +34,7 @@ typedef NS_ENUM(NSUInteger, DPTouchMode)
     DPTouchModeNet
 };
 
-@interface DPEditViewController () <DPDrawObjectsScrollViewDelegate, UIScrollViewDelegate>
+@interface DPEditViewController () <DPDrawObjectsScrollViewDelegate>
 {
     DPTouchMode currentTouchMode;
 }
@@ -49,6 +49,7 @@ typedef NS_ENUM(NSUInteger, DPTouchMode)
 {
     [super viewDidLoad];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStylePlain target:self action:@selector(backButtonPressed:)];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(dbg:)];
 }
 
 #pragma mark - actions
@@ -102,6 +103,11 @@ typedef NS_ENUM(NSUInteger, DPTouchMode)
 - (BOOL)scrollView:(DPDrawObjectsScrollView *)scrollView shouldEndTouches:(NSSet *)touches withEvent:(UIEvent *)event
 {
     return (currentTouchMode != DPTouchModeNet);
+}
+
+- (void)dbg:(id)sender
+{
+    
 }
 
 @end

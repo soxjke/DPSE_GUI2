@@ -20,6 +20,7 @@
 		5B429B781870D27300307729 /* DPEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B429B771870D27300307729 /* DPEditViewController.m */; };
 		5B429B7C1870D3B000307729 /* DPDrawObjectsScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B429B7B1870D3B000307729 /* DPDrawObjectsScrollView.m */; };
 		5B429B7F1870D9EF00307729 /* DPBlockAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B429B7E1870D9EF00307729 /* DPBlockAlertView.m */; };
+		5B429B821870E6B200307729 /* DPGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B429B811870E6B200307729 /* DPGridView.m */; };
 		5B683366185389DC00CAD141 /* Graph.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B683365185389DC00CAD141 /* Graph.m */; };
 		5B68336D18539C2600CAD141 /* DPGradientButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B68336C18539C2600CAD141 /* DPGradientButton.m */; };
 		5B68337118539DE400CAD141 /* UIColor+ApplicationColorScheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B68337018539DE400CAD141 /* UIColor+ApplicationColorScheme.m */; };
@@ -89,6 +90,8 @@
 		5B429B7B1870D3B000307729 /* DPDrawObjectsScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPDrawObjectsScrollView.m; sourceTree = "<group>"; };
 		5B429B7D1870D9EF00307729 /* DPBlockAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPBlockAlertView.h; sourceTree = "<group>"; };
 		5B429B7E1870D9EF00307729 /* DPBlockAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPBlockAlertView.m; sourceTree = "<group>"; };
+		5B429B801870E6B200307729 /* DPGridView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPGridView.h; sourceTree = "<group>"; };
+		5B429B811870E6B200307729 /* DPGridView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPGridView.m; sourceTree = "<group>"; };
 		5B683364185389DC00CAD141 /* Graph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Graph.h; sourceTree = "<group>"; };
 		5B683365185389DC00CAD141 /* Graph.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Graph.m; sourceTree = "<group>"; };
 		5B68336B18539C2600CAD141 /* DPGradientButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPGradientButton.h; sourceTree = "<group>"; };
@@ -201,6 +204,8 @@
 				5B68336C18539C2600CAD141 /* DPGradientButton.m */,
 				5B429B7A1870D3B000307729 /* DPDrawObjectsScrollView.h */,
 				5B429B7B1870D3B000307729 /* DPDrawObjectsScrollView.m */,
+				5B429B801870E6B200307729 /* DPGridView.h */,
+				5B429B811870E6B200307729 /* DPGridView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -444,6 +449,7 @@
 				5BD15BE518533018007F25BD /* DPSE_GUI2.xcdatamodeld in Sources */,
 				5B01E8121853FA25000ECD6C /* DPLoadMasterViewController.m in Sources */,
 				5B1C89BD18546B8700DB5CF1 /* DPSettingsSplitViewController.m in Sources */,
+				5B429B821870E6B200307729 /* DPGridView.m in Sources */,
 				5BD15B94184BE96B007F25BD /* DPAppDelegate.m in Sources */,
 				5BD15B90184BE96B007F25BD /* main.m in Sources */,
 				5B1C89C91854E36300DB5CF1 /* NSLayoutConstraint+Setter.m in Sources */,
