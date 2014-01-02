@@ -33,6 +33,8 @@
 @property (nonatomic, weak) IBOutlet id <DPDrawObjectsScrollViewDelegate> touchDelegate;
 @property (nonatomic, weak) IBOutlet UIView *contentView;
 
+@property (nonatomic) BOOL zoomEnabled;
+
 - (void)extendContentHorizontally;
 - (void)extendContentVertically;
 

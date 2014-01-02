@@ -63,6 +63,10 @@
                                             <color key="titleColor" red="0.12549019607843137" green="0.12549019607843137" blue="0.12549019607843137" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <state key="selected" title="Net" image="iconNet" backgroundImage="buttonSelectedBackground"/>
+                                        <connections>
+                                            <action selector="toolboxButtonPressed:" destination="Lyc-i6-Hdn" eventType="touchUpInside" id="88o-6f-ym0"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JYU-Sg-Op8">
                                         <rect key="frame" x="112" y="4" width="101" height="40"/>
@@ -72,6 +76,10 @@
                                             <color key="titleColor" red="0.12549019610000001" green="0.12549019610000001" blue="0.12549019610000001" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <state key="selected" title="Node" image="iconNode" backgroundImage="buttonSelectedBackground"/>
+                                        <connections>
+                                            <action selector="toolboxButtonPressed:" destination="Lyc-i6-Hdn" eventType="touchUpInside" id="FKn-Wa-x9u"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c4h-3a-bOU">
                                         <rect key="frame" x="218" y="4" width="100" height="40"/>
@@ -81,6 +89,10 @@
                                             <color key="titleColor" red="0.12549019610000001" green="0.12549019610000001" blue="0.12549019610000001" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <state key="selected" title="Select" image="iconSelection" backgroundImage="buttonSelectedBackground"/>
+                                        <connections>
+                                            <action selector="toolboxButtonPressed:" destination="Lyc-i6-Hdn" eventType="touchUpInside" id="ISe-wd-ZLi"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -118,7 +130,11 @@
                     </view>
                     <navigationItem key="navigationItem" id="vAq-7G-GCd"/>
                     <connections>
+                        <outlet property="netButton" destination="3fS-E6-x8O" id="n2C-Y6-rzT"/>
+                        <outlet property="nodeButton" destination="JYU-Sg-Op8" id="Qal-5K-dcR"/>
                         <outlet property="scrollView" destination="5rg-rZ-cuW" id="KfM-gJ-QND"/>
+                        <outlet property="selectButton" destination="c4h-3a-bOU" id="m3o-b3-nZd"/>
+                        <outlet property="toolboxView" destination="PT8-s5-Op1" id="yAQ-PT-Zea"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ITX-6z-H5c" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -891,6 +907,7 @@ Cg
         </scene>
     </scenes>
     <resources>
+        <image name="buttonSelectedBackground" width="100" height="40"/>
         <image name="iconNet" width="35" height="35"/>
         <image name="iconNode" width="35" height="35"/>
         <image name="iconSelection" width="35" height="35"/>

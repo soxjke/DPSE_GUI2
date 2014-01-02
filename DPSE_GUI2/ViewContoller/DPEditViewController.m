@@ -26,6 +26,7 @@
 
 #import "DPEditViewController.h"
 #import "DPDrawObjectsScrollView.h"
+#import "DPTransparentContainerView.h"
 
 typedef NS_ENUM(NSUInteger, DPTouchMode)
 {
@@ -39,7 +40,17 @@ typedef NS_ENUM(NSUInteger, DPTouchMode)
     DPTouchMode currentTouchMode;
 }
 
+
 @property (weak, nonatomic) IBOutlet DPDrawObjectsScrollView *scrollView;
+
+@property (weak, nonatomic) IBOutlet DPTransparentContainerView *toolboxView;
+@property (weak, nonatomic) IBOutlet UIButton *netButton;
+@property (weak, nonatomic) IBOutlet UIButton *nodeButton;
+@property (weak, nonatomic) IBOutlet UIButton *selectButton;
+
+@property (strong, nonatomic) NSArray *toolboxButtons;
+
+- (IBAction)toolboxButtonPressed:(UIButton *)sender;
 
 @end
 
@@ -50,6 +61,14 @@ typedef NS_ENUM(NSUInteger, DPTouchMode)
     [super viewDidLoad];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStylePlain target:self action:@selector(backButtonPressed:)];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(dbg:)];
+    
+    self.selectButton.tag       = DPTouchModeCursor;
+    self.nodeButton.tag         = DPTouchModeNode;
+    self.netButton.tag          = DPTouchModeNet;
+    
+    self.selectButton.selected  = YES;
+    
+    self.toolboxButtons         = @[self.selectButton, self.nodeButton, self.netButton];
 }
 
 #pragma mark - actions
@@ -72,6 +91,18 @@ typedef NS_ENUM(NSUInteger, DPTouchMode)
                                   message:@"Are you sure you want to close this model? All changes will be lost."
                         cancelButtonTitle:@"Cancel"
                         otherButtonTitles:@"Save", @"Don't save", nil];
+}
+
+- (IBAction)toolboxButtonPressed:(UIButton *)sender
+{
+    [self.toolboxButtons[currentTouchMode] setSelected:NO];
+    
+    currentTouchMode                = sender.tag;
+    
+    self.scrollView.scrollEnabled   = (currentTouchMode == DPTouchModeCursor);
+    self.scrollView.zoomEnabled     = (currentTouchMode == DPTouchModeCursor);
+    
+    [sender setSelected:YES];
 }
 
 #pragma mark - business logic

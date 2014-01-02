@@ -52,13 +52,15 @@
 - (void)awakeFromNib
 {
     self.delegate = self;
+    
+    self.zoomEnabled = YES;
 }
 
 #pragma mark - UIScrollViewDelegate
 
 - (UIView*)viewForZoomingInScrollView:(UIScrollView *)scrollView
 {
-    return self.contentView;
+    return self.zoomEnabled ? self.contentView : nil;
 }
 
 @end
