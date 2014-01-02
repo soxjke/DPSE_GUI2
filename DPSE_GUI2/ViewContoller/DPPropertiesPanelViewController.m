@@ -28,7 +28,14 @@
 
 #import "DPPropertiesPanelElement.h"
 
-@interface DPPropertiesPanelViewController () <UITableViewDelegate, UITableViewDataSource>
+#import "DPPropertiesPanelTextfieldCell.h"
+#import "DPPropertiesPanelSwitchCell.h"
+#import "DPPropertiesPanelSliderCell.h"
+
+#define INDEX_PATH_TO_TAG(indexPath) (indexPath.section << 16) + indexPath.row
+#define TAG_TO_INDEXPATH(tag) [NSIndexPath indexPathForRow:(tag) & 0xFFFF inSection:(tag) >> 16]
+
+@interface DPPropertiesPanelViewController () <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate>
 {
     __weak id <DPPropertiesPanelElement> _propertiesPanelElement;
 }
@@ -58,7 +65,32 @@
 
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return nil;
+    NSUInteger tag = INDEX_PATH_TO_TAG(indexPath);
+    
+    switch ([_propertiesPanelElement panelFieldTypeAtIndexPath:indexPath])
+    {
+        case DPPropertiesPanelFieldTypeSwitch:
+        {
+            DPPropertiesPanelSwitchCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([DPPropertiesPanelSwitchCell class])
+                                                                                forIndexPath:indexPath];
+            cell.switchControl.tag = tag;
+            return cell;
+        }
+        case DPPropertiesPanelFieldTypeTextfield:
+        {
+            DPPropertiesPanelTextfieldCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([DPPropertiesPanelTextfieldCell class])
+                                                                                   forIndexPath:indexPath];
+            cell.textField.tag = tag;
+            return cell;
+        }
+        case DPPropertiesPanelFieldTypeSlider:
+        {
+            DPPropertiesPanelSliderCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([DPPropertiesPanelSliderCell class])
+                                                                                   forIndexPath:indexPath];
+            cell.slider.tag = tag;
+            return cell;
+        }
+    }
 }
 
 #pragma mark - UITableViewDelegate implementation
@@ -67,12 +99,15 @@
 
 - (void)setPropertiesPanelElement:(id<DPPropertiesPanelElement>)propertiesPanelElement
 {
-    _propertiesPanelElement = propertiesPanelElement;
-
-    dispatch_async(dispatch_get_main_queue(), ^(void)
+    if (_propertiesPanelElement != propertiesPanelElement)
     {
-        [self.table reloadData];
-    });
+        _propertiesPanelElement = propertiesPanelElement;
+
+        dispatch_async(dispatch_get_main_queue(), ^(void)
+        {
+            [self.table reloadData];
+        });
+    }
 }
 
 - (id <DPPropertiesPanelElement>)propertiesPanelElement
@@ -80,9 +115,21 @@
     return _propertiesPanelElement;
 }
 
-- (IBAction)switchValueChanged:(UISwitch *)sender {
+#pragma mark - cell controls
+
+- (IBAction)switchValueChanged:(UISwitch *)sender
+{
+    
 }
 
-- (IBAction)sliderValueChanged:(UISlider *)sender {
+- (IBAction)sliderValueChanged:(UISlider *)sender
+{
+    
 }
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    return YES;
+}
+
 @end

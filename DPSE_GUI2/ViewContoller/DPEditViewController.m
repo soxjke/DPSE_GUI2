@@ -28,6 +28,9 @@
 #import "DPDrawObjectsScrollView.h"
 #import "DPTransparentContainerView.h"
 
+#import "DPPropertiesPanelElement.h"
+#import "DPPropertiesPanelViewController.h"
+
 typedef NS_ENUM(NSUInteger, DPTouchMode)
 {
     DPTouchModeCursor,
@@ -49,6 +52,13 @@ typedef NS_ENUM(NSUInteger, DPTouchMode)
 @property (weak, nonatomic) IBOutlet UIButton *selectButton;
 
 @property (strong, nonatomic) NSArray *toolboxButtons;
+
+@property (strong, nonatomic) NSLayoutConstraint *propertiesPanelTopOffset;
+@property (strong, nonatomic) NSLayoutConstraint *propertiesPanelBottomOffset;
+@property (strong, nonatomic) NSLayoutConstraint *propertiesPanelTrailingOffset;
+@property (strong, nonatomic) NSLayoutConstraint *propertiesPanelWidth;
+
+@property (weak, nonatomic) DPPropertiesPanelViewController *propertiesPanel;
 
 - (IBAction)toolboxButtonPressed:(UIButton *)sender;
 
@@ -138,7 +148,68 @@ typedef NS_ENUM(NSUInteger, DPTouchMode)
 
 - (void)dbg:(id)sender
 {
+    if (!self.propertiesPanel)
+    {
+        [self showPropertiesForItem:nil];
+    }
+    else
+    {
+        [self hideProperties];
+    }
+}
+
+#pragma mark - child view controller
+
+- (void)showPropertiesForItem:(id <DPPropertiesPanelElement>)item;
+{
+    if (!self.propertiesPanel)
+    {
+        self.propertiesPanel = [self.storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([DPPropertiesPanelViewController class])];
+    }
     
+    [self addChildViewController:self.propertiesPanel];
+    [self.view addSubview:self.propertiesPanel.view];
+    
+    [self.propertiesPanel.view setTranslatesAutoresizingMaskIntoConstraints:NO];
+    
+    self.propertiesPanelTopOffset = [NSLayoutConstraint constraintWithItem:self.propertiesPanel.view attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeTop multiplier:1.0f constant:10.0f];
+    self.propertiesPanelBottomOffset = [NSLayoutConstraint constraintWithItem:self.propertiesPanel.view attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeBottom multiplier:1.0f constant:-10.0f];
+    self.propertiesPanelTrailingOffset = [NSLayoutConstraint constraintWithItem:self.propertiesPanel.view attribute:NSLayoutAttributeTrailing relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeTrailing multiplier:1.0f constant:0.0f];
+    self.propertiesPanelWidth = [NSLayoutConstraint constraintWithItem:self.propertiesPanel.view attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeWidth multiplier:0.0f constant:320.0f];
+    
+    [self.view addConstraints:@[self.propertiesPanelBottomOffset, self.propertiesPanelTopOffset, self.propertiesPanelTrailingOffset]];
+    [self.propertiesPanel.view addConstraint:self.propertiesPanelWidth];
+    
+    self.propertiesPanel.propertiesPanelElement = item;
+    
+    [UIView animateWithDuration:0.4f
+                     animations:^(void)
+    {
+        [self.view layoutIfNeeded];
+    }
+                     completion:^(BOOL finished)
+    {
+        [self.propertiesPanel didMoveToParentViewController:self];
+    }];
+}
+
+- (void)hideProperties
+{
+    [self.propertiesPanel willMoveToParentViewController:nil];
+    
+    self.propertiesPanelTrailingOffset.constant = self.propertiesPanelWidth.constant;
+    
+    [UIView animateWithDuration:0.4f
+                     animations:^(void)
+    {
+        [self.view layoutIfNeeded];
+    }
+                     completion:^(BOOL finished)
+    {
+        [self.propertiesPanel.view removeFromSuperview];
+        [self.view removeConstraints:@[self.propertiesPanelTopOffset, self.propertiesPanelTopOffset, self.propertiesPanelTrailingOffset]];
+        [self.propertiesPanel removeFromParentViewController];
+    }];
 }
 
 @end

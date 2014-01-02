@@ -156,7 +156,7 @@
         <!--Properties Panel View Controller-->
         <scene sceneID="uJv-dm-MaY">
             <objects>
-                <viewController id="Vtj-2r-1Ff" customClass="DPPropertiesPanelViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DPPropertiesPanelViewController" id="Vtj-2r-1Ff" customClass="DPPropertiesPanelViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="vVC-Cr-SIR"/>
                         <viewControllerLayoutGuide type="bottom" id="FT4-XS-Tyo"/>
@@ -170,7 +170,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="HQk-9G-Mg8" customClass="DPPropertiesPanelSwitchCell">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DPPropertiesPanelSwitchCell" id="HQk-9G-Mg8" customClass="DPPropertiesPanelSwitchCell">
                                         <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="HQk-9G-Mg8" id="e4z-V1-Ph7">
@@ -205,7 +205,7 @@
                                             <outlet property="switchControl" destination="tyJ-8X-gQQ" id="cbu-tF-NSl"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="xBY-Wx-2SS" customClass="DPPropertiesPanelTextfieldCell">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DPPropertiesPanelTextfieldCell" id="xBY-Wx-2SS" customClass="DPPropertiesPanelTextfieldCell">
                                         <rect key="frame" x="0.0" y="66" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xBY-Wx-2SS" id="AXD-E7-pQ0">
@@ -245,7 +245,7 @@
                                             <outlet property="textField" destination="hPw-Qz-3iv" id="sKX-i0-gPS"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="TL5-Q4-2xJ" customClass="DPPropertiesPanelSliderCell">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DPPropertiesPanelSliderCell" id="TL5-Q4-2xJ" customClass="DPPropertiesPanelSliderCell">
                                         <rect key="frame" x="0.0" y="110" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="TL5-Q4-2xJ" id="su1-wG-8f7">
