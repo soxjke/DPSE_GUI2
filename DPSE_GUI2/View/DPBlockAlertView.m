@@ -83,11 +83,11 @@ NSMutableArray *alerts;
         }
         
         _completion = [completion copy];
+        
+        [alerts addObject:self];
     }
     
     va_end(titles);
-    
-    [alerts addObject:self];
     
     return self;
 }
