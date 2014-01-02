@@ -1,10 +1,10 @@
 //
-//  UIColor+ApplicationColorScheme.h
+//  DPTransparentContainerView.m
 //  Distributed parallel simulation environment graphical user interface
 //
-//  Created by Petro Korienev on 12/7/13.
+//  Created by Petro Korienev on 1/2/14.
 
-//    Copyright (c) 2013 Petro Korienev. All rights reserved. 
+//    Copyright (c) 2014 Petro Korienev. All rights reserved. 
 
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -24,13 +24,20 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-#import <UIKit/UIKit.h>
+#import "DPTransparentContainerView.h"
+#import <QuartzCore/QuartzCore.h>
 
-@interface UIColor (ApplicationColorScheme)
+@implementation DPTransparentContainerView
 
-+ (UIColor*)buttonTopGradientColor;
-+ (UIColor*)buttonBottomGradientColor;
-+ (UIColor*)silverBorderColor;
-+ (UIColor*)transparentContainerColor;
+- (void)awakeFromNib
+{
+    self.layer.cornerRadius     = 5.0f;
+    self.layer.masksToBounds    = YES;
+    
+    self.layer.borderColor      = [UIColor silverBorderColor].CGColor;
+    self.layer.borderWidth      = 2.0f;
+    
+    self.backgroundColor        = [UIColor transparentContainerColor];
+}
 
 @end

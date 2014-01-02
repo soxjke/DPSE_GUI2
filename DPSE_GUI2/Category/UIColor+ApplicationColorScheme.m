@@ -57,4 +57,14 @@ do \
     COLOR_INT(112, 115, 22, 255);
 }
 
++ (UIColor*)silverBorderColor
+{
+    COLOR_INT(192, 192, 192, 255);
+}
+
++ (UIColor*)transparentContainerColor
+{
+    COLOR_INT(0, 0, 0, 75);
+}
+
 @end

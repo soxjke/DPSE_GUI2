@@ -1,10 +1,10 @@
 //
-//  UIColor+ApplicationColorScheme.h
+//  DPTransparentContainerView.h
 //  Distributed parallel simulation environment graphical user interface
 //
-//  Created by Petro Korienev on 12/7/13.
+//  Created by Petro Korienev on 1/2/14.
 
-//    Copyright (c) 2013 Petro Korienev. All rights reserved. 
+//    Copyright (c) 2014 Petro Korienev. All rights reserved. 
 
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -26,11 +26,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface UIColor (ApplicationColorScheme)
-
-+ (UIColor*)buttonTopGradientColor;
-+ (UIColor*)buttonBottomGradientColor;
-+ (UIColor*)silverBorderColor;
-+ (UIColor*)transparentContainerColor;
+@interface DPTransparentContainerView : UIView
 
 @end
