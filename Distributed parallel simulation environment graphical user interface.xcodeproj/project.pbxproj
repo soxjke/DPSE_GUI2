@@ -25,6 +25,7 @@
 		5B68336D18539C2600CAD141 /* DPGradientButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B68336C18539C2600CAD141 /* DPGradientButton.m */; };
 		5B68337118539DE400CAD141 /* UIColor+ApplicationColorScheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B68337018539DE400CAD141 /* UIColor+ApplicationColorScheme.m */; };
 		5B74A0D41875D82800D35D81 /* DPTransparentContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B74A0D31875D82800D35D81 /* DPTransparentContainerView.m */; };
+		5B74A0DA1875FBB700D35D81 /* DPPropertiesPanelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B74A0D91875FBB700D35D81 /* DPPropertiesPanelViewController.m */; };
 		5BD15B82184BE96A007F25BD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BD15B81184BE96A007F25BD /* Foundation.framework */; };
 		5BD15B84184BE96A007F25BD /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BD15B83184BE96A007F25BD /* CoreGraphics.framework */; };
 		5BD15B86184BE96A007F25BD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BD15B85184BE96A007F25BD /* UIKit.framework */; };
@@ -101,6 +102,9 @@
 		5B68337018539DE400CAD141 /* UIColor+ApplicationColorScheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+ApplicationColorScheme.m"; sourceTree = "<group>"; };
 		5B74A0D21875D82800D35D81 /* DPTransparentContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPTransparentContainerView.h; sourceTree = "<group>"; };
 		5B74A0D31875D82800D35D81 /* DPTransparentContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPTransparentContainerView.m; sourceTree = "<group>"; };
+		5B74A0D71875FAAF00D35D81 /* DPPropertiesPanelElement.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DPPropertiesPanelElement.h; sourceTree = "<group>"; };
+		5B74A0D81875FBB700D35D81 /* DPPropertiesPanelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPPropertiesPanelViewController.h; sourceTree = "<group>"; };
+		5B74A0D91875FBB700D35D81 /* DPPropertiesPanelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPPropertiesPanelViewController.m; sourceTree = "<group>"; };
 		5BD15B7E184BE96A007F25BD /* DPSE_GUI2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DPSE_GUI2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BD15B81184BE96A007F25BD /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		5BD15B83184BE96A007F25BD /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -187,6 +191,8 @@
 				5B1C89C51854D1EF00DB5CF1 /* DPSettingsDetailViewController.m */,
 				5B429B761870D27300307729 /* DPEditViewController.h */,
 				5B429B771870D27300307729 /* DPEditViewController.m */,
+				5B74A0D81875FBB700D35D81 /* DPPropertiesPanelViewController.h */,
+				5B74A0D91875FBB700D35D81 /* DPPropertiesPanelViewController.m */,
 			);
 			path = ViewContoller;
 			sourceTree = "<group>";
@@ -224,6 +230,14 @@
 				5B1C89C81854E36300DB5CF1 /* NSLayoutConstraint+Setter.m */,
 			);
 			path = Category;
+			sourceTree = "<group>";
+		};
+		5B74A0D61875FA7C00D35D81 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				5B74A0D71875FAAF00D35D81 /* DPPropertiesPanelElement.h */,
+			);
+			path = Protocol;
 			sourceTree = "<group>";
 		};
 		5BD15B75184BE96A007F25BD = {
@@ -264,6 +278,7 @@
 			children = (
 				5B68336E18539DB100CAD141 /* Category */,
 				5BD15BE118532F8C007F25BD /* Model */,
+				5B74A0D61875FA7C00D35D81 /* Protocol */,
 				5BE5F39D1853C4E50007A4A8 /* Segue */,
 				5B68336A18539BF300CAD141 /* View */,
 				5B01E8061853FA25000ECD6C /* ViewContoller */,
@@ -461,6 +476,7 @@
 				5B429B7F1870D9EF00307729 /* DPBlockAlertView.m in Sources */,
 				5BD15BF418537BC1007F25BD /* Reachability.m in Sources */,
 				5BE5F3A31853CE870007A4A8 /* DPDismissSegue.m in Sources */,
+				5B74A0DA1875FBB700D35D81 /* DPPropertiesPanelViewController.m in Sources */,
 				5B429B7C1870D3B000307729 /* DPDrawObjectsScrollView.m in Sources */,
 				5B68336D18539C2600CAD141 /* DPGradientButton.m in Sources */,
 				5B01E80F1853FA25000ECD6C /* DPAboutViewController.m in Sources */,
