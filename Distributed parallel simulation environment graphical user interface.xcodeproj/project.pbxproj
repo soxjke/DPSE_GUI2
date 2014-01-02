@@ -26,6 +26,10 @@
 		5B68337118539DE400CAD141 /* UIColor+ApplicationColorScheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B68337018539DE400CAD141 /* UIColor+ApplicationColorScheme.m */; };
 		5B74A0D41875D82800D35D81 /* DPTransparentContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B74A0D31875D82800D35D81 /* DPTransparentContainerView.m */; };
 		5B74A0DA1875FBB700D35D81 /* DPPropertiesPanelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B74A0D91875FBB700D35D81 /* DPPropertiesPanelViewController.m */; };
+		5B74A0DE1876078500D35D81 /* DPPropertiesPanelSwitchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B74A0DD1876078500D35D81 /* DPPropertiesPanelSwitchCell.m */; };
+		5B74A0E1187607B000D35D81 /* DPPropertiesPanelTextfieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B74A0E0187607B000D35D81 /* DPPropertiesPanelTextfieldCell.m */; };
+		5B74A0E4187607CB00D35D81 /* DPPropertiesPanelSliderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B74A0E3187607CB00D35D81 /* DPPropertiesPanelSliderCell.m */; };
+		5B74A0E71876087100D35D81 /* DPPropertiesPanelCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B74A0E61876087100D35D81 /* DPPropertiesPanelCell.m */; };
 		5BD15B82184BE96A007F25BD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BD15B81184BE96A007F25BD /* Foundation.framework */; };
 		5BD15B84184BE96A007F25BD /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BD15B83184BE96A007F25BD /* CoreGraphics.framework */; };
 		5BD15B86184BE96A007F25BD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BD15B85184BE96A007F25BD /* UIKit.framework */; };
@@ -105,6 +109,14 @@
 		5B74A0D71875FAAF00D35D81 /* DPPropertiesPanelElement.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DPPropertiesPanelElement.h; sourceTree = "<group>"; };
 		5B74A0D81875FBB700D35D81 /* DPPropertiesPanelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPPropertiesPanelViewController.h; sourceTree = "<group>"; };
 		5B74A0D91875FBB700D35D81 /* DPPropertiesPanelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPPropertiesPanelViewController.m; sourceTree = "<group>"; };
+		5B74A0DC1876078500D35D81 /* DPPropertiesPanelSwitchCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPPropertiesPanelSwitchCell.h; sourceTree = "<group>"; };
+		5B74A0DD1876078500D35D81 /* DPPropertiesPanelSwitchCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPPropertiesPanelSwitchCell.m; sourceTree = "<group>"; };
+		5B74A0DF187607B000D35D81 /* DPPropertiesPanelTextfieldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPPropertiesPanelTextfieldCell.h; sourceTree = "<group>"; };
+		5B74A0E0187607B000D35D81 /* DPPropertiesPanelTextfieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPPropertiesPanelTextfieldCell.m; sourceTree = "<group>"; };
+		5B74A0E2187607CB00D35D81 /* DPPropertiesPanelSliderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPPropertiesPanelSliderCell.h; sourceTree = "<group>"; };
+		5B74A0E3187607CB00D35D81 /* DPPropertiesPanelSliderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPPropertiesPanelSliderCell.m; sourceTree = "<group>"; };
+		5B74A0E51876087100D35D81 /* DPPropertiesPanelCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPPropertiesPanelCell.h; sourceTree = "<group>"; };
+		5B74A0E61876087100D35D81 /* DPPropertiesPanelCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPPropertiesPanelCell.m; sourceTree = "<group>"; };
 		5BD15B7E184BE96A007F25BD /* DPSE_GUI2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DPSE_GUI2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BD15B81184BE96A007F25BD /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		5BD15B83184BE96A007F25BD /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -207,6 +219,7 @@
 		5B68336A18539BF300CAD141 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				5B74A0DB1876073600D35D81 /* UITableViewCell */,
 				5B429B7D1870D9EF00307729 /* DPBlockAlertView.h */,
 				5B429B7E1870D9EF00307729 /* DPBlockAlertView.m */,
 				5B68336B18539C2600CAD141 /* DPGradientButton.h */,
@@ -238,6 +251,21 @@
 				5B74A0D71875FAAF00D35D81 /* DPPropertiesPanelElement.h */,
 			);
 			path = Protocol;
+			sourceTree = "<group>";
+		};
+		5B74A0DB1876073600D35D81 /* UITableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				5B74A0E51876087100D35D81 /* DPPropertiesPanelCell.h */,
+				5B74A0E61876087100D35D81 /* DPPropertiesPanelCell.m */,
+				5B74A0DC1876078500D35D81 /* DPPropertiesPanelSwitchCell.h */,
+				5B74A0DD1876078500D35D81 /* DPPropertiesPanelSwitchCell.m */,
+				5B74A0DF187607B000D35D81 /* DPPropertiesPanelTextfieldCell.h */,
+				5B74A0E0187607B000D35D81 /* DPPropertiesPanelTextfieldCell.m */,
+				5B74A0E2187607CB00D35D81 /* DPPropertiesPanelSliderCell.h */,
+				5B74A0E3187607CB00D35D81 /* DPPropertiesPanelSliderCell.m */,
+			);
+			path = UITableViewCell;
 			sourceTree = "<group>";
 		};
 		5BD15B75184BE96A007F25BD = {
@@ -467,11 +495,13 @@
 				5BE5F3991853C3600007A4A8 /* Event.m in Sources */,
 				5B1C89C31854D0A200DB5CF1 /* DPLoadSplitViewController.m in Sources */,
 				5BD15BE518533018007F25BD /* DPSE_GUI2.xcdatamodeld in Sources */,
+				5B74A0DE1876078500D35D81 /* DPPropertiesPanelSwitchCell.m in Sources */,
 				5B01E8121853FA25000ECD6C /* DPLoadMasterViewController.m in Sources */,
 				5B1C89BD18546B8700DB5CF1 /* DPSettingsSplitViewController.m in Sources */,
 				5B429B821870E6B200307729 /* DPGridView.m in Sources */,
 				5BD15B94184BE96B007F25BD /* DPAppDelegate.m in Sources */,
 				5BD15B90184BE96B007F25BD /* main.m in Sources */,
+				5B74A0E71876087100D35D81 /* DPPropertiesPanelCell.m in Sources */,
 				5B1C89C91854E36300DB5CF1 /* NSLayoutConstraint+Setter.m in Sources */,
 				5B429B7F1870D9EF00307729 /* DPBlockAlertView.m in Sources */,
 				5BD15BF418537BC1007F25BD /* Reachability.m in Sources */,
@@ -481,10 +511,12 @@
 				5B68336D18539C2600CAD141 /* DPGradientButton.m in Sources */,
 				5B01E80F1853FA25000ECD6C /* DPAboutViewController.m in Sources */,
 				5B429B781870D27300307729 /* DPEditViewController.m in Sources */,
+				5B74A0E4187607CB00D35D81 /* DPPropertiesPanelSliderCell.m in Sources */,
 				5B1C89C018546D5C00DB5CF1 /* DPSettingsMasterViewController.m in Sources */,
 				5B1C89C61854D1EF00DB5CF1 /* DPSettingsDetailViewController.m in Sources */,
 				5B683366185389DC00CAD141 /* Graph.m in Sources */,
 				5B74A0D41875D82800D35D81 /* DPTransparentContainerView.m in Sources */,
+				5B74A0E1187607B000D35D81 /* DPPropertiesPanelTextfieldCell.m in Sources */,
 				5B01E8111853FA25000ECD6C /* DPMainMenuViewController.m in Sources */,
 				5B01E8101853FA25000ECD6C /* DPLoadDetailViewController.m in Sources */,
 				5BE5F3A01853C50D0007A4A8 /* DPPresentSegue.m in Sources */,

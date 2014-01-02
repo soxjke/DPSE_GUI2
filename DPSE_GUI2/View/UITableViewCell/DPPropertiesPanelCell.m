@@ -1,5 +1,5 @@
 //
-//  DPPropertiesPanelElement.h
+//  DPPropertiesPanelCell.m
 //  Distributed parallel simulation environment graphical user interface
 //
 //  Created by Petro Korienev on 1/2/14.
@@ -24,38 +24,24 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-#import <Foundation/Foundation.h>
+#import "DPPropertiesPanelCell.h"
 
-typedef NS_ENUM(NSUInteger, DPPropertiesPanelFieldType)
+@implementation DPPropertiesPanelCell
+
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
-    DPPropertiesPanelFieldTypeSwitch,
-    DPPropertiesPanelFieldTypeTextfield,
-    DPPropertiesPanelFieldTypeSlider
-};
+    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
+    if (self) {
+        // Initialization code
+    }
+    return self;
+}
 
-typedef NS_ENUM(NSUInteger, DPPropertiesPanelFieldValueType)
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
-    DPPropertiesPanelFieldValueTypeString,
-    DPPropertiesPanelFieldValueTypeFloat,
-    DPPropertiesPanelFieldValueTypeInteger
-};
+    [super setSelected:selected animated:animated];
 
-@protocol DPPropertiesPanelElement <NSObject>
-
-@required
-
-- (NSUInteger)numberOfPropertyGroups;
-- (NSUInteger)numberOfPropertiesInGroup:(NSUInteger)group;
-- (DPPropertiesPanelFieldType)panelFieldTypeAtIndexPath:(NSIndexPath*)indexPath;
-- (NSString*)panelFieldCaptionAtIndexPath:(NSIndexPath*)indexPath;
-- (NSString*)panelFieldValueKeypathAtIndexPath:(NSIndexPath*)indexPath;
-
-@optional
-
-- (DPPropertiesPanelFieldValueType)panelFieldValueTypeAtIndexPath:(NSIndexPath*)indexpath;
-- (CGFloat)minPanelFieldValueAtIndexPath:(NSIndexPath*)indexPath;
-- (CGFloat)maxPanelFieldValueAtIndexPath:(NSIndexPath*)indexPath;
-- (NSCharacterSet*)allowedCharactersForPanelFieldValueAtIndexPath;
-- (NSCharacterSet*)restrictedCharactersForPanelFieldValueAtIndexPath;
+    // Configure the view for the selected state
+}
 
 @end

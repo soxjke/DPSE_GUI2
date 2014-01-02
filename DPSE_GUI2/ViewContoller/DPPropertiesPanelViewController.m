@@ -36,6 +36,9 @@
 @property (nonatomic, weak) IBOutlet UITableView    *table;
 @property (nonatomic, weak) IBOutlet UILabel        *nothingSelectedLabel;
 
+- (IBAction)switchValueChanged:(UISwitch *)sender;
+- (IBAction)sliderValueChanged:(UISlider *)sender;
+
 @end
 
 @implementation DPPropertiesPanelViewController
@@ -77,4 +80,9 @@
     return _propertiesPanelElement;
 }
 
+- (IBAction)switchValueChanged:(UISwitch *)sender {
+}
+
+- (IBAction)sliderValueChanged:(UISlider *)sender {
+}
 @end
