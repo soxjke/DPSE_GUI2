@@ -26,7 +26,7 @@
 
 #import "DPDrawObjectsScrollView.h"
 
-@interface DPDrawObjectsScrollView () <UIScrollViewDelegate>
+@interface DPDrawObjectsScrollView () <UIScrollViewDelegate, UIGestureRecognizerDelegate>
 {
     BOOL isDrawingLine;
     CGPoint startPoint;
@@ -61,6 +61,10 @@
     self.zoomEnabled = YES;
     self.netDrawColor = [UIColor redColor];
     
+    self.contentTapRecognizer           = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap:)];
+    self.contentTapRecognizer.delegate  = self;
+    [self.contentView addGestureRecognizer:self.contentTapRecognizer];
+    
     isDrawingLine = NO;
 }
 
@@ -71,7 +75,7 @@
     return self.zoomEnabled ? self.contentView : nil;
 }
 
-#pragma mark touches
+#pragma mark - touches
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
@@ -112,6 +116,16 @@
     }
 }
 
+- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer
+{
+    return [self.touchDelegate scrollView:self shouldAllowRecognitionForContentRecognizer:gestureRecognizer];
+}
+
+- (void)tap:(UITapGestureRecognizer*)recognizer
+{
+    NSLog(@"tap");
+}
+
 #pragma mark - hack
 
 - (BOOL)respondsToSelector:(SEL)aSelector
@@ -122,6 +136,7 @@
 - (void)drawRect:(CGRect)rect
 {
     [super drawRect:rect];
+    
     if (isDrawingLine)
     {
         CGContextRef context = UIGraphicsGetCurrentContext();

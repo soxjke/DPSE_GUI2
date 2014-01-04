@@ -33,6 +33,8 @@
 @property (nonatomic, weak) IBOutlet id <DPDrawObjectsScrollViewDelegate> touchDelegate;
 @property (nonatomic, weak) IBOutlet UIView *contentView;
 
+@property (nonatomic, strong) UIGestureRecognizer *contentTapRecognizer;
+
 @property (nonatomic) BOOL zoomEnabled;
 @property (nonatomic, strong) UIColor *netDrawColor;
 
@@ -47,5 +49,6 @@
 - (BOOL)scrollView:(DPDrawObjectsScrollView*)scrollView shouldBeginTouches:(NSSet*)touches withEvent:(UIEvent*)event;
 - (BOOL)scrollView:(DPDrawObjectsScrollView*)scrollView shouldMoveTouches:(NSSet*)touches withEvent:(UIEvent*)event;
 - (BOOL)scrollView:(DPDrawObjectsScrollView*)scrollView shouldEndTouches:(NSSet*)touches withEvent:(UIEvent*)event;
+- (BOOL)scrollView:(DPDrawObjectsScrollView*)scrollView shouldAllowRecognitionForContentRecognizer:(UIGestureRecognizer*)recognizer;
 
 @end

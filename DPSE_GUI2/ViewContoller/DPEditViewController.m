@@ -146,6 +146,11 @@ typedef NS_ENUM(NSUInteger, DPTouchMode)
     return (currentTouchMode != DPTouchModeNet);
 }
 
+- (BOOL)scrollView:(DPDrawObjectsScrollView *)scrollView shouldAllowRecognitionForContentRecognizer:(UIGestureRecognizer *)recognizer
+{
+    return currentTouchMode == DPTouchModeNode && recognizer == scrollView.contentTapRecognizer;
+}
+
 - (void)dbg:(id)sender
 {
     if (!self.propertiesPanel)
