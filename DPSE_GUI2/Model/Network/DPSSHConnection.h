@@ -44,11 +44,11 @@ typedef NS_ENUM(NSUInteger, DPConnectionState)
 - (void)connectWithCompletion:(DPConnectionSuccessErrorBlock)completion;
 - (void)disconnect;
 
-@property (nonatomic) NSString *hostname;
-@property (nonatomic) NSString *username;
-@property (nonatomic) NSString *password;
+@property (nonatomic, strong) NSString *hostname;
+@property (nonatomic, strong) NSString *username;
+@property (nonatomic, strong) NSString *password;
 @property (nonatomic) NSInteger timeout;
 
-@property dispatch_queue_t completionQueue;
+@property (nonatomic, strong) dispatch_queue_t completionQueue;
 
 @end
