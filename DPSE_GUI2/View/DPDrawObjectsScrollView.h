@@ -34,6 +34,7 @@
 @property (nonatomic, weak) IBOutlet UIView *contentView;
 
 @property (nonatomic) BOOL zoomEnabled;
+@property (nonatomic, strong) UIColor *netDrawColor;
 
 - (void)extendContentHorizontally;
 - (void)extendContentVertically;

@@ -27,6 +27,11 @@
 #import "DPDrawObjectsScrollView.h"
 
 @interface DPDrawObjectsScrollView () <UIScrollViewDelegate>
+{
+    BOOL isDrawingLine;
+    CGPoint startPoint;
+    CGPoint currentPoint;
+}
 
 @property (nonatomic, weak) IBOutlet NSLayoutConstraint *contentWidth;
 @property (nonatomic, weak) IBOutlet NSLayoutConstraint *contentHeight;
@@ -54,6 +59,9 @@
     self.delegate = self;
     
     self.zoomEnabled = YES;
+    self.netDrawColor = [UIColor redColor];
+    
+    isDrawingLine = NO;
 }
 
 #pragma mark - UIScrollViewDelegate
@@ -61,6 +69,68 @@
 - (UIView*)viewForZoomingInScrollView:(UIScrollView *)scrollView
 {
     return self.zoomEnabled ? self.contentView : nil;
+}
+
+#pragma mark touches
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    if ([self.touchDelegate scrollView:self shouldBeginTouches:touches withEvent:event])
+    {
+        [super touchesBegan:touches withEvent:event];
+    }
+    else
+    {
+        isDrawingLine = YES;
+        startPoint = [(UITouch*)touches.anyObject locationInView:self];
+    }
+}
+
+- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    if ([self.touchDelegate scrollView:self shouldMoveTouches:touches withEvent:event])
+    {
+        [super touchesMoved:touches withEvent:event];
+    }
+    else
+    {
+        currentPoint = [(UITouch*)touches.anyObject locationInView:self];
+        [self setNeedsDisplay];
+    }
+}
+
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    if ([self.touchDelegate scrollView:self shouldEndTouches:touches withEvent:event])
+    {
+        [super touchesEnded:touches withEvent:event];
+    }
+    else
+    {
+        isDrawingLine = NO;
+        [self setNeedsDisplay];
+    }
+}
+
+#pragma mark - hack
+
+- (BOOL)respondsToSelector:(SEL)aSelector
+{
+    return (aSelector == @selector(drawRect:)) ? isDrawingLine : [super respondsToSelector:aSelector];
+}
+
+- (void)drawRect:(CGRect)rect
+{
+    [super drawRect:rect];
+    if (isDrawingLine)
+    {
+        CGContextRef context = UIGraphicsGetCurrentContext();
+        CGContextSetStrokeColorWithColor(context, self.netDrawColor.CGColor);
+        CGContextSetLineWidth(context, 5.0f);
+        CGContextMoveToPoint(context, startPoint.x, startPoint.y);
+        CGContextAddLineToPoint(context, currentPoint.x, currentPoint.y);
+        CGContextStrokePath(context);
+    }
 }
 
 @end
