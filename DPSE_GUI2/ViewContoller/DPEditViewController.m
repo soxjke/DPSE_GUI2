@@ -133,17 +133,17 @@ typedef NS_ENUM(NSUInteger, DPTouchMode)
 
 - (BOOL)scrollView:(DPDrawObjectsScrollView *)scrollView shouldBeginTouches:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    return (currentTouchMode != DPTouchModeNet);
+    return (currentTouchMode != DPTouchModeNet || touches.count != 1);
 }
 
 - (BOOL)scrollView:(DPDrawObjectsScrollView *)scrollView shouldMoveTouches:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    return (currentTouchMode != DPTouchModeNet);
+    return (currentTouchMode != DPTouchModeNet || touches.count != 1);
 }
 
 - (BOOL)scrollView:(DPDrawObjectsScrollView *)scrollView shouldEndTouches:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    return (currentTouchMode != DPTouchModeNet);
+    return (currentTouchMode != DPTouchModeNet || touches.count != 1);
 }
 
 - (BOOL)scrollView:(DPDrawObjectsScrollView *)scrollView shouldAllowRecognitionForContentRecognizer:(UIGestureRecognizer *)recognizer
