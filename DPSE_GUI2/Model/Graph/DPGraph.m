@@ -1,8 +1,8 @@
 //
-//  Graph+DPGraph.m
+//  DPGraph.m
 //  Distributed parallel simulation environment graphical user interface
 //
-//  Created by Petro Korienev on 1/3/14.
+//  Created by Petro Korienev on 1/4/14.
 
 //    Copyright (c) 2014 Petro Korienev. All rights reserved. 
 
@@ -24,12 +24,12 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-#import "Graph+DPGraph.h"
 
+#import "DPGraph.h"
 #import "DPGraphNode.h"
 #import "DPGraphNet.h"
 
-@interface Graph ()
+@interface DPGraph ()
 {
     NSMutableArray *_nodes;
     NSMutableArray *_nets;
@@ -37,12 +37,17 @@
 
 @end
 
-@implementation Graph (DPGraph)
+@implementation DPGraph
 
-- (void)awakeFromInsert
+- (instancetype)init
 {
-    _nodes  = [NSMutableArray new];
-    _nets   = [NSMutableArray new];
+    self = [super init];
+    if (self)
+    {
+        _nodes = [NSMutableArray new];
+        _nets  = [NSMutableArray new];
+    }
+    return self;
 }
 
 - (void)addNode:(CGPoint)nodeLocation
@@ -63,14 +68,14 @@
 - (void)removeNode:(DPGraphNode*)node
 {
     [node.nets enumerateObjectsUsingBlock:^(DPGraphNet *net, NSUInteger idx, BOOL *stop)
-    {
-        [_nets removeObject:net];
-        
-        [net.nodes enumerateObjectsUsingBlock:^(DPGraphNode *connectedNode, NSUInteger idx, BOOL *stop)
-        {
-            [connectedNode disconnectNet:net];
-        }];
-    }];
+     {
+         [_nets removeObject:net];
+         
+         [net.nodes enumerateObjectsUsingBlock:^(DPGraphNode *connectedNode, NSUInteger idx, BOOL *stop)
+          {
+              [connectedNode disconnectNet:net];
+          }];
+     }];
     
     [_nodes removeObject:node];
 }
@@ -78,11 +83,23 @@
 - (void)removeNet:(DPGraphNet*)net
 {
     [net.nodes enumerateObjectsUsingBlock:^(DPGraphNode *connectedNode, NSUInteger idx, BOOL *stop)
-    {
-        [connectedNode disconnectNet:net];
-    }];
+     {
+         [connectedNode disconnectNet:net];
+     }];
     
     [_nets removeObject:net];
+}
+
+#pragma mark - setter/getter
+
+- (NSArray*)nets
+{
+    return [_nets copy];
+}
+
+- (NSArray*)nodes
+{
+    return [_nodes copy];
 }
 
 @end

@@ -1,8 +1,8 @@
 //
-//  Graph+DPGraph.h
+//  DPGraph.h
 //  Distributed parallel simulation environment graphical user interface
 //
-//  Created by Petro Korienev on 1/3/14.
+//  Created by Petro Korienev on 1/4/14.
 
 //    Copyright (c) 2014 Petro Korienev. All rights reserved. 
 
@@ -24,16 +24,11 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-#import "Graph.h"
+#import <Foundation/Foundation.h>
 
-@class DPGraphNode;
-@class DPGraphNet;
+@interface DPGraph : NSObject
 
-@interface Graph (DPGraph)
-
-- (void)addNode:(CGPoint)nodeLocation;
-- (void)removeNode:(DPGraphNode*)node;
-- (void)addNetFromNode:(DPGraphNode*)startNode toNode:(DPGraphNode*)toNode;
-- (void)removeNet:(DPGraphNet*)net;
+@property (nonatomic, readonly) NSArray *nets;
+@property (nonatomic, readonly) NSArray *nodes;
 
 @end
