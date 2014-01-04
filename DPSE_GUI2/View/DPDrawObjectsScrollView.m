@@ -25,6 +25,7 @@
 //  THE SOFTWARE.
 
 #import "DPDrawObjectsScrollView.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface DPDrawObjectsScrollView () <UIScrollViewDelegate, UIGestureRecognizerDelegate>
 {
@@ -123,7 +124,15 @@
 
 - (void)tap:(UITapGestureRecognizer*)recognizer
 {
-    NSLog(@"tap");
+    CGPoint touchLocation = [recognizer locationInView:self.contentView];
+
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 20, 20)];
+    [view setCenter:touchLocation];
+    view.backgroundColor = [UIColor greenColor];
+    view.layer.cornerRadius = 10.0f;
+    view.layer.masksToBounds = YES;
+    
+    [self.contentView addSubview:view];
 }
 
 #pragma mark - hack
