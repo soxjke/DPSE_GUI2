@@ -33,6 +33,8 @@
 		5B82E0DB18763C31000510E3 /* DPGraphNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B82E0DA18763C31000510E3 /* DPGraphNode.m */; };
 		5B82E0DE18763C43000510E3 /* DPGraphNet.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B82E0DD18763C43000510E3 /* DPGraphNet.m */; };
 		5B82E0E418781901000510E3 /* DPGraph.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B82E0E318781901000510E3 /* DPGraph.m */; };
+		5B82E0E81878EBDD000510E3 /* DPGraphNodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B82E0E71878EBDD000510E3 /* DPGraphNodeView.m */; };
+		5B82E0EB1878EBF2000510E3 /* DPGraphNetView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B82E0EA1878EBF2000510E3 /* DPGraphNetView.m */; };
 		5BD15B82184BE96A007F25BD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BD15B81184BE96A007F25BD /* Foundation.framework */; };
 		5BD15B84184BE96A007F25BD /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BD15B83184BE96A007F25BD /* CoreGraphics.framework */; };
 		5BD15B86184BE96A007F25BD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BD15B85184BE96A007F25BD /* UIKit.framework */; };
@@ -126,6 +128,10 @@
 		5B82E0DD18763C43000510E3 /* DPGraphNet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPGraphNet.m; sourceTree = "<group>"; };
 		5B82E0E218781901000510E3 /* DPGraph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPGraph.h; sourceTree = "<group>"; };
 		5B82E0E318781901000510E3 /* DPGraph.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPGraph.m; sourceTree = "<group>"; };
+		5B82E0E61878EBDD000510E3 /* DPGraphNodeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPGraphNodeView.h; sourceTree = "<group>"; };
+		5B82E0E71878EBDD000510E3 /* DPGraphNodeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPGraphNodeView.m; sourceTree = "<group>"; };
+		5B82E0E91878EBF2000510E3 /* DPGraphNetView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPGraphNetView.h; sourceTree = "<group>"; };
+		5B82E0EA1878EBF2000510E3 /* DPGraphNetView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPGraphNetView.m; sourceTree = "<group>"; };
 		5BD15B7E184BE96A007F25BD /* DPSE_GUI2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DPSE_GUI2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BD15B81184BE96A007F25BD /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		5BD15B83184BE96A007F25BD /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -234,6 +240,7 @@
 		5B68336A18539BF300CAD141 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				5B82E0E51878EB41000510E3 /* Graph */,
 				5B74A0DB1876073600D35D81 /* UITableViewCell */,
 				5B429B7D1870D9EF00307729 /* DPBlockAlertView.h */,
 				5B429B7E1870D9EF00307729 /* DPBlockAlertView.m */,
@@ -281,6 +288,17 @@
 				5B74A0E3187607CB00D35D81 /* DPPropertiesPanelSliderCell.m */,
 			);
 			path = UITableViewCell;
+			sourceTree = "<group>";
+		};
+		5B82E0E51878EB41000510E3 /* Graph */ = {
+			isa = PBXGroup;
+			children = (
+				5B82E0E61878EBDD000510E3 /* DPGraphNodeView.h */,
+				5B82E0E71878EBDD000510E3 /* DPGraphNodeView.m */,
+				5B82E0E91878EBF2000510E3 /* DPGraphNetView.h */,
+				5B82E0EA1878EBF2000510E3 /* DPGraphNetView.m */,
+			);
+			path = Graph;
 			sourceTree = "<group>";
 		};
 		5BD15B75184BE96A007F25BD = {
@@ -526,6 +544,7 @@
 				5B429B7C1870D3B000307729 /* DPDrawObjectsScrollView.m in Sources */,
 				5B68336D18539C2600CAD141 /* DPGradientButton.m in Sources */,
 				5B01E80F1853FA25000ECD6C /* DPAboutViewController.m in Sources */,
+				5B82E0EB1878EBF2000510E3 /* DPGraphNetView.m in Sources */,
 				5B429B781870D27300307729 /* DPEditViewController.m in Sources */,
 				5B74A0E4187607CB00D35D81 /* DPPropertiesPanelSliderCell.m in Sources */,
 				5B82E0DB18763C31000510E3 /* DPGraphNode.m in Sources */,
@@ -541,6 +560,7 @@
 				5B68337118539DE400CAD141 /* UIColor+ApplicationColorScheme.m in Sources */,
 				5BE5F39C1853C3610007A4A8 /* Simulation.m in Sources */,
 				5BD15BE91853313E007F25BD /* DPSSHConnection.m in Sources */,
+				5B82E0E81878EBDD000510E3 /* DPGraphNodeView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

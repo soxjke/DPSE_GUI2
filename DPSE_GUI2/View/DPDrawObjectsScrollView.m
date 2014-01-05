@@ -27,6 +27,8 @@
 #import "DPDrawObjectsScrollView.h"
 #import <QuartzCore/QuartzCore.h>
 
+#import "DPGraphNetView.h"
+
 @interface DPDrawObjectsScrollView () <UIScrollViewDelegate, UIGestureRecognizerDelegate>
 {
     CGPoint startPoint;
@@ -36,7 +38,7 @@
 @property (nonatomic, weak) IBOutlet NSLayoutConstraint *contentWidth;
 @property (nonatomic, weak) IBOutlet NSLayoutConstraint *contentHeight;
 
-@property (nonatomic, strong) UIView *netCanvasView;
+@property (nonatomic, strong) DPGraphNetView *netCanvasView;
 
 @end
 
@@ -86,11 +88,8 @@
     else
     {
         startPoint = [(UITouch*)touches.anyObject locationInView:self];
-        self.netCanvasView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 10, 10)];
-        self.netCanvasView.backgroundColor = [UIColor redColor];
-        self.netCanvasView.layer.cornerRadius   = 5.0f;
-        self.netCanvasView.layer.masksToBounds  = YES;
-        [self.netCanvasView setCenter:startPoint];
+        currentPoint = CGPointMake(startPoint.x + 10, startPoint.y + 10);
+        self.netCanvasView = [DPGraphNetView netViewFromPoint:startPoint toPoint:currentPoint];
         [self addSubview:self.netCanvasView];
     }
 }
@@ -104,7 +103,7 @@
     else
     {
         currentPoint = [(UITouch*)touches.anyObject locationInView:self];
-        [self updateNetCanvas];
+        self.netCanvasView.endPoint = currentPoint;
     }
 }
 
@@ -144,20 +143,6 @@
     view.layer.masksToBounds = YES;
     
     [self.contentView addSubview:view];
-}
-
-
-- (void)updateNetCanvas
-{
-    CGPoint center = CGPointMake((startPoint.x + currentPoint.x) / 2, (startPoint.y + currentPoint.y) / 2);
-    [self.netCanvasView setCenter:center];
-
-    CGFloat length = sqrtf((startPoint.x - currentPoint.x) * (startPoint.x - currentPoint.x) + (startPoint.y - currentPoint.y) * (startPoint.y - currentPoint.y));
-    [self.netCanvasView setBounds:CGRectMake(0, 0, 10, length)];
-    
-    CGFloat cos = ((currentPoint.x - startPoint.x) / length);
-    CGFloat sin = ((currentPoint.y - startPoint.y) / length);
-    [self.netCanvasView setTransform:CGAffineTransformMake/*(cos, sin, -sin, cos, 0, 0)*/(sin, -cos, cos, sin, 0, 0)];
 }
 
 @end
