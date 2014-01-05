@@ -1,5 +1,5 @@
 //
-//  DPSettingsManager.m
+//  DPSettingsDictionary.m
 //  Distributed parallel simulation environment graphical user interface
 //
 //  Created by Petro Korienev on 1/5/14.
@@ -25,50 +25,8 @@
 //  THE SOFTWARE.
 
 
-#import "DPSettingsManager.h"
+#import "DPSettingsDictionary.h"
 
-NSString *const appSettingsKey = @"com.dpse.app-settings";
-
-@interface DPSettingsManager ()
-{
-    NSUserDefaults *defaults;
-}
-
-@end
-
-@implementation DPSettingsManager
-
-+ (instancetype)sharedObject
-{
-    static id _sharedObject = nil;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^(void)
-    {
-        _sharedObject = [[self alloc] init];
-    });
-    return _sharedObject;
-}
-
-- (instancetype)init
-{
-    self = [super init];
-    if (self)
-    {
-        defaults = [NSUserDefaults standardUserDefaults];
-    }
-    return self;
-}
-
-- (void)setObject:(id)object forKeyedSubscript:(id<NSCopying>)key
-{
-    [defaults synchronize];
-}
-
-- (id)objectForKeyedSubscript:(id<NSCopying>)key
-{
-    
-}
-
-
+@implementation DPSettingsDictionary
 
 @end

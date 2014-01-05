@@ -37,6 +37,7 @@
 		5B82E0EB1878EBF2000510E3 /* DPGraphNetView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B82E0EA1878EBF2000510E3 /* DPGraphNetView.m */; };
 		5B82E0EF1878F653000510E3 /* DPSettingsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B82E0EE1878F653000510E3 /* DPSettingsManager.m */; };
 		5B82E0F21878F696000510E3 /* DPSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B82E0F11878F696000510E3 /* DPSettings.m */; };
+		5B82E0F51878F982000510E3 /* DPSettingsDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B82E0F41878F982000510E3 /* DPSettingsDictionary.m */; };
 		5BD15B82184BE96A007F25BD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BD15B81184BE96A007F25BD /* Foundation.framework */; };
 		5BD15B84184BE96A007F25BD /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BD15B83184BE96A007F25BD /* CoreGraphics.framework */; };
 		5BD15B86184BE96A007F25BD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BD15B85184BE96A007F25BD /* UIKit.framework */; };
@@ -138,6 +139,8 @@
 		5B82E0EE1878F653000510E3 /* DPSettingsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPSettingsManager.m; sourceTree = "<group>"; };
 		5B82E0F01878F696000510E3 /* DPSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPSettings.h; sourceTree = "<group>"; };
 		5B82E0F11878F696000510E3 /* DPSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPSettings.m; sourceTree = "<group>"; };
+		5B82E0F31878F982000510E3 /* DPSettingsDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPSettingsDictionary.h; sourceTree = "<group>"; };
+		5B82E0F41878F982000510E3 /* DPSettingsDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPSettingsDictionary.m; sourceTree = "<group>"; };
 		5BD15B7E184BE96A007F25BD /* DPSE_GUI2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DPSE_GUI2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BD15B81184BE96A007F25BD /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		5BD15B83184BE96A007F25BD /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -314,6 +317,8 @@
 				5B82E0F11878F696000510E3 /* DPSettings.m */,
 				5B82E0ED1878F653000510E3 /* DPSettingsManager.h */,
 				5B82E0EE1878F653000510E3 /* DPSettingsManager.m */,
+				5B82E0F31878F982000510E3 /* DPSettingsDictionary.h */,
+				5B82E0F41878F982000510E3 /* DPSettingsDictionary.m */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -571,6 +576,7 @@
 				5B1C89C61854D1EF00DB5CF1 /* DPSettingsDetailViewController.m in Sources */,
 				5B683366185389DC00CAD141 /* Graph.m in Sources */,
 				5B74A0D41875D82800D35D81 /* DPTransparentContainerView.m in Sources */,
+				5B82E0F51878F982000510E3 /* DPSettingsDictionary.m in Sources */,
 				5B82E0DE18763C43000510E3 /* DPGraphNet.m in Sources */,
 				5B74A0E1187607B000D35D81 /* DPPropertiesPanelTextfieldCell.m in Sources */,
 				5B01E8111853FA25000ECD6C /* DPMainMenuViewController.m in Sources */,
