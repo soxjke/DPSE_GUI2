@@ -19,6 +19,7 @@
 // Singleton
 #import "DPAppDelegate.h"
 #import "DPSSHConnection.h"
+#import "DPSettings.h"
 
 // Helper category
 #import "UIColor+ApplicationColorScheme.h"
