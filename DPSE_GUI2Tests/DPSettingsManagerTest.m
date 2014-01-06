@@ -66,23 +66,18 @@
     
     SETTINGS_MANAGER[uuids[0]] = uuids[1];
     if (![SETTINGS_MANAGER[uuids[0]] isEqual:uuids[1]]) XCTFail(@"simple write/read settings failed");
-    if (![[[defaults objectForKey:appSettingsKey] objectForKey:uuids[0]] isEqual:uuids[1]]) XCTFail(@"NSUserDefaults wrong synchronoization");
     
     SETTINGS_MANAGER[PATH(uuids[2], uuids[3])] = uuids[4];
     if (![SETTINGS_MANAGER[PATH(uuids[2], uuids[3])] isEqual:uuids[4]]) XCTFail(@"2-level path write/read settings failed");
-    if (![[[[defaults objectForKey:appSettingsKey] objectForKey:uuids[2]] objectForKey:uuids[3]] isEqual:uuids[4]]) XCTFail(@"2-level NSUserDefaults wrong synchronoization");
     
     SETTINGS_MANAGER[PATH(uuids[2])] = uuids[4];
     if ([SETTINGS_MANAGER[PATH(uuids[2], uuids[3])] isEqual:uuids[4]]) XCTFail(@"1-level overwrite of 2-level path write/read settings failed");
-    if (![[[defaults objectForKey:appSettingsKey] objectForKey:uuids[2]] isEqual:uuids[4]]) XCTFail(@"1-level overwrite of 2-level NSUserDefaults wrong synchronoization");
     
     SETTINGS_MANAGER[PATH(uuids[2], uuids[3])] = uuids[4];
     if ([SETTINGS_MANAGER[uuids[2]] isEqual:uuids[4]]) XCTFail(@"2-level overwrite of 1-level path write/read settings failed");
-    if ([[[defaults objectForKey:appSettingsKey] objectForKey:uuids[2]] isEqual:uuids[4]]) XCTFail(@"2-level overwrite of 1-level NSUserDefaults wrong synchronoization");
     
     SETTINGS_MANAGER[PATH(uuids[2], uuids[5])] = uuids[6];
     if (![SETTINGS_MANAGER[PATH(uuids[2], uuids[5])] isEqual:uuids[6]]) XCTFail(@"2-level addition path write/read settings failed");
-    if (![[[[defaults objectForKey:appSettingsKey] objectForKey:uuids[2]] objectForKey:uuids[5]] isEqual:uuids[6]]) XCTFail(@"2-level addition NSUserDefaults wrong synchronoization");
 }
 
 @end

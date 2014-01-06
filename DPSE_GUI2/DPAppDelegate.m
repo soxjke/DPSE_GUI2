@@ -52,6 +52,8 @@
     [self setupReachability];
     [DPSSHConnection sharedObject];
     
+    setDefaults();
+    
     return YES;
 }
 

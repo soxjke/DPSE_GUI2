@@ -26,3 +26,18 @@
 
 #import <Foundation/Foundation.h>
 #import "DPSettingsManager.h"
+
+#import "DPColorStringTransformer.h"
+
+#pragma mark - COLORS
+
+#define SERVER_HOSTNAME             SETTINGS_MANAGER[@"Network/SSH/ServerHostname"]
+#define SERVER_HOSTNAME_DEFAULT     @"neclus.donntu.edu.ua"
+#define NODE_INNER_COLOR            SETTINGS_MANAGER[@"ColorScheme/EditScreen/NodeInnerColor"]
+#define NODE_INNER_COLOR_DEFAULT    [UIColor nodeInnerColorDefault]
+#define NODE_OUTER_COLOR            SETTINGS_MANAGER[@"ColorScheme/EditScreen/NodeOuterColor"]
+#define NODE_OUTER_COLOR_DEFAULT    [UIColor nodeOuterColorDefault]
+#define NET_COLOR                   SETTINGS_MANAGER[@"ColorScheme/EditScreen/NetColor"]
+#define NET_COLOR_DEFAULT           [UIColor netColorDefault]
+
+void setDefaults();

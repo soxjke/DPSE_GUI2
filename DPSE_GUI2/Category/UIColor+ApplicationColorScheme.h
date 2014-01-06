@@ -33,4 +33,8 @@
 + (UIColor*)silverBorderColor;
 + (UIColor*)transparentContainerColor;
 
++ (UIColor*)nodeInnerColorDefault;
++ (UIColor*)nodeOuterColorDefault;
++ (UIColor*)netColorDefault;
+
 @end

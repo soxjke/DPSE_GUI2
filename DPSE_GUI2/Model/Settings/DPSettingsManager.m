@@ -57,7 +57,7 @@ NSString * const appSettingsKey = @"com.dpse.app-settings";
     if (self)
     {
         defaults = [NSUserDefaults standardUserDefaults];
-        settings = [[DPSettingsDictionary alloc] initWithDictionary:[defaults objectForKey:appSettingsKey]];
+        settings = [[DPSettingsDictionary alloc] initWithDictionary:[NSKeyedUnarchiver unarchiveObjectWithData:[defaults objectForKey:appSettingsKey]]];
     }
     return self;
 }
@@ -65,7 +65,7 @@ NSString * const appSettingsKey = @"com.dpse.app-settings";
 - (void)setObject:(id)object forKeyedSubscript:(id<NSCopying>)key
 {
     settings[key] = object;
-    [defaults setObject:settings forKey:appSettingsKey];
+    [defaults setObject:[NSKeyedArchiver archivedDataWithRootObject:settings] forKey:appSettingsKey];
     [defaults synchronize];
 }
 

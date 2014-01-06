@@ -67,4 +67,19 @@ do \
     COLOR_INT(0, 0, 0, 75);
 }
 
++ (UIColor*)nodeInnerColorDefault
+{
+    COLOR_INT(101, 174, 192, 255);
+}
+
++ (UIColor*)nodeOuterColorDefault
+{
+    COLOR_INT(38, 38, 38, 255);
+}
+
++ (UIColor*)netColorDefault
+{
+    COLOR_INT(101, 174, 192, 255);
+}
+
 @end
