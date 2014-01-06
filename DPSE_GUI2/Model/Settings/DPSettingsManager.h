@@ -26,8 +26,18 @@
 
 #import <Foundation/Foundation.h>
 
+#define SETTINGS_MANAGER [DPSettingsManager sharedObject]
+#define PATH(...) [NSString pathWithComponents:@[__VA_ARGS__]]
+
+extern NSString * const appSettingsKey;
+
 @interface DPSettingsManager : NSObject
 
 + (instancetype)sharedObject;
+
+#ifdef DEBUG
+- (id)objectForKeyedSubscript:(id<NSCopying>)key;
+- (void)setObject:(id)object forKeyedSubscript:(id<NSCopying>)key;
+#endif
 
 @end

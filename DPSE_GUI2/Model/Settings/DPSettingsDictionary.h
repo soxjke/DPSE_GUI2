@@ -26,6 +26,9 @@
 
 #import <Foundation/Foundation.h>
 
-@interface DPSettingsDictionary : NSObject
+@interface DPSettingsDictionary : NSDictionary
+
+- (id)objectForKeyedSubscript:(id)key;
+- (void)setObject:(id)obj forKeyedSubscript:(id<NSCopying>)key;
 
 @end

@@ -26,12 +26,14 @@
 
 
 #import "DPSettingsManager.h"
+#import "DPSettingsDictionary.h"
 
-NSString *const appSettingsKey = @"com.dpse.app-settings";
+NSString * const appSettingsKey = @"com.dpse.app-settings";
 
 @interface DPSettingsManager ()
 {
-    NSUserDefaults *defaults;
+    NSUserDefaults          *defaults;
+    DPSettingsDictionary    *settings;
 }
 
 @end
@@ -55,20 +57,21 @@ NSString *const appSettingsKey = @"com.dpse.app-settings";
     if (self)
     {
         defaults = [NSUserDefaults standardUserDefaults];
+        settings = [[DPSettingsDictionary alloc] initWithDictionary:[defaults objectForKey:appSettingsKey]];
     }
     return self;
 }
 
 - (void)setObject:(id)object forKeyedSubscript:(id<NSCopying>)key
 {
+    settings[key] = object;
+    [defaults setObject:settings forKey:appSettingsKey];
     [defaults synchronize];
 }
 
 - (id)objectForKeyedSubscript:(id<NSCopying>)key
 {
-    
+    return settings[key];
 }
-
-
 
 @end

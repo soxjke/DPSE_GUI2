@@ -27,6 +27,113 @@
 
 #import "DPSettingsDictionary.h"
 
+@interface DPSettingsDictionary ()
+{
+    NSMutableDictionary *_innerDict;
+}
+
+@end
+
 @implementation DPSettingsDictionary
+
++ (instancetype)dictionaryWithDictionary:(NSDictionary *)dict
+{
+    return [[self alloc] initWithDictionary:dict];
+}
+
+- (instancetype)initWithDictionary:(NSDictionary *)otherDictionary
+{
+    self = [super init];
+    if (self)
+    {
+        _innerDict = [[NSMutableDictionary alloc] initWithCapacity:otherDictionary.count];
+        [otherDictionary enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop)
+        {
+            if ([obj isKindOfClass:[NSDictionary class]])
+            {
+                [_innerDict setObject:[DPSettingsDictionary dictionaryWithDictionary:obj] forKey:key];
+            }
+            else
+            {
+                [_innerDict setObject:obj forKey:key];
+            }
+        }];
+    }
+    return self;
+}
+
+- (instancetype)init
+{
+    self = [super init];
+    if (self)
+    {
+        _innerDict = [NSMutableDictionary new];
+    }
+    return self;
+}
+
+- (id)objectForKey:(id)aKey
+{
+    if ([aKey isKindOfClass:[NSString class]])
+    {
+        NSArray *comps = [aKey pathComponents];
+        if (comps.count > 1)
+        {
+            DPSettingsDictionary *dict = [_innerDict objectForKey:comps[0]];
+            if (![dict isKindOfClass:[DPSettingsDictionary class]])
+            {
+                return nil;
+            }
+            return [dict objectForKey:[NSString pathWithComponents:[comps subarrayWithRange:NSMakeRange(1, comps.count - 1)]]];
+        }
+        else
+        {
+            return [_innerDict objectForKey:aKey];
+        }
+    }
+    return nil;
+}
+
+- (void)setObject:(id)object forKey:(id)aKey
+{
+    if ([aKey isKindOfClass:[NSString class]])
+    {
+        NSArray *comps = [aKey pathComponents];
+        if (comps.count > 1)
+        {
+            DPSettingsDictionary *dict = [_innerDict objectForKey:comps[0]];
+            if (![dict isKindOfClass:[DPSettingsDictionary class]])
+            {
+                dict = [DPSettingsDictionary new];
+                [_innerDict setObject:dict forKey:comps[0]];
+            }
+            [dict setObject:object forKey:[NSString pathWithComponents:[comps subarrayWithRange:NSMakeRange(1, comps.count - 1)]]];
+        }
+        else
+        {
+            [_innerDict performSelector:object ? @selector(setObject:forKey:) : @selector(removeObjectForKey:) withObject:object ? object : aKey withObject:object ? aKey : nil];
+        }
+    }
+}
+
+- (NSUInteger)count
+{
+    return _innerDict.count;
+}
+
+- (NSEnumerator*)keyEnumerator
+{
+    return _innerDict.keyEnumerator;
+}
+
+- (id)objectForKeyedSubscript:(id)key
+{
+    return [self objectForKey:key];
+}
+
+- (void)setObject:(id)obj forKeyedSubscript:(id<NSCopying>)key
+{
+    [self setObject:obj forKey:key];
+}
 
 @end

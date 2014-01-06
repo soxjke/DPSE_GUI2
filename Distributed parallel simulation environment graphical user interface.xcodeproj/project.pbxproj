@@ -38,6 +38,10 @@
 		5B82E0EF1878F653000510E3 /* DPSettingsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B82E0EE1878F653000510E3 /* DPSettingsManager.m */; };
 		5B82E0F21878F696000510E3 /* DPSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B82E0F11878F696000510E3 /* DPSettings.m */; };
 		5B82E0F51878F982000510E3 /* DPSettingsDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B82E0F41878F982000510E3 /* DPSettingsDictionary.m */; };
+		5B82E0F7187ACDD9000510E3 /* DPSettingsManagerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B82E0F6187ACDD9000510E3 /* DPSettingsManagerTest.m */; };
+		5B82E0F8187ACF4B000510E3 /* DPSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B82E0F11878F696000510E3 /* DPSettings.m */; };
+		5B82E0F9187ACF4E000510E3 /* DPSettingsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B82E0EE1878F653000510E3 /* DPSettingsManager.m */; };
+		5B82E0FA187ACF50000510E3 /* DPSettingsDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B82E0F41878F982000510E3 /* DPSettingsDictionary.m */; };
 		5BD15B82184BE96A007F25BD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BD15B81184BE96A007F25BD /* Foundation.framework */; };
 		5BD15B84184BE96A007F25BD /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BD15B83184BE96A007F25BD /* CoreGraphics.framework */; };
 		5BD15B86184BE96A007F25BD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BD15B85184BE96A007F25BD /* UIKit.framework */; };
@@ -141,6 +145,7 @@
 		5B82E0F11878F696000510E3 /* DPSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPSettings.m; sourceTree = "<group>"; };
 		5B82E0F31878F982000510E3 /* DPSettingsDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPSettingsDictionary.h; sourceTree = "<group>"; };
 		5B82E0F41878F982000510E3 /* DPSettingsDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPSettingsDictionary.m; sourceTree = "<group>"; };
+		5B82E0F6187ACDD9000510E3 /* DPSettingsManagerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPSettingsManagerTest.m; sourceTree = "<group>"; };
 		5BD15B7E184BE96A007F25BD /* DPSE_GUI2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DPSE_GUI2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BD15B81184BE96A007F25BD /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		5BD15B83184BE96A007F25BD /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -389,6 +394,7 @@
 			isa = PBXGroup;
 			children = (
 				5BD15BED18534107007F25BD /* DPConnectionTest.m */,
+				5B82E0F6187ACDD9000510E3 /* DPSettingsManagerTest.m */,
 				5BD15BB0184BE96B007F25BD /* Supporting Files */,
 			);
 			path = DPSE_GUI2Tests;
@@ -594,10 +600,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B82E0F7187ACDD9000510E3 /* DPSettingsManagerTest.m in Sources */,
 				5B1C89CA1854E6E900DB5CF1 /* NSLayoutConstraint+Setter.m in Sources */,
 				5BD15BEA1853407E007F25BD /* DPSSHConnection.m in Sources */,
+				5B82E0F8187ACF4B000510E3 /* DPSettings.m in Sources */,
+				5B82E0FA187ACF50000510E3 /* DPSettingsDictionary.m in Sources */,
 				5BD15BF11853785F007F25BD /* DPAppDelegate.m in Sources */,
 				5BD15BF518537BC1007F25BD /* Reachability.m in Sources */,
+				5B82E0F9187ACF4E000510E3 /* DPSettingsManager.m in Sources */,
 				5BD15BEE18534107007F25BD /* DPConnectionTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
