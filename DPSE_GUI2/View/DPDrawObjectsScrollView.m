@@ -118,7 +118,7 @@
     if ([self.touchDelegate scrollView:self shouldEndTouches:event.allTouches withEvent:event])
     {
         [super touchesEnded:touches withEvent:event];
-        UIView *view = [self.contentView hitTest:[(UITouch*)touches.anyObject locationInView:self.contentView] withEvent:event];
+        UIView *view = [self hitTest:[(UITouch*)touches.anyObject locationInView:self] withEvent:event];
         if ([view isKindOfClass:[DPGraphNetView class]])
         {
             [self.touchDelegate scrollView:self didSelectNet:((DPGraphNetView*)view).net];

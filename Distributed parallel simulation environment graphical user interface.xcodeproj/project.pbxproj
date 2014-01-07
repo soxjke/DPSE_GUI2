@@ -42,6 +42,8 @@
 		5B82E0F8187ACF4B000510E3 /* DPSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B82E0F11878F696000510E3 /* DPSettings.m */; };
 		5B82E0F9187ACF4E000510E3 /* DPSettingsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B82E0EE1878F653000510E3 /* DPSettingsManager.m */; };
 		5B82E0FA187ACF50000510E3 /* DPSettingsDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B82E0F41878F982000510E3 /* DPSettingsDictionary.m */; };
+		5B82E101187B8F08000510E3 /* DPGraphNet+DPPropertiesPanelElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B82E100187B8F08000510E3 /* DPGraphNet+DPPropertiesPanelElement.m */; };
+		5B82E104187B8F33000510E3 /* DPGraphNode+DPPropertiesPanelElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B82E103187B8F33000510E3 /* DPGraphNode+DPPropertiesPanelElement.m */; };
 		5BD15B82184BE96A007F25BD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BD15B81184BE96A007F25BD /* Foundation.framework */; };
 		5BD15B84184BE96A007F25BD /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BD15B83184BE96A007F25BD /* CoreGraphics.framework */; };
 		5BD15B86184BE96A007F25BD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BD15B85184BE96A007F25BD /* UIKit.framework */; };
@@ -145,6 +147,10 @@
 		5B82E0F31878F982000510E3 /* DPSettingsDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPSettingsDictionary.h; sourceTree = "<group>"; };
 		5B82E0F41878F982000510E3 /* DPSettingsDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPSettingsDictionary.m; sourceTree = "<group>"; };
 		5B82E0F6187ACDD9000510E3 /* DPSettingsManagerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPSettingsManagerTest.m; sourceTree = "<group>"; };
+		5B82E0FF187B8F08000510E3 /* DPGraphNet+DPPropertiesPanelElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DPGraphNet+DPPropertiesPanelElement.h"; sourceTree = "<group>"; };
+		5B82E100187B8F08000510E3 /* DPGraphNet+DPPropertiesPanelElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DPGraphNet+DPPropertiesPanelElement.m"; sourceTree = "<group>"; };
+		5B82E102187B8F33000510E3 /* DPGraphNode+DPPropertiesPanelElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DPGraphNode+DPPropertiesPanelElement.h"; sourceTree = "<group>"; };
+		5B82E103187B8F33000510E3 /* DPGraphNode+DPPropertiesPanelElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DPGraphNode+DPPropertiesPanelElement.m"; sourceTree = "<group>"; };
 		5BD15B7E184BE96A007F25BD /* DPSE_GUI2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DPSE_GUI2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BD15B81184BE96A007F25BD /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		5BD15B83184BE96A007F25BD /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -238,6 +244,7 @@
 		5B429B791870D2D800307729 /* Graph */ = {
 			isa = PBXGroup;
 			children = (
+				5B82E0FE187B8ED8000510E3 /* Protocol */,
 				5B82E0D918763C31000510E3 /* DPGraphNode.h */,
 				5B82E0DA18763C31000510E3 /* DPGraphNode.m */,
 				5B82E0DC18763C43000510E3 /* DPGraphNet.h */,
@@ -323,6 +330,17 @@
 				5B82E0F41878F982000510E3 /* DPSettingsDictionary.m */,
 			);
 			path = Settings;
+			sourceTree = "<group>";
+		};
+		5B82E0FE187B8ED8000510E3 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				5B82E0FF187B8F08000510E3 /* DPGraphNet+DPPropertiesPanelElement.h */,
+				5B82E100187B8F08000510E3 /* DPGraphNet+DPPropertiesPanelElement.m */,
+				5B82E102187B8F33000510E3 /* DPGraphNode+DPPropertiesPanelElement.h */,
+				5B82E103187B8F33000510E3 /* DPGraphNode+DPPropertiesPanelElement.m */,
+			);
+			path = Protocol;
 			sourceTree = "<group>";
 		};
 		5BD15B75184BE96A007F25BD = {
@@ -568,6 +586,7 @@
 				5B429B7C1870D3B000307729 /* DPDrawObjectsScrollView.m in Sources */,
 				5B68336D18539C2600CAD141 /* DPGradientButton.m in Sources */,
 				5B01E80F1853FA25000ECD6C /* DPAboutViewController.m in Sources */,
+				5B82E104187B8F33000510E3 /* DPGraphNode+DPPropertiesPanelElement.m in Sources */,
 				5B82E0EB1878EBF2000510E3 /* DPGraphNetView.m in Sources */,
 				5B429B781870D27300307729 /* DPEditViewController.m in Sources */,
 				5B74A0E4187607CB00D35D81 /* DPPropertiesPanelSliderCell.m in Sources */,
@@ -583,6 +602,7 @@
 				5B82E0EF1878F653000510E3 /* DPSettingsManager.m in Sources */,
 				5B01E8101853FA25000ECD6C /* DPLoadDetailViewController.m in Sources */,
 				5BE5F3A01853C50D0007A4A8 /* DPPresentSegue.m in Sources */,
+				5B82E101187B8F08000510E3 /* DPGraphNet+DPPropertiesPanelElement.m in Sources */,
 				5B68337118539DE400CAD141 /* UIColor+ApplicationColorScheme.m in Sources */,
 				5BE5F39C1853C3610007A4A8 /* Simulation.m in Sources */,
 				5BD15BE91853313E007F25BD /* DPSSHConnection.m in Sources */,
