@@ -28,4 +28,61 @@
 
 @implementation DPGraphNode (DPPropertiesPanelElement)
 
+- (NSUInteger)numberOfPropertyGroups
+{
+    return 2;
+}
+
+- (NSUInteger)numberOfPropertiesInGroup:(NSUInteger)group
+{
+    if (group == 0) return 3;
+    else if (group == 1) return 2;
+    return 0;
+}
+
+- (DPPropertiesPanelFieldType)panelFieldTypeAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.section == 0)
+    {
+        if (indexPath.row == 0) return DPPropertiesPanelFieldTypeTextfield;
+        else if (indexPath.row == 1) return DPPropertiesPanelFieldTypeTextfield;
+        else if (indexPath.row == 2) return DPPropertiesPanelFieldTypeSwitch;
+    }
+    else if (indexPath.section == 1)
+    {
+        if (indexPath.row == 0) return DPPropertiesPanelFieldTypeTextfield;
+        else if (indexPath.row == 1) return DPPropertiesPanelFieldTypeTextfield;
+    }
+    return 0;
+}
+
+- (NSString*)panelFieldCaptionAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.section == 0)
+    {
+        if (indexPath.row == 0) return @"x:";
+        else if (indexPath.row == 1) return @"y:";
+        else if (indexPath.row == 2) return @"Tied to topology";
+    }
+    else if (indexPath.section == 1)
+    {
+        if (indexPath.row == 0) return @"ololo";
+        else if (indexPath.row == 1) return @"ya voditel nlo";
+    }
+    return nil;
+}
+
+- (NSString*)panelFieldValueKeypathAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.section == 0)
+    {
+        
+    }
+    else if (indexPath.section == 1)
+    {
+        
+    }
+    return nil;
+}
+
 @end
