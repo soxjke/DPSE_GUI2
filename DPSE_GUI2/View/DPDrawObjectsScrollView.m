@@ -28,11 +28,15 @@
 #import <QuartzCore/QuartzCore.h>
 
 #import "DPGraphNetView.h"
+#import "DPGraphNodeView.h"
 
 @interface DPDrawObjectsScrollView () <UIScrollViewDelegate, UIGestureRecognizerDelegate>
 {
     CGPoint startPoint;
     CGPoint currentPoint;
+    
+    DPGraphNodeView *_startNode;
+    DPGraphNodeView *_endNode;
 }
 
 @property (nonatomic, weak) IBOutlet NSLayoutConstraint *contentWidth;
@@ -88,7 +92,9 @@
     else
     {
         startPoint = [(UITouch*)touches.anyObject locationInView:self];
-        currentPoint = CGPointMake(startPoint.x + 10, startPoint.y + 10);
+        _startNode = (DPGraphNodeView*)[self hitTest:startPoint withEvent:event];
+        CGFloat netWidth = [NET_WIDTH floatValue];
+        currentPoint = CGPointMake(startPoint.x + netWidth, startPoint.y + netWidth);
         self.netCanvasView = [DPGraphNetView netViewFromPoint:startPoint toPoint:currentPoint];
         [self addSubview:self.netCanvasView];
     }
@@ -115,8 +121,9 @@
     }
     else
     {
-        [self setNeedsDisplay];
+        _endNode = (DPGraphNodeView*)[self hitTest:currentPoint withEvent:event];
         [self.netCanvasView removeFromSuperview];
+        [self tryToAddNetFromPoint:startPoint toPoint:currentPoint];
     }
 }
 
@@ -136,13 +143,34 @@
 {
     CGPoint touchLocation = [recognizer locationInView:self.contentView];
 
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 20, 20)];
-    [view setCenter:touchLocation];
-    view.backgroundColor = [UIColor greenColor];
-    view.layer.cornerRadius = 10.0f;
-    view.layer.masksToBounds = YES;
+    DPGraphNodeView *nodeView = [DPGraphNodeView nodeAtPoint:touchLocation];
+    DPGraphNode     *node     = [DPGraphNode nodeWithLocation:touchLocation];
     
-    [self.contentView addSubview:view];
+    nodeView.node = node;
+    
+    [self.contentView addSubview:nodeView];
+    
+    [self.touchDelegate scrollView:self didDrawNode:node];
+}
+
+#pragma mark - DPGraphNodeViewDelegate
+
+- (void)tryToAddNetFromPoint:(CGPoint)point toPoint:(CGPoint)endPoint
+{
+    if ([_startNode isKindOfClass:[DPGraphNodeView class]] && [_endNode isKindOfClass:[DPGraphNodeView class]])
+    {
+        DPGraphNetView *netView = [DPGraphNetView netViewFromPoint:_startNode.center toPoint:_endNode.center];
+        [self.contentView addSubview:netView];
+        [self.contentView sendSubviewToBack:netView];
+        
+        DPGraphNet *net = [DPGraphNet netFromNode:_startNode.node toNode:_endNode.node];
+        netView.net     = net;
+        
+        [self.touchDelegate scrollView:self didDrawNet:net];
+        
+    }
+    _startNode = nil;
+    _endNode   = nil;
 }
 
 @end

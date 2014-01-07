@@ -34,6 +34,9 @@
 @property (readonly, strong, nonatomic) NSManagedObjectModel *managedObjectModel;
 @property (readonly, strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 
+@property (readonly, strong, nonatomic) NSEntityDescription *graphEntity;
+@property (readonly, strong, nonatomic) NSEntityDescription *simulationEntity;
+
 - (void)saveContext;
 - (NSURL *)applicationDocumentsDirectory;
 

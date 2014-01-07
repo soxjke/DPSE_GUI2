@@ -26,9 +26,19 @@
 
 #import <Foundation/Foundation.h>
 
+@class DPGraphNet;
+@class DPGraphNode;
+
 @interface DPGraph : NSObject
 
 @property (nonatomic, readonly) NSArray *nets;
 @property (nonatomic, readonly) NSArray *nodes;
+
+- (void)addNode:(DPGraphNode*)node;
+- (void)addNodeAtLocation:(CGPoint)nodeLocation;
+- (void)addNet:(DPGraphNet*)net;
+- (void)addNetFromNode:(DPGraphNode*)startNode toNode:(DPGraphNode*)endNode;
+- (void)removeNode:(DPGraphNode*)node;
+- (void)removeNet:(DPGraphNet*)net;
 
 @end

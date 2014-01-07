@@ -26,9 +26,10 @@
 
 #import "DPAppDelegate.h"
 
-#import "DPLoadMasterViewController.h"
-
 #import "Reachability.h"
+
+#import "Graph.h"
+#import "Simulation.h"
 
 @interface DPAppDelegate ()
 {
@@ -42,6 +43,8 @@
 @synthesize managedObjectContext = _managedObjectContext;
 @synthesize managedObjectModel = _managedObjectModel;
 @synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
+@synthesize graphEntity = _graphEntity;
+@synthesize simulationEntity = _simulationEntity;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -77,8 +80,6 @@
     }
 }
 
-// Returns the managed object context for the application.
-// If the context doesn't already exist, it is created and bound to the persistent store coordinator for the application.
 - (NSManagedObjectContext *)managedObjectContext
 {
     if (_managedObjectContext != nil)
@@ -95,8 +96,6 @@
     return _managedObjectContext;
 }
 
-// Returns the managed object model for the application.
-// If the model doesn't already exist, it is created from the application's model.
 - (NSManagedObjectModel *)managedObjectModel
 {
     if (_managedObjectModel != nil)
@@ -108,8 +107,6 @@
     return _managedObjectModel;
 }
 
-// Returns the persistent store coordinator for the application.
-// If the coordinator doesn't already exist, it is created and the application's store added to it.
 - (NSPersistentStoreCoordinator *)persistentStoreCoordinator
 {
     if (_persistentStoreCoordinator != nil)
@@ -131,6 +128,24 @@
         NSAssert(NO, @"Unresolved error %@, %@", error, [error userInfo]);
     }
     return _persistentStoreCoordinator;
+}
+
+- (NSEntityDescription*)graphEntity
+{
+    if (!_graphEntity)
+    {
+        _graphEntity = [NSEntityDescription entityForName:NSStringFromClass([Graph class]) inManagedObjectContext:self.managedObjectContext];
+    }
+    return _graphEntity;
+}
+
+- (NSEntityDescription*)simulationEntity
+{
+    if (!_simulationEntity)
+    {
+        _simulationEntity = [NSEntityDescription entityForName:NSStringFromClass([Simulation class]) inManagedObjectContext:self.managedObjectContext];
+    }
+    return _simulationEntity;
 }
 
 #pragma mark - Application's Documents directory

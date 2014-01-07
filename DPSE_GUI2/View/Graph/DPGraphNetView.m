@@ -30,6 +30,7 @@
 {
     CGPoint _startPoint;
     CGPoint _endPoint;
+    CGFloat _netWidth;
 }
 
 @end
@@ -49,9 +50,11 @@
         _startPoint = startPoint;
         _endPoint   = endPoint;
         
-        self.backgroundColor = [UIColor redColor];
-        self.layer.cornerRadius   = 5.0f;
-        self.layer.masksToBounds  = YES;
+        _netWidth = [NET_WIDTH floatValue];
+        
+        self.backgroundColor        = NET_COLOR;
+        self.layer.cornerRadius     = _netWidth / 2;
+        self.layer.masksToBounds    = YES;
         
         [self calculate];
     }
@@ -66,7 +69,7 @@
     [self setCenter:center];
     
     CGFloat length = sqrtf((_startPoint.x - _endPoint.x) * (_startPoint.x - _endPoint.x) + (_startPoint.y - _endPoint.y) * (_startPoint.y - _endPoint.y));
-    [self setBounds:CGRectMake(0, 0, 10, length)];
+    [self setBounds:CGRectMake(0, 0, _netWidth, length)];
     
     CGFloat cos = ((_endPoint.x - _startPoint.x) / length);
     CGFloat sin = ((_endPoint.y - _startPoint.y) / length);

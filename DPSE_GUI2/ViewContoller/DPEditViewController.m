@@ -31,6 +31,12 @@
 #import "DPPropertiesPanelElement.h"
 #import "DPPropertiesPanelViewController.h"
 
+#import "DPGraph.h"
+#import "DPGraphNet.h"
+#import "DPGraphNode.h"
+
+#import "Graph.h"
+
 typedef NS_ENUM(NSUInteger, DPTouchMode)
 {
     DPTouchModeCursor,
@@ -79,6 +85,11 @@ typedef NS_ENUM(NSUInteger, DPTouchMode)
     self.selectButton.selected  = YES;
     
     self.toolboxButtons         = @[self.selectButton, self.nodeButton, self.netButton];
+    
+    if (!self.graph)                self.graph = [DPGraph new];
+    if (!self.graphCoreDataObject)  self.graphCoreDataObject = [[Graph alloc] initWithEntity:APP_DELEGATE.graphEntity
+                                                              insertIntoManagedObjectContext:APP_DELEGATE.managedObjectContext];
+    [APP_DELEGATE saveContext];
 }
 
 #pragma mark - actions
@@ -149,6 +160,16 @@ typedef NS_ENUM(NSUInteger, DPTouchMode)
 - (BOOL)scrollView:(DPDrawObjectsScrollView *)scrollView shouldAllowRecognitionForContentRecognizer:(UIGestureRecognizer *)recognizer
 {
     return currentTouchMode == DPTouchModeNode && recognizer == scrollView.contentTapRecognizer;
+}
+
+- (void)scrollView:(DPDrawObjectsScrollView *)scrollView didDrawNet:(DPGraphNet *)net
+{
+    [self.graph addNet:net];
+}
+
+- (void)scrollView:(DPDrawObjectsScrollView *)scrollView didDrawNode:(DPGraphNode *)node
+{
+    [self.graph addNode:node];
 }
 
 - (void)dbg:(id)sender

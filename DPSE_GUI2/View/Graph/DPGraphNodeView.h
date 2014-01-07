@@ -30,6 +30,9 @@
 
 @interface DPGraphNodeView : UIView
 
-@property (nonatomic, strong) DPGraphNode *node;
+@property (nonatomic, strong)   DPGraphNode *node;
+
++ (instancetype)nodeAtPoint:(CGPoint)center;
+- (instancetype)initAtPoint:(CGPoint)center;
 
 @end

@@ -79,7 +79,7 @@ do \
 
 + (UIColor*)netColorDefault
 {
-    COLOR_INT(101, 174, 192, 255);
+    COLOR_INT(38, 38, 38, 255);
 }
 
 @end

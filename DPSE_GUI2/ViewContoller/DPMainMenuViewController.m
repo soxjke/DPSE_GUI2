@@ -29,6 +29,7 @@
 #import "DPAboutViewController.h"
 #import "DPLoadSplitViewController.h"
 #import "DPSettingsSplitViewController.h"
+#import "DPEditViewController.h"
 
 @interface DPMainMenuViewController ()
 {
@@ -63,6 +64,11 @@
         UINavigationController *navigationController = [splitViewController.viewControllers lastObject];
         splitViewController.delegate = (id)navigationController.topViewController;
         return;
+    }
+    if ([[(UINavigationController*)segue.destinationViewController topViewController] isKindOfClass:[DPEditViewController class]])
+    {
+        DPEditViewController *editViewController = (DPEditViewController*)[(UINavigationController*)segue.destinationViewController topViewController];
+        editViewController.isConcentratedParameters = [IS_CONCENTRATED_PARAMETERS boolValue];
     }
 }
 

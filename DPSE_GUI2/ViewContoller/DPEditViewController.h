@@ -26,6 +26,14 @@
 
 #import <UIKit/UIKit.h>
 
+@class DPGraph;
+@class Graph;
+
 @interface DPEditViewController : UIViewController
+
+@property (nonatomic, strong) DPGraph   *graph;
+@property (nonatomic, strong) Graph     *graphCoreDataObject;
+
+@property (nonatomic) BOOL  isConcentratedParameters;
 
 @end

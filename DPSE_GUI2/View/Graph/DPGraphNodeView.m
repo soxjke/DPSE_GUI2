@@ -26,6 +26,35 @@
 
 #import "DPGraphNodeView.h"
 
+#import <QuartzCore/QuartzCore.h>
+
 @implementation DPGraphNodeView
+
++ (instancetype)nodeAtPoint:(CGPoint)center
+{
+    return [[self alloc] initAtPoint:center];
+}
+
+- (instancetype)initAtPoint:(CGPoint)center
+{
+    self = [super init];
+    if (self)
+    {
+        CGFloat borderWidth         = [NODE_BORDER_WIDTH floatValue];
+        CGFloat innerRadius         = [NODE_INNER_RADIUS floatValue];
+        
+        self.backgroundColor        = NODE_INNER_COLOR;
+        
+        self.layer.borderColor      = [NODE_OUTER_COLOR CGColor];
+        self.layer.borderWidth      = borderWidth;
+        
+        self.layer.cornerRadius     = (borderWidth + innerRadius) / 2;
+        self.layer.masksToBounds    = YES;
+        
+        self.center                 = center;
+        self.bounds                 = CGRectMake(0, 0, borderWidth + innerRadius, borderWidth + innerRadius);
+    }
+    return self;
+}
 
 @end

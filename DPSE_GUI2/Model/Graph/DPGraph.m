@@ -50,9 +50,19 @@
     return self;
 }
 
-- (void)addNode:(CGPoint)nodeLocation
+- (void)addNode:(DPGraphNode*)node
+{
+    [_nodes addObject:node];
+}
+
+- (void)addNodeAtLocation:(CGPoint)nodeLocation
 {
     [_nodes addObject:[DPGraphNode nodeWithLocation:nodeLocation]];
+}
+
+- (void)addNet:(DPGraphNet*)net
+{
+    [_nets addObject:net];
 }
 
 - (void)addNetFromNode:(DPGraphNode*)startNode toNode:(DPGraphNode*)endNode

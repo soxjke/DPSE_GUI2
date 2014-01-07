@@ -28,6 +28,9 @@
 
 @protocol DPDrawObjectsScrollViewDelegate;
 
+@class DPGraphNet;
+@class DPGraphNode;
+
 @interface DPDrawObjectsScrollView : UIScrollView
 
 @property (nonatomic, weak) IBOutlet id <DPDrawObjectsScrollViewDelegate> touchDelegate;
@@ -50,5 +53,8 @@
 - (BOOL)scrollView:(DPDrawObjectsScrollView*)scrollView shouldMoveTouches:(NSSet*)touches withEvent:(UIEvent*)event;
 - (BOOL)scrollView:(DPDrawObjectsScrollView*)scrollView shouldEndTouches:(NSSet*)touches withEvent:(UIEvent*)event;
 - (BOOL)scrollView:(DPDrawObjectsScrollView*)scrollView shouldAllowRecognitionForContentRecognizer:(UIGestureRecognizer*)recognizer;
+
+- (void)scrollView:(DPDrawObjectsScrollView*)scrollView didDrawNode:(DPGraphNode*)node;
+- (void)scrollView:(DPDrawObjectsScrollView*)scrollView didDrawNet:(DPGraphNet*)net;
 
 @end

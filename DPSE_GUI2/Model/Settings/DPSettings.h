@@ -27,17 +27,26 @@
 #import <Foundation/Foundation.h>
 #import "DPSettingsManager.h"
 
-#import "DPColorStringTransformer.h"
-
 #pragma mark - COLORS
 
-#define SERVER_HOSTNAME             SETTINGS_MANAGER[@"Network/SSH/ServerHostname"]
-#define SERVER_HOSTNAME_DEFAULT     @"neclus.donntu.edu.ua"
-#define NODE_INNER_COLOR            SETTINGS_MANAGER[@"ColorScheme/EditScreen/NodeInnerColor"]
-#define NODE_INNER_COLOR_DEFAULT    [UIColor nodeInnerColorDefault]
-#define NODE_OUTER_COLOR            SETTINGS_MANAGER[@"ColorScheme/EditScreen/NodeOuterColor"]
-#define NODE_OUTER_COLOR_DEFAULT    [UIColor nodeOuterColorDefault]
-#define NET_COLOR                   SETTINGS_MANAGER[@"ColorScheme/EditScreen/NetColor"]
-#define NET_COLOR_DEFAULT           [UIColor netColorDefault]
+#define SERVER_HOSTNAME                     SETTINGS_MANAGER[@"Network/SSH/ServerHostname"]
+#define SERVER_HOSTNAME_DEFAULT             @"neclus.donntu.edu.ua"
+
+#define NODE_INNER_COLOR                    SETTINGS_MANAGER[@"ColorScheme/EditScreen/NodeInnerColor"]
+#define NODE_INNER_COLOR_DEFAULT            [UIColor nodeInnerColorDefault]
+#define NODE_OUTER_COLOR                    SETTINGS_MANAGER[@"ColorScheme/EditScreen/NodeOuterColor"]
+#define NODE_OUTER_COLOR_DEFAULT            [UIColor nodeOuterColorDefault]
+#define NET_COLOR                           SETTINGS_MANAGER[@"ColorScheme/EditScreen/NetColor"]
+#define NET_COLOR_DEFAULT                   [UIColor netColorDefault]
+
+#define NODE_INNER_RADIUS                   SETTINGS_MANAGER[@"UI/EditScreen/NodeInnerRadius"]
+#define NODE_INNER_RADIUS_DEFAULT           @(21.f)
+#define NODE_BORDER_WIDTH                   SETTINGS_MANAGER[@"UI/EditScreen/NodeBorderWidth"]
+#define NODE_BORDER_WIDTH_DEFAULT           @(3.f)
+#define NET_WIDTH                           SETTINGS_MANAGER[@"UI/EditScreen/NetWidth"]
+#define NET_WIDTH_DEFAULT                   @(6.0f)
+
+#define IS_CONCENTRATED_PARAMETERS          SETTINGS_MANAGER[@"Modelling/Parameters/IsConcentratedParameters"]
+#define IS_CONCENTRATED_PARAMETERS_DEFAULT  @YES
 
 void setDefaults();
