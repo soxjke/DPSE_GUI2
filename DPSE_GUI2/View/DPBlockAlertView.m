@@ -51,7 +51,7 @@ NSMutableArray *alerts;
     va_list titles;
     va_start(titles, otherButtonTitles);
     
-    DPBlockAlertView *alert = [[DPBlockAlertView alloc] initWithCompletion:completion title:title message:message cancelButtonTitle:cancelButtonTitle otherButtonTitles:nil];
+    DPBlockAlertView *alert = [[self alloc] initWithCompletion:completion title:title message:message cancelButtonTitle:cancelButtonTitle otherButtonTitles:nil];
     
     for (NSString *title = otherButtonTitles; title; title = va_arg(titles, NSString*))
     {

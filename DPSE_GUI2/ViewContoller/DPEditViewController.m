@@ -79,7 +79,7 @@ typedef NS_ENUM(NSUInteger, DPTouchMode)
 {
     [super viewDidLoad];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStylePlain target:self action:@selector(backButtonPressed:)];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(dbg:)];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(action:)];
     
     self.selectButton.tag       = DPTouchModeCursor;
     self.nodeButton.tag         = DPTouchModeNode;
@@ -177,21 +177,29 @@ typedef NS_ENUM(NSUInteger, DPTouchMode)
 
 - (void)scrollView:(DPDrawObjectsScrollView*)scrollView didSelectNode:(DPGraphNode*)node
 {
-    NSLog(@"node %@", node);
     if (!self.propertiesPanel) [self showPropertiesForItem:node];
     else self.propertiesPanel.propertiesPanelElement = node;
 }
 
 - (void)scrollView:(DPDrawObjectsScrollView*)scrollView didSelectNet:(DPGraphNet*)net
 {
-    NSLog(@"net %@", net);
     if (!self.propertiesPanel) [self showPropertiesForItem:net];
     else self.propertiesPanel.propertiesPanelElement = net;
 }
 
-- (void)dbg:(id)sender
+- (void)action:(id)sender
 {
-    if (!self.propertiesPanel)
+    [DPBlockActionSheet actionSheetWithCompletion:^(DPBlockActionSheet *actionSheet, NSUInteger selectedOption)
+    {
+        NSLog(@"Selected title %@ at index %d", [actionSheet buttonTitleAtIndex:selectedOption], selectedOption);
+    }
+                                            title:nil
+                                cancelButtonTitle:@"Cancel"
+                           destructiveButtonTitle:@"Delete"
+                                otherButtonTitles:@"Save", @"Save as", @"Run simulation", nil
+     ];
+    
+/*    if (!self.propertiesPanel)
     {
         [self showPropertiesForItem:nil];
     }
@@ -199,6 +207,7 @@ typedef NS_ENUM(NSUInteger, DPTouchMode)
     {
         [self hideProperties];
     }
+*/
 }
 
 #pragma mark - child view controller

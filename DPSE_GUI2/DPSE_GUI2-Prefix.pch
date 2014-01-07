@@ -27,5 +27,6 @@
 
 // Helper class
 #import "DPBlockAlertView.h"
+#import "DPBlockActionSheet.h"
 
 #define APP_DELEGATE ((DPAppDelegate*)[[UIApplication sharedApplication] delegate])
