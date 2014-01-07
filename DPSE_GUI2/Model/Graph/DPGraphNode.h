@@ -25,11 +25,11 @@
 //  THE SOFTWARE.
 
 #import <Foundation/Foundation.h>
-#import "DPGrapthItem.h"
+#import "DPGraphItem.h"
 
 @class DPGraphNet;
 
-@interface DPGraphNode : DPGrapthItem
+@interface DPGraphNode : DPGraphItem
 
 + (instancetype)nodeWithLocation:(CGPoint)nodeLocation;
 

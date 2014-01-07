@@ -1,8 +1,8 @@
 //
-//  DPGraphNet.h
+//  DPGraphItem+DPPropertiesPanelElement.h
 //  Distributed parallel simulation environment graphical user interface
 //
-//  Created by Petro Korienev on 1/3/14.
+//  Created by Petro Korienev on 1/7/14.
 
 //    Copyright (c) 2014 Petro Korienev. All rights reserved. 
 
@@ -24,21 +24,9 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-#import <Foundation/Foundation.h>
 #import "DPGraphItem.h"
+#import "DPPropertiesPanelElement.h"
 
-@class DPGraphNode;
-
-extern NSString * const kFlowInertionQuotientKey;
-extern NSString * const kTotalResistanceKey;
-extern NSString * const kDeltaPressureKey;
-
-@interface DPGraphNet : DPGraphItem
-
-+ (instancetype)netFromNode:(DPGraphNode*)startNode toNode:(DPGraphNode*)toNode;
-
-- (instancetype)initFromNode:(DPGraphNode*)startNode toNode:(DPGraphNode*)toNode;
-
-- (NSArray*)nodes;
+@interface DPGraphItem (DPPropertiesPanelElement) <DPPropertiesPanelElement>
 
 @end

@@ -53,10 +53,10 @@ typedef NS_ENUM(NSUInteger, DPPropertiesPanelFieldValueType)
 
 @optional
 
-- (DPPropertiesPanelFieldValueType)panelFieldValueTypeAtIndexPath:(NSIndexPath*)indexpath;
+- (DPPropertiesPanelFieldValueType)panelFieldValueTypeAtIndexPath:(NSIndexPath*)indexPath;
 - (CGFloat)minPanelFieldValueAtIndexPath:(NSIndexPath*)indexPath;
 - (CGFloat)maxPanelFieldValueAtIndexPath:(NSIndexPath*)indexPath;
-- (NSCharacterSet*)allowedCharactersForPanelFieldValueAtIndexPath;
-- (NSCharacterSet*)restrictedCharactersForPanelFieldValueAtIndexPath;
+- (NSCharacterSet*)allowedCharactersForPanelFieldValueAtIndexPath:(NSIndexPath*)indexPath;
+- (NSCharacterSet*)restrictedCharactersForPanelFieldValueAtIndexPath:(NSIndexPath*)indexPath;
 
 @end

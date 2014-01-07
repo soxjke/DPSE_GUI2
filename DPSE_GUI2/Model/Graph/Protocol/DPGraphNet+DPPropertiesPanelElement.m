@@ -96,4 +96,49 @@
     return nil;
 }
 
+- (DPPropertiesPanelFieldValueType)panelFieldValueTypeAtIndexPath:(NSIndexPath*)indexPath
+{
+    if (indexPath.section == 0)
+    {
+        
+    }
+    else if (indexPath.section == 1)
+    {
+        if (indexPath.row == 0) return DPPropertiesPanelFieldValueTypeFloat;
+        else if (indexPath.row == 1) return DPPropertiesPanelFieldValueTypeFloat;
+        else if (indexPath.row == 2) return DPPropertiesPanelFieldValueTypeFloat;
+    }
+    return 0;
+}
+
+- (CGFloat)minPanelFieldValueAtIndexPath:(NSIndexPath*)indexPath
+{
+    if (indexPath.section == 0)
+    {
+        
+    }
+    else if (indexPath.section == 1)
+    {
+        if (indexPath.row == 0) return 0.0f;
+        else if (indexPath.row == 1) return 0.0f;
+        else if (indexPath.row == 2) return -INFINITY;
+    }
+    return 0;
+}
+
+- (CGFloat)maxPanelFieldValueAtIndexPath:(NSIndexPath*)indexPath
+{
+    if (indexPath.section == 0)
+    {
+        
+    }
+    else if (indexPath.section == 1)
+    {
+        if (indexPath.row == 0) return INFINITY;
+        else if (indexPath.row == 1) return INFINITY;
+        else if (indexPath.row == 2) return INFINITY;
+    }
+    return 0;
+}
+
 @end

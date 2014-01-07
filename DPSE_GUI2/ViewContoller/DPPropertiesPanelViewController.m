@@ -105,6 +105,18 @@
             DPPropertiesPanelTextfieldCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([DPPropertiesPanelTextfieldCell class])
                                                                                    forIndexPath:indexPath];
             cell.textField.tag = tag;
+            
+            DPPropertiesPanelFieldValueType valueType = [_propertiesPanelElement panelFieldValueTypeAtIndexPath:indexPath];
+            
+            if (valueType == DPPropertiesPanelFieldValueTypeFloat || valueType == DPPropertiesPanelFieldValueTypeInteger)
+            {
+                cell.textField.keyboardType = UIKeyboardTypeNumberPad;
+            }
+            else
+            {
+                cell.textField.keyboardType = UIKeyboardTypeAlphabet;
+            }
+            
             cell.fieldNameLabel.text = caption;
             
             return cell;
@@ -157,6 +169,32 @@
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
+    if ([_propertiesPanelElement respondsToSelector:@selector(allowedCharactersForPanelFieldValueAtIndexPath:)])
+    {
+        NSCharacterSet *allowedCharacters = [_propertiesPanelElement allowedCharactersForPanelFieldValueAtIndexPath:TAG_TO_INDEXPATH(textField.tag)];
+        if (allowedCharacters)
+        {
+            NSString *newText = [textField.text stringByReplacingCharactersInRange:range withString:string];
+            NSCharacterSet *newTextCharacterSet = [NSCharacterSet characterSetWithCharactersInString:newText];
+            if (![allowedCharacters isSupersetOfSet:newTextCharacterSet])
+            {
+                return NO;
+            }
+        }
+    }
+    if ([_propertiesPanelElement respondsToSelector:@selector(restrictedCharactersForPanelFieldValueAtIndexPath:)])
+    {
+        NSCharacterSet *restrictedCharacters = [_propertiesPanelElement restrictedCharactersForPanelFieldValueAtIndexPath:TAG_TO_INDEXPATH(textField.tag)];
+        if (restrictedCharacters)
+        {
+            NSString *newText = [textField.text stringByReplacingCharactersInRange:range withString:string];
+            NSCharacterSet *newTextCharacterSet = [NSCharacterSet characterSetWithCharactersInString:newText];
+            if ([restrictedCharacters isSupersetOfSet:[newTextCharacterSet invertedSet]])
+            {
+                return NO;
+            }
+        }
+    }
     return YES;
 }
 

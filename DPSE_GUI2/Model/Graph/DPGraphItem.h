@@ -26,7 +26,9 @@
 
 #import <Foundation/Foundation.h>
 
-@interface DPGrapthItem : NSObject
+extern NSString * const allowedNumericCharacters;
+
+@interface DPGraphItem : NSObject
 
 @property (nonatomic, strong) NSMutableDictionary *itemAttributes;
 @property (nonatomic) BOOL isConcentratedParameters;
