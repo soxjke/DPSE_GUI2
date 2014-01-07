@@ -32,6 +32,8 @@
 #import "DPPropertiesPanelSwitchCell.h"
 #import "DPPropertiesPanelSliderCell.h"
 
+#import "DPTableViewHeader.h"
+
 #define INDEX_PATH_TO_TAG(indexPath) (indexPath.section << 16) + indexPath.row
 #define TAG_TO_INDEXPATH(tag) [NSIndexPath indexPathForRow:(tag) & 0xFFFF inSection:(tag) >> 16]
 
@@ -50,12 +52,31 @@
 
 @implementation DPPropertiesPanelViewController
 
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    [self.table registerClass:[DPTableViewHeader class] forHeaderFooterViewReuseIdentifier:NSStringFromClass([DPTableViewHeader class])];
+}
+
 #pragma mark - UITableViewDataSource implementation
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     self.nothingSelectedLabel.hidden = (BOOL)_propertiesPanelElement;
     return [_propertiesPanelElement numberOfPropertyGroups];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    NSString *cap = [_propertiesPanelElement captionForPropertyGroup:section];
+    return cap.length ? [DPTableViewHeader height] : 0.0f;
+}
+
+- (UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    DPTableViewHeader *header = [tableView dequeueReusableHeaderFooterViewWithIdentifier:NSStringFromClass([DPTableViewHeader class])];
+    header.text = [_propertiesPanelElement captionForPropertyGroup:section];
+    return header;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section

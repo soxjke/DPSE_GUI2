@@ -25,10 +25,15 @@
 //  THE SOFTWARE.
 
 #import <Foundation/Foundation.h>
+#import "DPGrapthItem.h"
 
 @class DPGraphNode;
 
-@interface DPGraphNet : NSObject
+extern NSString * const kFlowInertionQuotientKey;
+extern NSString * const kTotalResistanceKey;
+extern NSString * const kDeltaPressureKey;
+
+@interface DPGraphNet : DPGrapthItem
 
 + (instancetype)netFromNode:(DPGraphNode*)startNode toNode:(DPGraphNode*)toNode;
 

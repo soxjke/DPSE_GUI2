@@ -45,6 +45,7 @@ typedef NS_ENUM(NSUInteger, DPPropertiesPanelFieldValueType)
 @required
 
 - (NSUInteger)numberOfPropertyGroups;
+- (NSString*)captionForPropertyGroup:(NSUInteger)group;
 - (NSUInteger)numberOfPropertiesInGroup:(NSUInteger)group;
 - (DPPropertiesPanelFieldType)panelFieldTypeAtIndexPath:(NSIndexPath*)indexPath;
 - (NSString*)panelFieldCaptionAtIndexPath:(NSIndexPath*)indexPath;

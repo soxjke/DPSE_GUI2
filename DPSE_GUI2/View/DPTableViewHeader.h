@@ -1,8 +1,8 @@
 //
-//  DPGraphNode.h
+//  DPTableViewHeader.h
 //  Distributed parallel simulation environment graphical user interface
 //
-//  Created by Petro Korienev on 1/3/14.
+//  Created by Petro Korienev on 1/7/14.
 
 //    Copyright (c) 2014 Petro Korienev. All rights reserved. 
 
@@ -24,20 +24,12 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-#import <Foundation/Foundation.h>
-#import "DPGrapthItem.h"
+#import <UIKit/UIKit.h>
 
-@class DPGraphNet;
+@interface DPTableViewHeader : UITableViewHeaderFooterView
 
-@interface DPGraphNode : DPGrapthItem
++ (CGFloat)height;
 
-+ (instancetype)nodeWithLocation:(CGPoint)nodeLocation;
-
-- (instancetype)initWithLocation:(CGPoint)nodeLocation;
-
-- (void)connectNet:(DPGraphNet*)net;
-- (void)disconnectNet:(DPGraphNet*)net;
-
-- (NSArray*)nets;
+@property (nonatomic, strong) NSString *text;
 
 @end

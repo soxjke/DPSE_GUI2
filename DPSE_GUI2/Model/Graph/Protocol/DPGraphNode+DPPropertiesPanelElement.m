@@ -33,6 +33,13 @@
     return 2;
 }
 
+- (NSString*)captionForPropertyGroup:(NSUInteger)group
+{
+    if (group == 0) return @"Topology";
+    else if (group == 1) return @"Physical attributes";
+    return 0;
+}
+
 - (NSUInteger)numberOfPropertiesInGroup:(NSUInteger)group
 {
     if (group == 0) return 3;

@@ -1,8 +1,8 @@
 //
-//  DPGraphNode.h
+//  DPGrapthItem.h
 //  Distributed parallel simulation environment graphical user interface
 //
-//  Created by Petro Korienev on 1/3/14.
+//  Created by Petro Korienev on 1/7/14.
 
 //    Copyright (c) 2014 Petro Korienev. All rights reserved. 
 
@@ -25,19 +25,9 @@
 //  THE SOFTWARE.
 
 #import <Foundation/Foundation.h>
-#import "DPGrapthItem.h"
 
-@class DPGraphNet;
+@interface DPGrapthItem : NSObject
 
-@interface DPGraphNode : DPGrapthItem
-
-+ (instancetype)nodeWithLocation:(CGPoint)nodeLocation;
-
-- (instancetype)initWithLocation:(CGPoint)nodeLocation;
-
-- (void)connectNet:(DPGraphNet*)net;
-- (void)disconnectNet:(DPGraphNet*)net;
-
-- (NSArray*)nets;
+@property (nonatomic, strong) NSMutableDictionary *itemAttributes;
 
 @end

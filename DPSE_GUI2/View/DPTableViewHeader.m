@@ -1,8 +1,8 @@
 //
-//  DPGraphNode.h
+//  DPTableViewHeader.m
 //  Distributed parallel simulation environment graphical user interface
 //
-//  Created by Petro Korienev on 1/3/14.
+//  Created by Petro Korienev on 1/7/14.
 
 //    Copyright (c) 2014 Petro Korienev. All rights reserved. 
 
@@ -24,20 +24,58 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-#import <Foundation/Foundation.h>
-#import "DPGrapthItem.h"
+#import "DPTableViewHeader.h"
 
-@class DPGraphNet;
+@interface DPTableViewHeader ()
+{
+    UILabel *_label;
+}
 
-@interface DPGraphNode : DPGrapthItem
+@end
 
-+ (instancetype)nodeWithLocation:(CGPoint)nodeLocation;
+@implementation DPTableViewHeader
 
-- (instancetype)initWithLocation:(CGPoint)nodeLocation;
++ (CGFloat)height
+{
+    return 25.0f;
+}
 
-- (void)connectNet:(DPGraphNet*)net;
-- (void)disconnectNet:(DPGraphNet*)net;
+- (instancetype)initWithFrame:(CGRect)frame
+{
+    self = [super initWithFrame:frame];
+    if (self)
+    {
+        _label = [UILabel new];
+        _label.backgroundColor = [UIColor clearColor];
+        _label.textColor = [UIColor purpleColor];
+        _label.font = [UIFont systemFontOfSize:20.0f];
+        _label.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+        _label.textAlignment = NSTextAlignmentCenter;
+        
+        [self.contentView addSubview:_label];
+    }
+    return self;
+}
 
-- (NSArray*)nets;
+- (void)prepareForReuse
+{
+    self.text = nil;
+}
+
+- (void)layoutSubviews
+{
+    [super layoutSubviews];
+    self.contentView.backgroundColor = [UIColor clearColor];
+}
+
+- (void)setText:(NSString *)text
+{
+    _label.text = text;
+}
+
+- (NSString*)text
+{
+    return _label.text;
+}
 
 @end

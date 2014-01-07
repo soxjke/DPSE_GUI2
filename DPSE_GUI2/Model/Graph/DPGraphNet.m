@@ -27,6 +27,10 @@
 
 #import "DPGraphNet.h"
 
+NSString * const kFlowInertionQuotientKey   = @"K";
+NSString * const kTotalResistanceKey        = @"R";
+NSString * const kDeltaPressureKey          = @"H";
+
 @interface DPGraphNet ()
 {
     NSArray *_nodes;
@@ -47,6 +51,10 @@
     if (self)
     {
         _nodes = @[startNode, toNode];
+        
+        self.itemAttributes[kFlowInertionQuotientKey] = @(0.001f);
+        self.itemAttributes[kTotalResistanceKey]      = @(0.001f);
+        self.itemAttributes[kDeltaPressureKey]        = @(0.0f);
     }
     return self;
 }
