@@ -30,7 +30,8 @@ typedef NS_ENUM(NSUInteger, DPPropertiesPanelFieldType)
 {
     DPPropertiesPanelFieldTypeSwitch,
     DPPropertiesPanelFieldTypeTextfield,
-    DPPropertiesPanelFieldTypeSlider
+    DPPropertiesPanelFieldTypeSlider,
+    DPPropertiesPanelFieldTypeLabel
 };
 
 typedef NS_ENUM(NSUInteger, DPPropertiesPanelFieldValueType)

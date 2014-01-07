@@ -31,6 +31,7 @@
 #import "DPPropertiesPanelTextfieldCell.h"
 #import "DPPropertiesPanelSwitchCell.h"
 #import "DPPropertiesPanelSliderCell.h"
+#import "DPPropertiesPanelLabelCell.h"
 
 #import "DPTableViewHeader.h"
 
@@ -100,6 +101,9 @@
     NSUInteger tag = INDEX_PATH_TO_TAG(indexPath);
     NSString *caption = [_propertiesPanelElement panelFieldCaptionAtIndexPath:indexPath];
     
+    NSString *keyPath = [_propertiesPanelElement panelFieldValueKeypathAtIndexPath:indexPath];
+    DPPropertiesPanelFieldValueType valueType = [_propertiesPanelElement panelFieldValueTypeAtIndexPath:indexPath];
+    
     switch ([_propertiesPanelElement panelFieldTypeAtIndexPath:indexPath])
     {
         case DPPropertiesPanelFieldTypeSwitch:
@@ -117,29 +121,15 @@
                                                                                    forIndexPath:indexPath];
             cell.textField.tag = tag;
             
-            NSString *keyPath = [_propertiesPanelElement panelFieldValueKeypathAtIndexPath:indexPath];
-            
-            DPPropertiesPanelFieldValueType valueType = [_propertiesPanelElement panelFieldValueTypeAtIndexPath:indexPath];
-            
-            if (!keyPath)
-            {
-                cell.textField.enabled = NO;
-                return cell;
-            }
-            else
-            {
-                cell.textField.enabled = YES;
-            }
-            
             if (valueType == DPPropertiesPanelFieldValueTypeFloat || valueType == DPPropertiesPanelFieldValueTypeInteger)
             {
                 cell.textField.keyboardType = UIKeyboardTypeNumberPad;
-                cell.textField.text         = [[_propertiesPanelElement valueForKey:keyPath] stringValue];
+                cell.textField.text         = [[_propertiesPanelElement valueForKeyPath:keyPath] stringValue];
             }
             else
             {
                 cell.textField.keyboardType = UIKeyboardTypeAlphabet;
-                cell.textField.text         = [_propertiesPanelElement valueForKey:keyPath];
+                cell.textField.text         = [_propertiesPanelElement valueForKeyPath:keyPath];
             }
             
             cell.fieldNameLabel.text = caption;
@@ -152,6 +142,23 @@
                                                                                    forIndexPath:indexPath];
             cell.slider.tag = tag;
             cell.fieldNameLabel.text = caption;
+            
+            return cell;
+        }
+        case DPPropertiesPanelFieldTypeLabel:
+        {
+            DPPropertiesPanelLabelCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([DPPropertiesPanelLabelCell class])
+                                                                               forIndexPath:indexPath];
+            cell.fieldNameLabel.text = caption;
+            
+            if (valueType == DPPropertiesPanelFieldValueTypeFloat || valueType == DPPropertiesPanelFieldValueTypeInteger)
+            {
+                cell.valueLabel.text = [[_propertiesPanelElement valueForKeyPath:keyPath] stringValue];
+            }
+            else
+            {
+                cell.valueLabel.text = [_propertiesPanelElement valueForKeyPath:keyPath];
+            }
             
             return cell;
         }

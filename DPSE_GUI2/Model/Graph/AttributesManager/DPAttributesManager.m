@@ -57,7 +57,8 @@
     self = [super init];
     if (self)
     {
-        self.concentratedParametersNetAttributes = @[kFlowInertionQuotientKey, kTotalResistanceKey, kDeltaPressureKey];
+        self.concentratedParametersNetAttributes = @[kFlowInertionQuotientKey, kTotalResistanceKey, kDeltaPressureKey, kInitialFlowKey, kNameLabelKey];
+        self.concentratedParametersNodeAttributes = @[kNameLabelKey];
     }
     return self;
 }

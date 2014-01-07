@@ -310,6 +310,44 @@
                                             <outlet property="slider" destination="tm0-db-ykz" id="3mr-7a-ago"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DPPropertiesPanelLabelCell" id="d0Q-uB-07T" customClass="DPPropertiesPanelLabelCell">
+                                        <rect key="frame" x="0.0" y="154" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="d0Q-uB-07T" id="EdF-hW-QWs">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="fieldName" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ioc-pF-fUH">
+                                                    <rect key="frame" x="10" y="11" width="78" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.12549019610000001" green="0.12549019610000001" blue="0.12549019610000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="fieldValue" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="56I-Xe-TaI">
+                                                    <rect key="frame" x="226" y="11" width="74" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="YPt-wJ-M35"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.12549019610000001" green="0.12549019610000001" blue="0.12549019610000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="ioc-pF-fUH" firstAttribute="leading" secondItem="EdF-hW-QWs" secondAttribute="leading" constant="10" id="7gs-3B-c1o"/>
+                                                <constraint firstItem="56I-Xe-TaI" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="ioc-pF-fUH" secondAttribute="trailing" constant="10" id="ZX4-Hf-4xM"/>
+                                                <constraint firstAttribute="centerY" secondItem="ioc-pF-fUH" secondAttribute="centerY" id="j9G-Jp-9gm"/>
+                                                <constraint firstAttribute="centerY" secondItem="56I-Xe-TaI" secondAttribute="centerY" id="uO9-90-yYc"/>
+                                                <constraint firstAttribute="trailing" secondItem="56I-Xe-TaI" secondAttribute="trailing" constant="20" id="vVS-fG-Rhu"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="fieldNameLabel" destination="ioc-pF-fUH" id="Sqh-cU-Wue"/>
+                                            <outlet property="valueLabel" destination="56I-Xe-TaI" id="YGL-hf-EKc"/>
+                                        </connections>
+                                    </tableViewCell>
                                 </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="Vtj-2r-1Ff" id="yvz-Cd-xsZ"/>

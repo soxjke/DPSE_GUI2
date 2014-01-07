@@ -26,6 +26,8 @@
 
 #import <Foundation/Foundation.h>
 
+extern NSString * const kNameLabelKey;
+
 @interface DPGraphItem : NSObject
 
 @property (nonatomic, strong) NSMutableDictionary *itemAttributes;

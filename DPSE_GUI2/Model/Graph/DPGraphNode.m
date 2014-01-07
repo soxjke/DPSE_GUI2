@@ -27,6 +27,8 @@
 
 #import "DPGraphNode.h"
 
+#import "DPAttributesManager.h"
+
 @interface DPGraphNode ()
 {
     CGPoint         _location;
@@ -49,6 +51,8 @@
     {
         _nets       = [NSMutableArray new];
         _location   = nodeLocation;
+
+        self.isConcentratedParameters = YES;
     }
     return self;
 }
@@ -66,6 +70,11 @@
 - (void)disconnectNet:(DPGraphNet *)net
 {
     [_nets removeObject:net];
+}
+
+- (NSArray*)knownKeyPaths
+{
+    return self.isConcentratedParameters ? ATTRIBUTES_MANAGER.concentratedParametersNodeAttributes : ATTRIBUTES_MANAGER.distributedParametersNodeAttributes;
 }
 
 @end

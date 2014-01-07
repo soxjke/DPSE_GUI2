@@ -24,8 +24,9 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-
 #import "DPGraphItem.h"
+
+NSString * const kNameLabelKey = @"nameLabel";
 
 @implementation DPGraphItem
 
@@ -35,6 +36,7 @@
     if (self)
     {
         self.itemAttributes = [NSMutableDictionary new];
+        self.itemAttributes[kNameLabelKey] = [[[NSUUID UUID] UUIDString] substringToIndex:8];
         self.isConcentratedParameters = YES;
     }
     return self;
@@ -53,7 +55,7 @@
         [self.itemAttributes setValue:value forKey:key];
         return;
     }
-    NSAssert(NO, @"Called %s with unknown key parameter %@", __PRETTY_FUNCTION__, key);
+    [super setValue:value forKey:key];
 }
 
 - (void)setValue:(id)value forKeyPath:(NSString *)keyPath
@@ -63,7 +65,12 @@
         [self.itemAttributes setValue:value forKeyPath:keyPath];
         return;
     }
-    NSAssert(NO, @"Called %s with unknown key parameter %@", __PRETTY_FUNCTION__, keyPath);
+    NSArray *comps = [keyPath componentsSeparatedByString:@"."];
+    if (comps.count > 1)
+    {
+        [[self valueForKeyPath:comps[0]] setValue:value forKeyPath:[[comps subarrayWithRange:NSMakeRange(1, comps.count - 1)] componentsJoinedByString:@"."]];
+    }
+    [super setValue:value forKeyPath:keyPath];
 }
 
 - (id)valueForKey:(NSString *)key
@@ -72,8 +79,7 @@
     {
         return [self.itemAttributes valueForKey:key];
     }
-    NSAssert(NO, @"Called %s with unknown key parameter %@", __PRETTY_FUNCTION__, key);
-    return nil;
+    return [super valueForKey:key];
 }
 
 - (id)valueForKeyPath:(NSString *)keyPath
@@ -82,8 +88,12 @@
     {
         return [self.itemAttributes valueForKeyPath:keyPath];
     }
-    NSAssert(NO, @"Called %s with unknown key parameter %@", __PRETTY_FUNCTION__, keyPath);
-    return nil;
+    NSArray *comps = [keyPath componentsSeparatedByString:@"."];
+    if (comps.count > 1)
+    {
+        return [[self valueForKeyPath:comps[0]] valueForKeyPath:[[comps subarrayWithRange:NSMakeRange(1, comps.count - 1)] componentsJoinedByString:@"."]];
+    }
+    return [super valueForKeyPath:keyPath];
 }
 
 @end

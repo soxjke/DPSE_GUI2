@@ -30,20 +30,22 @@
 
 - (NSUInteger)numberOfPropertyGroups
 {
-    return 2;
+    return 3;
 }
 
 - (NSString*)captionForPropertyGroup:(NSUInteger)group
 {
-    if (group == 0) return @"Topology";
-    else if (group == 1) return @"Physical attributes";
+    if (group == 0) return @"General";
+    else if (group == 1) return @"Topology";
+    else if (group == 2) return @"Physical attributes";
     return 0;
 }
 
 - (NSUInteger)numberOfPropertiesInGroup:(NSUInteger)group
 {
-    if (group == 0) return 3;
-    else if (group == 1) return 3;
+    if (group == 0) return 1;
+    else if (group == 1) return 2;
+    else if (group == 2) return 4;
     return 0;
 }
 
@@ -52,14 +54,18 @@
     if (indexPath.section == 0)
     {
         if (indexPath.row == 0) return DPPropertiesPanelFieldTypeTextfield;
-        else if (indexPath.row == 1) return DPPropertiesPanelFieldTypeTextfield;
-        else if (indexPath.row == 2) return DPPropertiesPanelFieldTypeSwitch;
     }
     else if (indexPath.section == 1)
+    {
+        if (indexPath.row == 0) return DPPropertiesPanelFieldTypeLabel;
+        else if (indexPath.row == 1) return DPPropertiesPanelFieldTypeLabel;
+    }
+    else if (indexPath.section == 2)
     {
         if (indexPath.row == 0) return DPPropertiesPanelFieldTypeTextfield;
         else if (indexPath.row == 1) return DPPropertiesPanelFieldTypeTextfield;
         else if (indexPath.row == 2) return DPPropertiesPanelFieldTypeTextfield;
+        else if (indexPath.row == 3) return DPPropertiesPanelFieldTypeTextfield;
     }
     return 0;
 }
@@ -68,15 +74,19 @@
 {
     if (indexPath.section == 0)
     {
-        if (indexPath.row == 0) return @"x:";
-        else if (indexPath.row == 1) return @"y:";
-        else if (indexPath.row == 2) return @"Tied to topology";
+        if (indexPath.row == 0) return @"Name label";
     }
     else if (indexPath.section == 1)
+    {
+        if (indexPath.row == 0) return @"Start node";
+        else if (indexPath.row == 1) return @"End node";
+    }
+    else if (indexPath.section == 2)
     {
         if (indexPath.row == 0) return @"Flow inertion";
         else if (indexPath.row == 1) return @"Resistance";
         else if (indexPath.row == 2) return @"Delta pressure";
+        else if (indexPath.row == 3) return @"Initial flow";
     }
     return nil;
 }
@@ -85,13 +95,19 @@
 {
     if (indexPath.section == 0)
     {
-        
+        if (indexPath.row == 0) return kNameLabelKey;
     }
     else if (indexPath.section == 1)
+    {
+        if (indexPath.row == 0) return kStartNodeKey;
+        else if (indexPath.row == 1) return kEndNodeKey;
+    }
+    else if (indexPath.section == 2)
     {
         if (indexPath.row == 0) return kFlowInertionQuotientKey;
         else if (indexPath.row == 1) return kTotalResistanceKey;
         else if (indexPath.row == 2) return kDeltaPressureKey;
+        else if (indexPath.row == 3) return kInitialFlowKey;
     }
     return nil;
 }
@@ -100,13 +116,19 @@
 {
     if (indexPath.section == 0)
     {
-        
+        if (indexPath.row == 0) return DPPropertiesPanelFieldValueTypeString;
     }
     else if (indexPath.section == 1)
+    {
+        if (indexPath.row == 0) return DPPropertiesPanelFieldValueTypeString;
+        else if (indexPath.row == 1) return DPPropertiesPanelFieldValueTypeString;
+    }
+    else if (indexPath.section == 2)
     {
         if (indexPath.row == 0) return DPPropertiesPanelFieldValueTypeFloat;
         else if (indexPath.row == 1) return DPPropertiesPanelFieldValueTypeFloat;
         else if (indexPath.row == 2) return DPPropertiesPanelFieldValueTypeFloat;
+        else if (indexPath.row == 3) return DPPropertiesPanelFieldValueTypeFloat;
     }
     return 0;
 }
@@ -119,9 +141,14 @@
     }
     else if (indexPath.section == 1)
     {
+        
+    }
+    else if (indexPath.section == 2)
+    {
         if (indexPath.row == 0) return 0.0f;
         else if (indexPath.row == 1) return 0.0f;
         else if (indexPath.row == 2) return -INFINITY;
+        else if (indexPath.row == 3) return -INFINITY;
     }
     return 0;
 }
@@ -134,9 +161,14 @@
     }
     else if (indexPath.section == 1)
     {
+        
+    }
+    else if (indexPath.section == 2)
+    {
         if (indexPath.row == 0) return INFINITY;
         else if (indexPath.row == 1) return INFINITY;
         else if (indexPath.row == 2) return INFINITY;
+        else if (indexPath.row == 3) return INFINITY;
     }
     return 0;
 }

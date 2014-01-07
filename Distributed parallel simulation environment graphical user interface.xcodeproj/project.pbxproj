@@ -49,6 +49,7 @@
 		5B82E111187C5898000510E3 /* DPAttributesManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B82E110187C5898000510E3 /* DPAttributesManager.m */; };
 		5B82E114187C6142000510E3 /* DPGraphItem+DPPropertiesPanelElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B82E113187C6142000510E3 /* DPGraphItem+DPPropertiesPanelElement.m */; };
 		5B82E117187C9540000510E3 /* DPBlockActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B82E116187C9540000510E3 /* DPBlockActionSheet.m */; };
+		5B82E11A187CA88A000510E3 /* DPPropertiesPanelLabelCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B82E119187CA88A000510E3 /* DPPropertiesPanelLabelCell.m */; };
 		5BD15B82184BE96A007F25BD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BD15B81184BE96A007F25BD /* Foundation.framework */; };
 		5BD15B84184BE96A007F25BD /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BD15B83184BE96A007F25BD /* CoreGraphics.framework */; };
 		5BD15B86184BE96A007F25BD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BD15B85184BE96A007F25BD /* UIKit.framework */; };
@@ -166,6 +167,8 @@
 		5B82E113187C6142000510E3 /* DPGraphItem+DPPropertiesPanelElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DPGraphItem+DPPropertiesPanelElement.m"; sourceTree = "<group>"; };
 		5B82E115187C9540000510E3 /* DPBlockActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPBlockActionSheet.h; sourceTree = "<group>"; };
 		5B82E116187C9540000510E3 /* DPBlockActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPBlockActionSheet.m; sourceTree = "<group>"; };
+		5B82E118187CA88A000510E3 /* DPPropertiesPanelLabelCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPPropertiesPanelLabelCell.h; sourceTree = "<group>"; };
+		5B82E119187CA88A000510E3 /* DPPropertiesPanelLabelCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPPropertiesPanelLabelCell.m; sourceTree = "<group>"; };
 		5BD15B7E184BE96A007F25BD /* DPSE_GUI2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DPSE_GUI2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BD15B81184BE96A007F25BD /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		5BD15B83184BE96A007F25BD /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -326,6 +329,8 @@
 				5B74A0E0187607B000D35D81 /* DPPropertiesPanelTextfieldCell.m */,
 				5B74A0E2187607CB00D35D81 /* DPPropertiesPanelSliderCell.h */,
 				5B74A0E3187607CB00D35D81 /* DPPropertiesPanelSliderCell.m */,
+				5B82E118187CA88A000510E3 /* DPPropertiesPanelLabelCell.h */,
+				5B82E119187CA88A000510E3 /* DPPropertiesPanelLabelCell.m */,
 			);
 			path = UITableViewCell;
 			sourceTree = "<group>";
@@ -638,6 +643,7 @@
 				5B82E0EF1878F653000510E3 /* DPSettingsManager.m in Sources */,
 				5B01E8101853FA25000ECD6C /* DPLoadDetailViewController.m in Sources */,
 				5BE5F3A01853C50D0007A4A8 /* DPPresentSegue.m in Sources */,
+				5B82E11A187CA88A000510E3 /* DPPropertiesPanelLabelCell.m in Sources */,
 				5B82E101187B8F08000510E3 /* DPGraphNet+DPPropertiesPanelElement.m in Sources */,
 				5B68337118539DE400CAD141 /* UIColor+ApplicationColorScheme.m in Sources */,
 				5B82E10D187C4D14000510E3 /* DPTableViewHeader.m in Sources */,

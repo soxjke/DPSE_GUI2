@@ -30,11 +30,18 @@
 NSString * const kFlowInertionQuotientKey   = @"K";
 NSString * const kTotalResistanceKey        = @"R";
 NSString * const kDeltaPressureKey          = @"H";
+NSString * const kInitialFlowKey            = @"I0";
+
+NSString * const kStartNodeKey              = @"startNode.nameLabel";
+NSString * const kEndNodeKey                = @"endNode.nameLabel";
 
 @interface DPGraphNet ()
 {
     NSArray *_nodes;
 }
+
+@property (nonatomic, readonly) DPGraphNode *startNode;
+@property (nonatomic, readonly) DPGraphNode *endNode;
 
 @end
 
@@ -55,6 +62,7 @@ NSString * const kDeltaPressureKey          = @"H";
         self.itemAttributes[kFlowInertionQuotientKey] = @(0.001f);
         self.itemAttributes[kTotalResistanceKey]      = @(0.001f);
         self.itemAttributes[kDeltaPressureKey]        = @(0.0f);
+        self.itemAttributes[kInitialFlowKey]          = @(0.0f);
         
         self.isConcentratedParameters                 = YES;
     }
@@ -64,6 +72,16 @@ NSString * const kDeltaPressureKey          = @"H";
 - (NSArray*)nodes
 {
     return _nodes;
+}
+
+- (DPGraphNode*)startNode
+{
+    return _nodes.firstObject;
+}
+
+- (DPGraphNode*)endNode
+{
+    return _nodes.lastObject;
 }
 
 - (NSArray*)knownKeyPaths
