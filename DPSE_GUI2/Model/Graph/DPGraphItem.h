@@ -26,8 +26,6 @@
 
 #import <Foundation/Foundation.h>
 
-extern NSString * const allowedNumericCharacters;
-
 @interface DPGraphItem : NSObject
 
 @property (nonatomic, strong) NSMutableDictionary *itemAttributes;

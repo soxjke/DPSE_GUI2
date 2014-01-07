@@ -169,12 +169,22 @@
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
+    NSString *newText = [textField.text stringByReplacingCharactersInRange:range withString:string];
+    
+    if ([_propertiesPanelElement respondsToSelector:@selector(validatorRegexForValueAtIndexPath:)])
+    {
+        NSString *regex = [_propertiesPanelElement validatorRegexForValueAtIndexPath:TAG_TO_INDEXPATH(textField.tag)];
+        if (regex)
+        {
+            return [[NSPredicate predicateWithFormat:@"SELF MATCHES %@", regex] evaluateWithObject:newText];
+        }
+    }
+    
     if ([_propertiesPanelElement respondsToSelector:@selector(allowedCharactersForPanelFieldValueAtIndexPath:)])
     {
         NSCharacterSet *allowedCharacters = [_propertiesPanelElement allowedCharactersForPanelFieldValueAtIndexPath:TAG_TO_INDEXPATH(textField.tag)];
         if (allowedCharacters)
         {
-            NSString *newText = [textField.text stringByReplacingCharactersInRange:range withString:string];
             NSCharacterSet *newTextCharacterSet = [NSCharacterSet characterSetWithCharactersInString:newText];
             if (![allowedCharacters isSupersetOfSet:newTextCharacterSet])
             {
@@ -187,7 +197,6 @@
         NSCharacterSet *restrictedCharacters = [_propertiesPanelElement restrictedCharactersForPanelFieldValueAtIndexPath:TAG_TO_INDEXPATH(textField.tag)];
         if (restrictedCharacters)
         {
-            NSString *newText = [textField.text stringByReplacingCharactersInRange:range withString:string];
             NSCharacterSet *newTextCharacterSet = [NSCharacterSet characterSetWithCharactersInString:newText];
             if ([restrictedCharacters isSupersetOfSet:[newTextCharacterSet invertedSet]])
             {
@@ -195,6 +204,7 @@
             }
         }
     }
+   
     return YES;
 }
 

@@ -27,8 +27,6 @@
 
 #import "DPGraphItem.h"
 
-NSString * const allowedNumericCharacters = @"0123456789.";
-
 @implementation DPGraphItem
 
 - (instancetype)init

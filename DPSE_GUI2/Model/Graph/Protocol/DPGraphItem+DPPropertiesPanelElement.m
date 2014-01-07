@@ -64,12 +64,16 @@
     return nil;
 }
 
-- (NSCharacterSet*)allowedCharactersForPanelFieldValueAtIndexPath:(NSIndexPath*)indexPath
+- (NSString*)validatorRegexForValueAtIndexPath:(NSIndexPath *)indexPath
 {
     DPPropertiesPanelFieldValueType valueType = [self panelFieldValueTypeAtIndexPath:indexPath];
-    if (valueType == DPPropertiesPanelFieldValueTypeFloat || valueType == DPPropertiesPanelFieldValueTypeFloat)
+    if (valueType == DPPropertiesPanelFieldValueTypeFloat)
     {
-        return [NSCharacterSet characterSetWithCharactersInString:allowedNumericCharacters];
+        return @"^([+-]?)(?:|0|[1-9]\\d*)(?:\\.\\d*)?$";
+    }
+    if (valueType == DPPropertiesPanelFieldValueTypeInteger)
+    {
+        return @"^([+-]?)(?:|0|[1-9]\\d*)?$";
     }
     return nil;
 }
