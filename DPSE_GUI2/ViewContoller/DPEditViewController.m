@@ -172,6 +172,20 @@ typedef NS_ENUM(NSUInteger, DPTouchMode)
     [self.graph addNode:node];
 }
 
+- (void)scrollView:(DPDrawObjectsScrollView*)scrollView didSelectNode:(DPGraphNode*)node
+{
+    NSLog(@"node %@", node);
+//    if (!self.propertiesPanel) [self showPropertiesForItem:node];
+//    else self.propertiesPanel.propertiesPanelElement = node;
+}
+
+- (void)scrollView:(DPDrawObjectsScrollView*)scrollView didSelectNet:(DPGraphNet*)net
+{
+    NSLog(@"net %@", net);
+//    if (!self.propertiesPanel) [self showPropertiesForItem:net];
+//    else self.propertiesPanel.propertiesPanelElement = net;
+}
+
 - (void)dbg:(id)sender
 {
     if (!self.propertiesPanel)

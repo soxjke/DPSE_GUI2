@@ -57,4 +57,7 @@
 - (void)scrollView:(DPDrawObjectsScrollView*)scrollView didDrawNode:(DPGraphNode*)node;
 - (void)scrollView:(DPDrawObjectsScrollView*)scrollView didDrawNet:(DPGraphNet*)net;
 
+- (void)scrollView:(DPDrawObjectsScrollView*)scrollView didSelectNode:(DPGraphNode*)node;
+- (void)scrollView:(DPDrawObjectsScrollView*)scrollView didSelectNet:(DPGraphNet*)net;
+
 @end

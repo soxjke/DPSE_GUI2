@@ -118,6 +118,15 @@
     if ([self.touchDelegate scrollView:self shouldEndTouches:event.allTouches withEvent:event])
     {
         [super touchesEnded:touches withEvent:event];
+        UIView *view = [self.contentView hitTest:[(UITouch*)touches.anyObject locationInView:self.contentView] withEvent:event];
+        if ([view isKindOfClass:[DPGraphNetView class]])
+        {
+            [self.touchDelegate scrollView:self didSelectNet:((DPGraphNetView*)view).net];
+        }
+        else if ([view isKindOfClass:[DPGraphNodeView class]])
+        {
+            [self.touchDelegate scrollView:self didSelectNode:((DPGraphNodeView*)view).node];
+        }
     }
     else
     {
