@@ -24,8 +24,8 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-
 #import "DPGraphNet.h"
+#import "DPAttributesManager.h"
 
 NSString * const kFlowInertionQuotientKey   = @"K";
 NSString * const kTotalResistanceKey        = @"R";
@@ -55,6 +55,8 @@ NSString * const kDeltaPressureKey          = @"H";
         self.itemAttributes[kFlowInertionQuotientKey] = @(0.001f);
         self.itemAttributes[kTotalResistanceKey]      = @(0.001f);
         self.itemAttributes[kDeltaPressureKey]        = @(0.0f);
+        
+        self.isConcentratedParameters                 = YES;
     }
     return self;
 }
@@ -62,6 +64,11 @@ NSString * const kDeltaPressureKey          = @"H";
 - (NSArray*)nodes
 {
     return _nodes;
+}
+
+- (NSArray*)knownKeyPaths
+{
+    return self.isConcentratedParameters ? ATTRIBUTES_MANAGER.concentratedParametersNetAttributes : ATTRIBUTES_MANAGER.distributedParametersNetAttributes;
 }
 
 @end

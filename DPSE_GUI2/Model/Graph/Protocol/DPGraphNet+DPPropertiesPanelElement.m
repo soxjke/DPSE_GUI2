@@ -43,7 +43,7 @@
 - (NSUInteger)numberOfPropertiesInGroup:(NSUInteger)group
 {
     if (group == 0) return 3;
-    else if (group == 1) return 2;
+    else if (group == 1) return 3;
     return 0;
 }
 
@@ -59,6 +59,7 @@
     {
         if (indexPath.row == 0) return DPPropertiesPanelFieldTypeTextfield;
         else if (indexPath.row == 1) return DPPropertiesPanelFieldTypeTextfield;
+        else if (indexPath.row == 2) return DPPropertiesPanelFieldTypeTextfield;
     }
     return 0;
 }
@@ -73,8 +74,9 @@
     }
     else if (indexPath.section == 1)
     {
-        if (indexPath.row == 0) return @"ololo";
-        else if (indexPath.row == 1) return @"ya voditel nlo";
+        if (indexPath.row == 0) return @"Flow inertion";
+        else if (indexPath.row == 1) return @"Resistance";
+        else if (indexPath.row == 2) return @"Delta pressure";
     }
     return nil;
 }
@@ -87,7 +89,9 @@
     }
     else if (indexPath.section == 1)
     {
-        
+        if (indexPath.row == 0) return kFlowInertionQuotientKey;
+        else if (indexPath.row == 1) return kTotalResistanceKey;
+        else if (indexPath.row == 2) return kDeltaPressureKey;
     }
     return nil;
 }

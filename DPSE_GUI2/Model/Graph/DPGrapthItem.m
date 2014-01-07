@@ -35,8 +35,53 @@
     if (self)
     {
         self.itemAttributes = [NSMutableDictionary new];
+        self.isConcentratedParameters = YES;
     }
     return self;
+}
+
+- (NSArray*)knownKeyPaths
+{
+    NSAssert(NO, @"Called %s on abstract class %@", __PRETTY_FUNCTION__, NSStringFromClass([self class]));
+    return nil;
+}
+
+- (void)setValue:(id)value forKey:(NSString *)key
+{
+    if ([self.knownKeyPaths indexOfObject:key] != NSNotFound)
+    {
+        [self.itemAttributes setValue:value forKey:key];
+    }
+    NSAssert(NO, @"Called %s with unknown key parameter %@", __PRETTY_FUNCTION__, key);
+}
+
+- (void)setValue:(id)value forKeyPath:(NSString *)keyPath
+{
+    if ([self.knownKeyPaths indexOfObject:keyPath] != NSNotFound)
+    {
+        [self.itemAttributes setValue:value forKeyPath:keyPath];
+    }
+    NSAssert(NO, @"Called %s with unknown key parameter %@", __PRETTY_FUNCTION__, keyPath);
+}
+
+- (id)valueForKey:(NSString *)key
+{
+    if ([self.knownKeyPaths indexOfObject:key] != NSNotFound)
+    {
+        return [self.itemAttributes valueForKey:key];
+    }
+    NSAssert(NO, @"Called %s with unknown key parameter %@", __PRETTY_FUNCTION__, key);
+    return nil;
+}
+
+- (id)valueForKeyPath:(NSString *)keyPath
+{
+    if ([self.knownKeyPaths indexOfObject:keyPath] != NSNotFound)
+    {
+        return [self.itemAttributes valueForKeyPath:keyPath];
+    }
+    NSAssert(NO, @"Called %s with unknown key parameter %@", __PRETTY_FUNCTION__, keyPath);
+    return nil;
 }
 
 @end

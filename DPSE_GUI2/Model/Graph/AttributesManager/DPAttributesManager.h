@@ -1,5 +1,5 @@
 //
-//  DPGrapthItem.h
+//  DPAttributesManager.h
 //  Distributed parallel simulation environment graphical user interface
 //
 //  Created by Petro Korienev on 1/7/14.
@@ -26,11 +26,15 @@
 
 #import <Foundation/Foundation.h>
 
-@interface DPGrapthItem : NSObject
+#define ATTRIBUTES_MANAGER [DPAttributesManager sharedObject]
 
-@property (nonatomic, strong) NSMutableDictionary *itemAttributes;
-@property (nonatomic) BOOL isConcentratedParameters;
+@interface DPAttributesManager : NSObject
 
-- (NSArray*)knownKeyPaths;
++ (instancetype)sharedObject;
+
+@property (nonatomic, readonly) NSArray * concentratedParametersNetAttributes;
+@property (nonatomic, readonly) NSArray * concentratedParametersNodeAttributes;
+@property (nonatomic, readonly) NSArray * distributedParametersNetAttributes;
+@property (nonatomic, readonly) NSArray * distributedParametersNodeAttributes;
 
 @end

@@ -1,5 +1,5 @@
 //
-//  DPGrapthItem.h
+//  DPAttributesManager.m
 //  Distributed parallel simulation environment graphical user interface
 //
 //  Created by Petro Korienev on 1/7/14.
@@ -24,13 +24,42 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-#import <Foundation/Foundation.h>
 
-@interface DPGrapthItem : NSObject
+#import "DPAttributesManager.h"
 
-@property (nonatomic, strong) NSMutableDictionary *itemAttributes;
-@property (nonatomic) BOOL isConcentratedParameters;
+#import "DPGraphNet.h"
+#import "DPGraphNode.h"
 
-- (NSArray*)knownKeyPaths;
+@interface DPAttributesManager ()
+
+@property (nonatomic, readwrite) NSArray * concentratedParametersNetAttributes;
+@property (nonatomic, readwrite) NSArray * concentratedParametersNodeAttributes;
+@property (nonatomic, readwrite) NSArray * distributedParametersNetAttributes;
+@property (nonatomic, readwrite) NSArray * distributedParametersNodeAttributes;
+
+@end
+
+@implementation DPAttributesManager
+
++ (instancetype)sharedObject
+{
+    static id _sharedObject = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^(void)
+    {
+        _sharedObject = [[self alloc] init];
+    });
+    return _sharedObject;
+}
+
+- (instancetype)init
+{
+    self = [super init];
+    if (self)
+    {
+        self.concentratedParametersNetAttributes = @[kFlowInertionQuotientKey, kTotalResistanceKey, kDeltaPressureKey];
+    }
+    return self;
+}
 
 @end
