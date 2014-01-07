@@ -35,6 +35,9 @@
 #import "DPGraphNet.h"
 #import "DPGraphNode.h"
 
+#import "DPGraphNode+DPPropertiesPanelElement.h"
+#import "DPGraphNet+DPPropertiesPanelElement.h"
+
 #import "Graph.h"
 
 typedef NS_ENUM(NSUInteger, DPTouchMode)
@@ -212,7 +215,7 @@ typedef NS_ENUM(NSUInteger, DPTouchMode)
     
     [self.propertiesPanel.view setTranslatesAutoresizingMaskIntoConstraints:NO];
     
-    self.propertiesPanelTopOffset = [NSLayoutConstraint constraintWithItem:self.propertiesPanel.view attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeTop multiplier:1.0f constant:10.0f];
+    self.propertiesPanelTopOffset = [NSLayoutConstraint constraintWithItem:self.propertiesPanel.view attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeTop multiplier:1.0f constant:64.0f];
     self.propertiesPanelBottomOffset = [NSLayoutConstraint constraintWithItem:self.propertiesPanel.view attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeBottom multiplier:1.0f constant:-10.0f];
     self.propertiesPanelTrailingOffset = [NSLayoutConstraint constraintWithItem:self.propertiesPanel.view attribute:NSLayoutAttributeTrailing relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeTrailing multiplier:1.0f constant:0.0f];
     self.propertiesPanelWidth = [NSLayoutConstraint constraintWithItem:self.propertiesPanel.view attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeWidth multiplier:0.0f constant:320.0f];

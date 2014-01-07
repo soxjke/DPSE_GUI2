@@ -66,6 +66,7 @@
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSUInteger tag = INDEX_PATH_TO_TAG(indexPath);
+    NSString *caption = [_propertiesPanelElement panelFieldCaptionAtIndexPath:indexPath];
     
     switch ([_propertiesPanelElement panelFieldTypeAtIndexPath:indexPath])
     {
@@ -74,6 +75,8 @@
             DPPropertiesPanelSwitchCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([DPPropertiesPanelSwitchCell class])
                                                                                 forIndexPath:indexPath];
             cell.switchControl.tag = tag;
+            cell.fieldNameLabel.text = caption;
+            
             return cell;
         }
         case DPPropertiesPanelFieldTypeTextfield:
@@ -81,6 +84,8 @@
             DPPropertiesPanelTextfieldCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([DPPropertiesPanelTextfieldCell class])
                                                                                    forIndexPath:indexPath];
             cell.textField.tag = tag;
+            cell.fieldNameLabel.text = caption;
+            
             return cell;
         }
         case DPPropertiesPanelFieldTypeSlider:
@@ -88,6 +93,8 @@
             DPPropertiesPanelSliderCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([DPPropertiesPanelSliderCell class])
                                                                                    forIndexPath:indexPath];
             cell.slider.tag = tag;
+            cell.fieldNameLabel.text = caption;
+            
             return cell;
         }
     }
