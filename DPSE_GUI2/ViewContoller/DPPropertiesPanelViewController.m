@@ -39,7 +39,7 @@
 
 @interface DPPropertiesPanelViewController () <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate>
 {
-    __weak id <DPPropertiesPanelElement> _propertiesPanelElement;
+    __weak NSObject <DPPropertiesPanelElement> *_propertiesPanelElement;
 }
 
 @property (nonatomic, weak) IBOutlet UITableView    *table;
@@ -56,6 +56,17 @@
 {
     [super viewDidLoad];
     [self.table registerClass:[DPTableViewHeader class] forHeaderFooterViewReuseIdentifier:NSStringFromClass([DPTableViewHeader class])];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textDidChange:) name:UITextFieldTextDidChangeNotification object:nil];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
 }
 
 #pragma mark - UITableViewDataSource implementation
@@ -106,15 +117,29 @@
                                                                                    forIndexPath:indexPath];
             cell.textField.tag = tag;
             
+            NSString *keyPath = [_propertiesPanelElement panelFieldValueKeypathAtIndexPath:indexPath];
+            
             DPPropertiesPanelFieldValueType valueType = [_propertiesPanelElement panelFieldValueTypeAtIndexPath:indexPath];
+            
+            if (!keyPath)
+            {
+                cell.textField.enabled = NO;
+                return cell;
+            }
+            else
+            {
+                cell.textField.enabled = YES;
+            }
             
             if (valueType == DPPropertiesPanelFieldValueTypeFloat || valueType == DPPropertiesPanelFieldValueTypeInteger)
             {
                 cell.textField.keyboardType = UIKeyboardTypeNumberPad;
+                cell.textField.text         = [[_propertiesPanelElement valueForKey:keyPath] stringValue];
             }
             else
             {
                 cell.textField.keyboardType = UIKeyboardTypeAlphabet;
+                cell.textField.text         = [_propertiesPanelElement valueForKey:keyPath];
             }
             
             cell.fieldNameLabel.text = caption;
@@ -206,6 +231,32 @@
     }
    
     return YES;
+}
+
+#pragma mark - notification observing
+
+- (void)textDidChange:(NSNotification*)note
+{
+    UITextField *textField = note.object;
+    
+    NSString *keyPath = [_propertiesPanelElement panelFieldValueKeypathAtIndexPath:TAG_TO_INDEXPATH(textField.tag)];
+    
+    DPPropertiesPanelFieldValueType valueType = [_propertiesPanelElement panelFieldValueTypeAtIndexPath:TAG_TO_INDEXPATH(textField.tag)];
+    
+    switch (valueType)
+    {
+        case DPPropertiesPanelFieldValueTypeFloat:
+            [_propertiesPanelElement setValue:@(textField.text.floatValue) forKeyPath:keyPath];
+            break;
+        case DPPropertiesPanelFieldValueTypeInteger:
+            [_propertiesPanelElement setValue:@(textField.text.integerValue) forKeyPath:keyPath];
+            break;
+        case DPPropertiesPanelFieldValueTypeString:
+            [_propertiesPanelElement setValue:textField.text forKeyPath:keyPath];
+        default:
+            break;
+    }
+    
 }
 
 @end

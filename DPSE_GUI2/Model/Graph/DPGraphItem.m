@@ -51,6 +51,7 @@
     if ([self.knownKeyPaths indexOfObject:key] != NSNotFound)
     {
         [self.itemAttributes setValue:value forKey:key];
+        return;
     }
     NSAssert(NO, @"Called %s with unknown key parameter %@", __PRETTY_FUNCTION__, key);
 }
@@ -60,6 +61,7 @@
     if ([self.knownKeyPaths indexOfObject:keyPath] != NSNotFound)
     {
         [self.itemAttributes setValue:value forKeyPath:keyPath];
+        return;
     }
     NSAssert(NO, @"Called %s with unknown key parameter %@", __PRETTY_FUNCTION__, keyPath);
 }
