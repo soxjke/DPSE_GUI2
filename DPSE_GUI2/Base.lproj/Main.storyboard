@@ -220,10 +220,10 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hPw-Qz-3iv">
-                                                    <rect key="frame" x="213" y="7" width="97" height="30"/>
+                                                    <rect key="frame" x="170" y="7" width="140" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="97" id="Ypj-ds-ytI"/>
+                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="140" id="Ypj-ds-ytI"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
@@ -234,7 +234,7 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="centerY" secondItem="hPw-Qz-3iv" secondAttribute="centerY" constant="-0.5" id="GTp-5b-bsc"/>
-                                                <constraint firstItem="hPw-Qz-3iv" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="pht-jJ-Hac" secondAttribute="trailing" constant="10" id="IZM-Ho-udz"/>
+                                                <constraint firstItem="hPw-Qz-3iv" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="pht-jJ-Hac" secondAttribute="trailing" priority="51" constant="10" id="IZM-Ho-udz"/>
                                                 <constraint firstAttribute="trailing" secondItem="hPw-Qz-3iv" secondAttribute="trailing" constant="10" id="R3d-HH-ejL"/>
                                                 <constraint firstItem="pht-jJ-Hac" firstAttribute="leading" secondItem="AXD-E7-pQ0" secondAttribute="leading" constant="10" id="e4C-7v-eyE"/>
                                                 <constraint firstAttribute="centerY" secondItem="pht-jJ-Hac" secondAttribute="centerY" id="t8T-Dw-1hQ"/>

@@ -28,4 +28,9 @@
 
 @implementation DPPropertiesPanelTextfieldCell
 
+- (void)awakeFromNib
+{
+    self.textField.clearButtonMode = UITextFieldViewModeWhileEditing;
+}
+
 @end

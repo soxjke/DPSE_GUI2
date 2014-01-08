@@ -43,6 +43,9 @@
 @property (nonatomic, strong) NSMutableArray *minimalSpanningTree;
 @property (nonatomic, strong) NSMutableArray *antiTree;
 
+@property (nonatomic) CGFloat *incidenceMatrix;
+@property (nonatomic) CGFloat *meshMatrix;
+
 @end
 
 @implementation DPConcentratedParametersSimulationOperation
@@ -87,7 +90,60 @@
 - (void)topologyAnalyze
 {
     LOG(@"\nTopology analyze...\n");
+
     [self primsAlgorithm];
+
+    self.antiTree = [self.graph.nets mutableCopy];
+    [self.antiTree removeObjectsInArray:self.minimalSpanningTree];
+    
+    NSUInteger n = self.graph.nodes.count;
+    NSUInteger m = self.graph.nodes.count;
+    
+    self.incidenceMatrix = malloc((n - 1) * m * sizeof(CGFloat));
+    
+    __block NSUInteger currentNetIdx;
+    __block DPGraphNet *net;
+    
+    void(^nodeEnumerator)(DPGraphNode *node, NSUInteger nodeIdx, BOOL *stop) = ^(DPGraphNode *node, NSUInteger nodeIdx, BOOL *stop)
+    {
+        if (nodeIdx == n - 1) return;
+        self.incidenceMatrix[m * nodeIdx + currentNetIdx] = [net.nodes.firstObject isEqual:node] ? -1 : ([net.nodes.lastObject isEqual:node] ? 1 : 0);
+    };
+
+    [self.minimalSpanningTree enumerateObjectsUsingBlock:^(DPGraphNet *treeNet, NSUInteger netIdx, BOOL *stop)
+    {
+        currentNetIdx = netIdx;
+        net = treeNet;
+        [self.graph.nodes enumerateObjectsUsingBlock:nodeEnumerator];
+    }];
+    
+    [self.antiTree enumerateObjectsUsingBlock:^(DPGraphNet *treeNet, NSUInteger netIdx, BOOL *stop)
+    {
+        currentNetIdx = netIdx + n - 1;
+        net = treeNet;
+        [self.graph.nodes enumerateObjectsUsingBlock:nodeEnumerator];
+    }];
+    
+    self.meshMatrix = malloc((m - n + 1) * m * sizeof(CGFloat));
+   
+    [self.antiTree enumerateObjectsUsingBlock:^(DPGraphNet *antitreeNet, NSUInteger meshIdx, BOOL *stop)
+    {
+//        self.meshMatrix[meshIdx * m + meshIdx] = 1;
+        
+        NSMutableArray *meshNodes   = [NSMutableArray new];
+        NSMutableArray *meshNets    = [NSMutableArray new];
+        
+        [meshNodes addObject:antitreeNet.nodes.lastObject];
+        [meshNets addObject:antitreeNet];
+        
+        BOOL __unused foundPath = [self continuePathToNode:antitreeNet.nodes.firstObject withMeshNodes:meshNodes meshNets:meshNets];
+        
+        NSLog(@"found path %@", meshNets);
+        
+    }];
+    
+    free(self.incidenceMatrix);
+    free(self.meshMatrix);
     
     LOG(@"\nTopology analyzed successfully...\n");
 }
@@ -143,6 +199,35 @@
     NSLog(@"Minimal spanning tree:\n%@", self.minimalSpanningTree);
     
     LOG(@"\nMinimum spanning tree found successfully...\n");
+}
+
+- (BOOL)continuePathToNode:(DPGraphNode*)endNode withMeshNodes:(NSMutableArray*)meshNodes meshNets:(NSMutableArray*)meshNets
+{
+    if ([meshNodes.lastObject isEqual:endNode])
+    {
+        return YES;
+    }
+    
+    __block BOOL retVal = NO;
+    
+    [((DPGraphNode*)meshNodes.lastObject).nets enumerateObjectsUsingBlock:^(DPGraphNet *connectedNet, NSUInteger idx, BOOL *stop)
+    {
+        if ([self.minimalSpanningTree indexOfObject:connectedNet] != NSNotFound && [meshNets indexOfObject:connectedNet] == NSNotFound)
+        {
+            [meshNets addObject:connectedNet];
+            [meshNodes addObject:[connectedNet.nodes.firstObject isEqual:meshNodes.lastObject] ? connectedNet.nodes.lastObject : connectedNet.nodes.firstObject];
+            
+            *stop = (retVal = [self continuePathToNode:endNode withMeshNodes:meshNodes meshNets:meshNets]);
+
+            if (!retVal)
+            {
+                [meshNets removeLastObject];
+                [meshNodes removeLastObject];
+            }
+        }
+    }];
+    
+    return retVal;
 }
 
 @end

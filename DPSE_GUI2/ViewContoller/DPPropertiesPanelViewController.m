@@ -41,6 +41,9 @@
 @interface DPPropertiesPanelViewController () <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate>
 {
     __weak NSObject <DPPropertiesPanelElement> *_propertiesPanelElement;
+    
+    BOOL _shouldKeepOnScreenKeyboard;
+    BOOL _shouldAccordingTextFieldBecomeFirstResponder;
 }
 
 @property (nonatomic, weak) IBOutlet UITableView    *table;
@@ -63,11 +66,14 @@
 {
     [super viewWillAppear:animated];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textDidChange:) name:UITextFieldTextDidChangeNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidShow:) name:UIKeyboardDidShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidHide:) name:UIKeyboardDidHideNotification object:nil];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 #pragma mark - UITableViewDataSource implementation
@@ -134,6 +140,12 @@
             
             cell.fieldNameLabel.text = caption;
             
+            if (_shouldAccordingTextFieldBecomeFirstResponder)
+            {
+                _shouldAccordingTextFieldBecomeFirstResponder = NO;
+                [cell.textField becomeFirstResponder];
+            }
+            
             return cell;
         }
         case DPPropertiesPanelFieldTypeSlider:
@@ -177,6 +189,7 @@
 
         dispatch_async(dispatch_get_main_queue(), ^(void)
         {
+            if (_shouldKeepOnScreenKeyboard) _shouldAccordingTextFieldBecomeFirstResponder = YES;
             [self.table reloadData];
         });
     }
@@ -200,7 +213,7 @@
 }
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
-{
+{    
     NSString *newText = [textField.text stringByReplacingCharactersInRange:range withString:string];
     
     if ([_propertiesPanelElement respondsToSelector:@selector(validatorRegexForValueAtIndexPath:)])
@@ -240,6 +253,11 @@
     return YES;
 }
 
+- (BOOL)textFieldShouldClear:(UITextField *)textField
+{
+    return YES;
+}
+
 #pragma mark - notification observing
 
 - (void)textDidChange:(NSNotification*)note
@@ -263,7 +281,16 @@
         default:
             break;
     }
-    
+}
+
+- (void)keyboardDidShow:(NSNotification*)note
+{
+    _shouldKeepOnScreenKeyboard = YES;
+}
+
+- (void)keyboardDidHide:(NSNotification*)note
+{
+    _shouldKeepOnScreenKeyboard = NO;
 }
 
 @end
