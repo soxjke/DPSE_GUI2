@@ -1,10 +1,10 @@
 //
-//  DPAppDelegate.h
+//  DPConcentratedParametersSimulationOperation.m
 //  Distributed parallel simulation environment graphical user interface
 //
-//  Created by Petro Korienev on 12/7/13.
+//  Created by Petro Korienev on 1/8/14.
 
-//    Copyright (c) 2013 Petro Korienev. All rights reserved.
+//    Copyright (c) 2014 Petro Korienev. All rights reserved. 
 
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -12,10 +12,10 @@
 //  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 //  copies of the Software, and to permit persons to whom the Software is
 //  furnished to do so, subject to the following conditions:
-//
+//  
 //  The above copyright notice and this permission notice shall be included in
 //  all copies or substantial portions of the Software.
-//
+//  
 //  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 //  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 //  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -24,24 +24,34 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-#import <UIKit/UIKit.h>
 
-@interface DPAppDelegate : UIResponder <UIApplicationDelegate>
+#import "DPConcentratedParametersSimulationOperation.h"
 
-@property (strong, nonatomic) UIWindow *window;
+@interface DPConcentratedParametersSimulationOperation ()
 
-@property (readonly, strong, nonatomic) NSManagedObjectContext *managedObjectContext;
-@property (readonly, strong, nonatomic) NSManagedObjectModel *managedObjectModel;
-@property (readonly, strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;
+@property (nonatomic, copy) DPConcentratedParametersSimulationOperationLogBlock logBlock;
+@property (nonatomic, copy) DPConcentratedParametersSimulationOperationCompletionBlock completionBlock;
 
-@property (readonly, strong, nonatomic) NSEntityDescription *graphEntity;
-@property (readonly, strong, nonatomic) NSEntityDescription *simulationEntity;
+@end
 
-@property (readonly, strong, nonatomic) NSOperationQueue *operationQueue;
+@implementation DPConcentratedParametersSimulationOperation
 
-- (void)saveContext;
-- (NSURL *)applicationDocumentsDirectory;
+- (instancetype)initWithGraph:(DPGraph*)graph
+                     logBlock:(DPConcentratedParametersSimulationOperationLogBlock)logBlock
+              completionBlock:(DPConcentratedParametersSimulationOperationCompletionBlock)completionBlock
+{
+    self = [super init];
+    if (self)
+    {
+        self.logBlock = logBlock;
+        self.completionBlock = completionBlock;
+    }
+    return self;
+}
 
-- (BOOL)isHostReachable;
+- (void)main
+{
+
+}
 
 @end

@@ -45,6 +45,7 @@
 @synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
 @synthesize graphEntity = _graphEntity;
 @synthesize simulationEntity = _simulationEntity;
+@synthesize operationQueue = _operationQueue;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -146,6 +147,16 @@
         _simulationEntity = [NSEntityDescription entityForName:NSStringFromClass([Simulation class]) inManagedObjectContext:self.managedObjectContext];
     }
     return _simulationEntity;
+}
+
+- (NSOperationQueue*)operationQueue
+{
+    if (!_operationQueue)
+    {
+        _operationQueue = [[NSOperationQueue alloc] init];
+        _operationQueue.maxConcurrentOperationCount = 1;
+    }
+    return _operationQueue;
 }
 
 #pragma mark - Application's Documents directory
