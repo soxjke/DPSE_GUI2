@@ -52,6 +52,8 @@
 		5B82E11A187CA88A000510E3 /* DPPropertiesPanelLabelCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B82E119187CA88A000510E3 /* DPPropertiesPanelLabelCell.m */; };
 		5B82E11E187CD49A000510E3 /* DPConcentratedParametersSimulationOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B82E11D187CD49A000510E3 /* DPConcentratedParametersSimulationOperation.m */; };
 		5B82E121187CD7E6000510E3 /* matrix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5B82E11F187CD7E5000510E3 /* matrix.cpp */; };
+		5B82E124187CD9CC000510E3 /* eq_generator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5B82E122187CD9CC000510E3 /* eq_generator.cpp */; };
+		5B82E127187CD9EA000510E3 /* eq_solver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5B82E125187CD9EA000510E3 /* eq_solver.cpp */; };
 		5BD15B82184BE96A007F25BD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BD15B81184BE96A007F25BD /* Foundation.framework */; };
 		5BD15B84184BE96A007F25BD /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BD15B83184BE96A007F25BD /* CoreGraphics.framework */; };
 		5BD15B86184BE96A007F25BD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BD15B85184BE96A007F25BD /* UIKit.framework */; };
@@ -175,6 +177,10 @@
 		5B82E11D187CD49A000510E3 /* DPConcentratedParametersSimulationOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPConcentratedParametersSimulationOperation.m; sourceTree = "<group>"; };
 		5B82E11F187CD7E5000510E3 /* matrix.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = matrix.cpp; sourceTree = "<group>"; };
 		5B82E120187CD7E6000510E3 /* matrix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = matrix.h; sourceTree = "<group>"; };
+		5B82E122187CD9CC000510E3 /* eq_generator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = eq_generator.cpp; sourceTree = "<group>"; };
+		5B82E123187CD9CC000510E3 /* eq_generator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = eq_generator.h; sourceTree = "<group>"; };
+		5B82E125187CD9EA000510E3 /* eq_solver.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = eq_solver.cpp; sourceTree = "<group>"; };
+		5B82E126187CD9EA000510E3 /* eq_solver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = eq_solver.h; sourceTree = "<group>"; };
 		5BD15B7E184BE96A007F25BD /* DPSE_GUI2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DPSE_GUI2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BD15B81184BE96A007F25BD /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		5BD15B83184BE96A007F25BD /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -394,6 +400,10 @@
 				5B82E11D187CD49A000510E3 /* DPConcentratedParametersSimulationOperation.m */,
 				5B82E11F187CD7E5000510E3 /* matrix.cpp */,
 				5B82E120187CD7E6000510E3 /* matrix.h */,
+				5B82E122187CD9CC000510E3 /* eq_generator.cpp */,
+				5B82E123187CD9CC000510E3 /* eq_generator.h */,
+				5B82E125187CD9EA000510E3 /* eq_solver.cpp */,
+				5B82E126187CD9EA000510E3 /* eq_solver.h */,
 			);
 			path = Simulation;
 			sourceTree = "<group>";
@@ -639,6 +649,7 @@
 				5BD15BF418537BC1007F25BD /* Reachability.m in Sources */,
 				5BE5F3A31853CE870007A4A8 /* DPDismissSegue.m in Sources */,
 				5B74A0DA1875FBB700D35D81 /* DPPropertiesPanelViewController.m in Sources */,
+				5B82E127187CD9EA000510E3 /* eq_solver.cpp in Sources */,
 				5B429B7C1870D3B000307729 /* DPDrawObjectsScrollView.m in Sources */,
 				5B68336D18539C2600CAD141 /* DPGradientButton.m in Sources */,
 				5B01E80F1853FA25000ECD6C /* DPAboutViewController.m in Sources */,
@@ -660,6 +671,7 @@
 				5B74A0E1187607B000D35D81 /* DPPropertiesPanelTextfieldCell.m in Sources */,
 				5B01E8111853FA25000ECD6C /* DPMainMenuViewController.m in Sources */,
 				5B82E111187C5898000510E3 /* DPAttributesManager.m in Sources */,
+				5B82E124187CD9CC000510E3 /* eq_generator.cpp in Sources */,
 				5B82E0EF1878F653000510E3 /* DPSettingsManager.m in Sources */,
 				5B01E8101853FA25000ECD6C /* DPLoadDetailViewController.m in Sources */,
 				5BE5F3A01853C50D0007A4A8 /* DPPresentSegue.m in Sources */,

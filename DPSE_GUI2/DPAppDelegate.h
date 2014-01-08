@@ -37,7 +37,7 @@
 @property (readonly, strong, nonatomic) NSEntityDescription *graphEntity;
 @property (readonly, strong, nonatomic) NSEntityDescription *simulationEntity;
 
-@property (readonly, strong, nonatomic) NSOperationQueue *operationQueue;
+//@property (readonly, strong, nonatomic) NSOperationQueue *operationQueue;
 
 - (void)saveContext;
 - (NSURL *)applicationDocumentsDirectory;
