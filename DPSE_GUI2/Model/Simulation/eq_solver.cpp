@@ -6,4 +6,4 @@
 //  Copyright (c) 2014 Petro Korienev. All rights reserved.
 //
 
-//#include "eq_solver.h"
+#include "eq_solver.h"

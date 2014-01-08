@@ -5,13 +5,13 @@
 //  Created by Petro Korienev on 1/8/14.
 //  Copyright (c) 2014 Petro Korienev. All rights reserved.
 //
-/*
+
 #include "eq_generator.h"
 #include <fstream>
 
 using namespace std;
 
-int main(void)
+void generate(void)
 {
 	matrix Ax(4,4),Ay(4,6),Sx(6,4),Sy(6,6),S(6,10),Kx(4,4),Ky(6,6);
 	ifstream fin;
@@ -42,22 +42,22 @@ int main(void)
 	ostream *pfout;
 	fout.open("..\\w.txt");
 	pfout=dynamic_cast<ostream*>(&fout);
-	matrix W(4,6);
 	Ax.inverse();
 	cout<<"Ax inverse="<<endl;
 	cout<<Ax;
-	W=Ax*Ay;
+	matrix *W = new matrix(Ax * Ay);
 	cout<<"W="<<endl;
 	cout<<W;
 	*pfout<<W;
 	fout.close();
-	matrix tempTP(6,6),TP(6,10);
-	tempTP=Sy*Ky-(Sx*Kx)*W;
+    matrix *sxkx = new matrix(Sx * Kx);
+    matrix *sxkxw = new matrix(*sxkx * *W);
+    matrix *syky = new matrix(Sy * Ky);
+	matrix *tempTP = new matrix(*syky - *sxkxw);
 	cout<<tempTP;
-	tempTP.inverse();
-	TP=tempTP*S;
+	tempTP->inverse();
+    matrix *TP = new matrix(*tempTP * S);
 	fout.open("..\\tp.txt");
 	*pfout<<TP;
 	fout.close();
 }
-*/

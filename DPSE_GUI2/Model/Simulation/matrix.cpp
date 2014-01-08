@@ -5,7 +5,7 @@
 //  Created by Petro Korienev on 1/8/14.
 //  Copyright (c) 2014 Petro Korienev. All rights reserved.
 //
-/*
+
 #include "matrix.h"
 
 inline matrix::matrix(size_t n, size_t m)
@@ -358,4 +358,3 @@ istream& operator>>(istream& is,const matrix& m)
 	}
 	return is;
 }
-*/
