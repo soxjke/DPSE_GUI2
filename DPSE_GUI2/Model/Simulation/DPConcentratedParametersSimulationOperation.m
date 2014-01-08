@@ -27,10 +27,14 @@
 
 #import "DPConcentratedParametersSimulationOperation.h"
 
+#define LOG(fmt, ...) if (self.logBlock) dispatch_async(dispatch_get_main_queue(), ^(void) {self.logBlock(self, [NSString stringWithFormat:fmt, ##__VA_ARGS__]);})
+
 @interface DPConcentratedParametersSimulationOperation ()
 
 @property (nonatomic, copy) DPConcentratedParametersSimulationOperationLogBlock logBlock;
-@property (nonatomic, copy) DPConcentratedParametersSimulationOperationCompletionBlock completionBlock;
+@property (nonatomic, copy) DPConcentratedParametersSimulationOperationCompletionBlock operationCompletion;
+
+@property (nonatomic, strong) DPGraph *graph;
 
 @end
 
@@ -44,14 +48,51 @@
     if (self)
     {
         self.logBlock = logBlock;
-        self.completionBlock = completionBlock;
+        self.operationCompletion = completionBlock;
+        
+        self.graph = graph;
     }
     return self;
 }
 
 - (void)main
 {
+    [self parseGraph];
+    [self topologyAnalyze];
+    [self equationsGeneration];
+    [self equationsSolving];
+    if (self.operationCompletion)
+    {
+        dispatch_async(dispatch_get_main_queue(), ^(void)
+        {
+            self.operationCompletion(self, nil);
+        });
+    }
 
+}
+
+- (void)parseGraph
+{
+    LOG(@"\nParsing graph...\n");
+    LOG(@"\nParsed successfully...\n");
+}
+
+- (void)topologyAnalyze
+{
+    LOG(@"\nTopology analyze...\n");
+    LOG(@"\nTopology analyzed successfully...\n");
+}
+
+- (void)equationsGeneration
+{
+    LOG(@"\nEquations generation...\n");
+    LOG(@"\nEquations generated successfully...\n");
+}
+
+- (void)equationsSolving
+{
+    LOG(@"\nEquations solution...\n");
+    LOG(@"\nEquations solved successfully...\n");
 }
 
 @end

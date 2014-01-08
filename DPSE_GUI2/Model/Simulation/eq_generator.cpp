@@ -11,7 +11,7 @@
 
 using namespace std;
 
-void generate(void)
+void generate()
 {
 	matrix Ax(4,4),Ay(4,6),Sx(6,4),Sy(6,6),S(6,10),Kx(4,4),Ky(6,6);
 	ifstream fin;

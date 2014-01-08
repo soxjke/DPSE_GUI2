@@ -40,6 +40,8 @@
 
 #import "Graph.h"
 
+#import "DPConcentratedParametersSimulationOperation.h"
+
 typedef NS_ENUM(NSUInteger, DPTouchMode)
 {
     DPTouchModeCursor,
@@ -192,6 +194,21 @@ typedef NS_ENUM(NSUInteger, DPTouchMode)
     [DPBlockActionSheet actionSheetWithCompletion:^(DPBlockActionSheet *actionSheet, NSUInteger selectedOption)
     {
         NSLog(@"Selected title %@ at index %d", [actionSheet buttonTitleAtIndex:selectedOption], selectedOption);
+        if (selectedOption == 4)
+        {
+            DPConcentratedParametersSimulationOperation *op =
+            [[DPConcentratedParametersSimulationOperation alloc] initWithGraph:self.graph
+                                                                      logBlock:^(DPConcentratedParametersSimulationOperation *operation, NSString *logMessage)
+            {
+                NSLog(@"%@", logMessage);
+            }
+                                                               completionBlock:^(DPConcentratedParametersSimulationOperation *operation, NSString *resultFilePath)
+            {
+                NSLog(@"Operation completed");
+            }];
+            
+            [APP_DELEGATE.operationQueue addOperation:op];
+        }
     }
                                             title:nil
                                 cancelButtonTitle:@"Cancel"
