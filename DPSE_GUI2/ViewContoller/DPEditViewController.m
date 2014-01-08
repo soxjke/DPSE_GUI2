@@ -30,6 +30,7 @@
 
 #import "DPPropertiesPanelElement.h"
 #import "DPPropertiesPanelViewController.h"
+#import "DPSimulationViewController.h"
 
 #import "DPGraph.h"
 #import "DPGraphNet.h"
@@ -39,8 +40,7 @@
 #import "DPGraphNet+DPPropertiesPanelElement.h"
 
 #import "Graph.h"
-
-#import "DPConcentratedParametersSimulationOperation.h"
+#import "Simulation.h"
 
 typedef NS_ENUM(NSUInteger, DPTouchMode)
 {
@@ -142,7 +142,16 @@ typedef NS_ENUM(NSUInteger, DPTouchMode)
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    
+    if ([segue.identifier isEqualToString:@"showSimultationResults"])
+    {
+        Simulation *simulationObject = [[Simulation alloc] initWithEntity:APP_DELEGATE.simulationEntity insertIntoManagedObjectContext:APP_DELEGATE.managedObjectContext];
+        
+        [self.graphCoreDataObject addSimulationsObject:simulationObject];
+        [APP_DELEGATE saveContext];
+        
+        ((DPSimulationViewController*)segue.destinationViewController).simulation = simulationObject;
+        ((DPSimulationViewController*)segue.destinationViewController).graph = self.graph;
+    }
 }
 
 #pragma mark - DPDrawObjectsScrollViewDelegate
@@ -196,18 +205,7 @@ typedef NS_ENUM(NSUInteger, DPTouchMode)
         NSLog(@"Selected title %@ at index %d", [actionSheet buttonTitleAtIndex:selectedOption], selectedOption);
         if (selectedOption == 4)
         {
-            DPConcentratedParametersSimulationOperation *op =
-            [[DPConcentratedParametersSimulationOperation alloc] initWithGraph:self.graph
-                                                                      logBlock:^(DPConcentratedParametersSimulationOperation *operation, NSString *logMessage)
-            {
-                NSLog(@"%@", logMessage);
-            }
-                                                               completionBlock:^(DPConcentratedParametersSimulationOperation *operation, NSString *resultFilePath)
-            {
-                NSLog(@"Operation completed");
-            }];
-            
-            [APP_DELEGATE.operationQueue addOperation:op];
+            [self performSegueWithIdentifier:@"showSimultationResults" sender:self];            
         }
     }
                                             title:nil

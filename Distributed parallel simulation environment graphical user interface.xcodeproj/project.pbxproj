@@ -54,6 +54,7 @@
 		5B82E121187CD7E6000510E3 /* matrix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5B82E11F187CD7E5000510E3 /* matrix.cpp */; };
 		5B82E124187CD9CC000510E3 /* eq_generator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5B82E122187CD9CC000510E3 /* eq_generator.cpp */; };
 		5B82E127187CD9EA000510E3 /* eq_solver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5B82E125187CD9EA000510E3 /* eq_solver.cpp */; };
+		5B8446D5187E003600633858 /* DPSimulationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B8446D4187E003600633858 /* DPSimulationViewController.m */; };
 		5BD15B82184BE96A007F25BD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BD15B81184BE96A007F25BD /* Foundation.framework */; };
 		5BD15B84184BE96A007F25BD /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BD15B83184BE96A007F25BD /* CoreGraphics.framework */; };
 		5BD15B86184BE96A007F25BD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BD15B85184BE96A007F25BD /* UIKit.framework */; };
@@ -181,6 +182,8 @@
 		5B82E123187CD9CC000510E3 /* eq_generator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = eq_generator.h; sourceTree = "<group>"; };
 		5B82E125187CD9EA000510E3 /* eq_solver.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = eq_solver.cpp; sourceTree = "<group>"; };
 		5B82E126187CD9EA000510E3 /* eq_solver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = eq_solver.h; sourceTree = "<group>"; };
+		5B8446D3187E003600633858 /* DPSimulationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPSimulationViewController.h; sourceTree = "<group>"; };
+		5B8446D4187E003600633858 /* DPSimulationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPSimulationViewController.m; sourceTree = "<group>"; };
 		5BD15B7E184BE96A007F25BD /* DPSE_GUI2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DPSE_GUI2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BD15B81184BE96A007F25BD /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		5BD15B83184BE96A007F25BD /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -267,6 +270,8 @@
 				5B429B771870D27300307729 /* DPEditViewController.m */,
 				5B74A0D81875FBB700D35D81 /* DPPropertiesPanelViewController.h */,
 				5B74A0D91875FBB700D35D81 /* DPPropertiesPanelViewController.m */,
+				5B8446D3187E003600633858 /* DPSimulationViewController.h */,
+				5B8446D4187E003600633858 /* DPSimulationViewController.m */,
 			);
 			path = ViewContoller;
 			sourceTree = "<group>";
@@ -662,6 +667,7 @@
 				5B1C89C61854D1EF00DB5CF1 /* DPSettingsDetailViewController.m in Sources */,
 				5B683366185389DC00CAD141 /* Graph.m in Sources */,
 				5B82E11E187CD49A000510E3 /* DPConcentratedParametersSimulationOperation.mm in Sources */,
+				5B8446D5187E003600633858 /* DPSimulationViewController.m in Sources */,
 				5B74A0D41875D82800D35D81 /* DPTransparentContainerView.m in Sources */,
 				5B82E0F51878F982000510E3 /* DPSettingsDictionary.m in Sources */,
 				5B82E117187C9540000510E3 /* DPBlockActionSheet.m in Sources */,

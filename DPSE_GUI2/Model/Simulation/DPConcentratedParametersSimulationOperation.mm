@@ -97,7 +97,7 @@
     {
         dispatch_async(dispatch_get_main_queue(), ^(void)
         {
-            self.operationCompletion(self, nil);
+            self.operationCompletion(self, self.workingDirectoryURL.relativePath);
         });
     }
 
@@ -269,6 +269,13 @@
                  rows:m - n + 1
                  cols:1
            toFileName:[[self.workingDirectoryURL.relativePath stringByAppendingPathComponent:@"y0"] cStringUsingEncoding:NSASCIIStringEncoding]];
+    
+    NSArray *netNames =
+    [self.minimalSpanningTree valueForKeyPath:kNameLabelKey];
+    
+    netNames = [netNames arrayByAddingObjectsFromArray:[self.antiTree valueForKeyPath:kNameLabelKey]];
+    
+    [netNames writeToURL:[self.workingDirectoryURL URLByAppendingPathComponent:@"netNames"]  atomically:YES];
     
     free(self.incidenceMatrixTree);
     free(self.meshMatrixTree);

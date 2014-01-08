@@ -1,5 +1,5 @@
 //
-//  DPConcentratedParametersSimulationOperation.h
+//  DPSimulationViewController.h
 //  Distributed parallel simulation environment graphical user interface
 //
 //  Created by Petro Korienev on 1/8/14.
@@ -24,21 +24,14 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
-@class DPConcentratedParametersSimulationOperation;
-@class DPGraph;
 @class Simulation;
+@class DPGraph;
 
-typedef void(^DPConcentratedParametersSimulationOperationLogBlock)(DPConcentratedParametersSimulationOperation *operation, NSString *logMessage);
-typedef void(^DPConcentratedParametersSimulationOperationCompletionBlock)(DPConcentratedParametersSimulationOperation *operation, NSString *resultFilePath);
+@interface DPSimulationViewController : UIViewController
 
-@interface DPConcentratedParametersSimulationOperation : NSOperation
-
-- (instancetype)initWithGraph:(DPGraph*)graph
-                     logBlock:(DPConcentratedParametersSimulationOperationLogBlock)logBlock
-              completionBlock:(DPConcentratedParametersSimulationOperationCompletionBlock)completionBlock;
-
-@property (nonatomic, strong) Simulation *simulation;
+@property (nonatomic, strong) Simulation    *simulation;
+@property (nonatomic, strong) DPGraph       *graph;
 
 @end
