@@ -289,6 +289,13 @@
     free(self.Hmatrix);
     free(self.intitalFlowMatrix);
     
+    [@[@"ax", @"ay", @"sx", @"sy"]
+     enumerateObjectsUsingBlock:^(NSString *filename, NSUInteger idx, BOOL *stop)
+    {
+        NSString *str = [NSString stringWithContentsOfURL:[self.workingDirectoryURL URLByAppendingPathComponent:filename] encoding:NSASCIIStringEncoding error:nil];
+        LOG(@"\n%@:\n%@\n", filename, str);
+    }];
+    
     LOG(@"\nTopology analyzed successfully...\n");
 }
 
@@ -301,6 +308,13 @@
     
     eq_generate(n, m, [self.workingDirectoryURL.relativePath cStringUsingEncoding:NSASCIIStringEncoding]);
     
+    [@[@"kx", @"ky", @"r", @"h", @"y0", @"w", @"tp"]
+     enumerateObjectsUsingBlock:^(NSString *filename, NSUInteger idx, BOOL *stop)
+    {
+        NSString *str = [NSString stringWithContentsOfURL:[self.workingDirectoryURL URLByAppendingPathComponent:filename] encoding:NSASCIIStringEncoding error:nil];
+        LOG(@"\n%@:\n%@\n", filename, str);
+    }];
+    
     LOG(@"\nEquations generated successfully...\n");
 }
 
@@ -312,6 +326,9 @@
     NSUInteger m = self.graph.nets.count;
     
     eq_solve(n, m, [self.workingDirectoryURL.relativePath cStringUsingEncoding:NSASCIIStringEncoding]);
+    
+    NSString *str = [NSString stringWithContentsOfURL:[self.workingDirectoryURL URLByAppendingPathComponent:@"q"] encoding:NSASCIIStringEncoding error:nil];
+    LOG(@"\nResult:\n%@\n", str);
     
     LOG(@"\nEquations solved successfully...\n");
 }
