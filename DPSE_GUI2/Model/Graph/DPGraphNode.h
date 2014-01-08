@@ -29,6 +29,9 @@
 
 @class DPGraphNet;
 
+extern NSString * const kCenterX;
+extern NSString * const kCenterY;
+
 @interface DPGraphNode : DPGraphItem
 
 + (instancetype)nodeWithLocation:(CGPoint)nodeLocation;

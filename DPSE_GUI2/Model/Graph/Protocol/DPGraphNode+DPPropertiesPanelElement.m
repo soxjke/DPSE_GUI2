@@ -35,14 +35,14 @@
 
 - (NSString*)captionForPropertyGroup:(NSUInteger)group
 {
-    if (group == 0) return @"Topology";
-    else if (group == 1) return @"Physical attributes";
-    return 0;
+    if (group == 0) return @"General";
+    else if (group == 1) return @"Topology";
+    return nil;
 }
 
 - (NSUInteger)numberOfPropertiesInGroup:(NSUInteger)group
 {
-    if (group == 0) return 3;
+    if (group == 0) return 1;
     else if (group == 1) return 2;
     return 0;
 }
@@ -52,8 +52,6 @@
     if (indexPath.section == 0)
     {
         if (indexPath.row == 0) return DPPropertiesPanelFieldTypeTextfield;
-        else if (indexPath.row == 1) return DPPropertiesPanelFieldTypeTextfield;
-        else if (indexPath.row == 2) return DPPropertiesPanelFieldTypeSwitch;
     }
     else if (indexPath.section == 1)
     {
@@ -67,14 +65,12 @@
 {
     if (indexPath.section == 0)
     {
-        if (indexPath.row == 0) return @"x:";
-        else if (indexPath.row == 1) return @"y:";
-        else if (indexPath.row == 2) return @"Tied to topology";
+        if (indexPath.row == 0) return @"Name label";
     }
     else if (indexPath.section == 1)
     {
-        if (indexPath.row == 0) return @"ololo";
-        else if (indexPath.row == 1) return @"ya voditel nlo";
+        if (indexPath.row == 0) return @"X";
+        else if (indexPath.row == 1) return @"Y";
     }
     return nil;
 }
@@ -83,13 +79,28 @@
 {
     if (indexPath.section == 0)
     {
-        
+        if (indexPath.row == 0) return kNameLabelKey;
     }
     else if (indexPath.section == 1)
     {
-        
+        if (indexPath.row == 0) return kCenterX;
+        else if (indexPath.row == 1) return kCenterY;
     }
     return nil;
+}
+
+- (DPPropertiesPanelFieldValueType)panelFieldValueTypeAtIndexPath:(NSIndexPath*)indexPath
+{
+    if (indexPath.section == 0)
+    {
+        if (indexPath.row == 0) return DPPropertiesPanelFieldValueTypeString;
+    }
+    else if (indexPath.section == 1)
+    {
+        if (indexPath.row == 0) return DPPropertiesPanelFieldValueTypeFloat;
+        else if (indexPath.row == 1) return DPPropertiesPanelFieldValueTypeFloat;
+    }
+    return 0;
 }
 
 @end

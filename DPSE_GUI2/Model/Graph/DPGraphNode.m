@@ -29,11 +29,17 @@
 
 #import "DPAttributesManager.h"
 
+NSString * const kCenterX = @"centerX";
+NSString * const kCenterY = @"centerY";
+
 @interface DPGraphNode ()
 {
     CGPoint         _location;
     NSMutableArray  *_nets;
 }
+
+@property (nonatomic) NSNumber *centerX;
+@property (nonatomic) NSNumber *centerY;
 
 @end
 
@@ -75,6 +81,30 @@
 - (NSArray*)knownKeyPaths
 {
     return self.isConcentratedParameters ? ATTRIBUTES_MANAGER.concentratedParametersNodeAttributes : ATTRIBUTES_MANAGER.distributedParametersNodeAttributes;
+}
+
+- (NSNumber*)centerX
+{
+    return @(_location.x);
+}
+
+- (NSNumber*)centerY
+{
+    return @(_location.y);
+}
+
+- (void)setCenterX:(NSNumber *)centerX
+{
+    [self willChangeValueForKey:kCenterX];
+    _location.x = centerX.floatValue;
+    [self didChangeValueForKey:kCenterX];
+}
+
+- (void)setCenterY:(NSNumber *)centerY
+{
+    [self willChangeValueForKey:kCenterY];
+    _location.y = centerY.floatValue;
+    [self didChangeValueForKey:kCenterY];
 }
 
 @end

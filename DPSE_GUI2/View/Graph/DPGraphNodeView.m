@@ -30,9 +30,17 @@
 
 @implementation DPGraphNodeView
 
+@synthesize node = _node;
+
 + (instancetype)nodeAtPoint:(CGPoint)center
 {
     return [[self alloc] initAtPoint:center];
+}
+
+- (void)dealloc
+{
+    [_node removeObserver:self forKeyPath:kCenterX];
+    [_node removeObserver:self forKeyPath:kCenterY];
 }
 
 - (instancetype)initAtPoint:(CGPoint)center
@@ -55,6 +63,33 @@
         self.bounds                 = CGRectMake(0, 0, borderWidth + innerRadius, borderWidth + innerRadius);
     }
     return self;
+}
+
+- (void)setNode:(DPGraphNode *)node
+{
+    if (node)
+    {
+        [node addObserver:self forKeyPath:kCenterX options:NSKeyValueObservingOptionNew context:nil];
+        [node addObserver:self forKeyPath:kCenterY options:NSKeyValueObservingOptionNew context:nil];
+    }
+    _node = node;
+}
+
+- (DPGraphNode*)node
+{
+    return _node;
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+    if ([keyPath isEqualToString:kCenterX])
+    {
+        self.center = CGPointMake([change[NSKeyValueChangeNewKey] floatValue], self.center.y);
+    }
+    else if ([keyPath isEqualToString:kCenterY])
+    {
+        self.center = CGPointMake(self.center.x, [change[NSKeyValueChangeNewKey] floatValue]);
+    }
 }
 
 @end
