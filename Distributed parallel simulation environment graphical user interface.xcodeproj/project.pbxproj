@@ -50,7 +50,7 @@
 		5B82E114187C6142000510E3 /* DPGraphItem+DPPropertiesPanelElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B82E113187C6142000510E3 /* DPGraphItem+DPPropertiesPanelElement.m */; };
 		5B82E117187C9540000510E3 /* DPBlockActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B82E116187C9540000510E3 /* DPBlockActionSheet.m */; };
 		5B82E11A187CA88A000510E3 /* DPPropertiesPanelLabelCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B82E119187CA88A000510E3 /* DPPropertiesPanelLabelCell.m */; };
-		5B82E11E187CD49A000510E3 /* DPConcentratedParametersSimulationOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B82E11D187CD49A000510E3 /* DPConcentratedParametersSimulationOperation.m */; };
+		5B82E11E187CD49A000510E3 /* DPConcentratedParametersSimulationOperation.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5B82E11D187CD49A000510E3 /* DPConcentratedParametersSimulationOperation.mm */; };
 		5B82E121187CD7E6000510E3 /* matrix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5B82E11F187CD7E5000510E3 /* matrix.cpp */; };
 		5B82E124187CD9CC000510E3 /* eq_generator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5B82E122187CD9CC000510E3 /* eq_generator.cpp */; };
 		5B82E127187CD9EA000510E3 /* eq_solver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5B82E125187CD9EA000510E3 /* eq_solver.cpp */; };
@@ -174,7 +174,7 @@
 		5B82E118187CA88A000510E3 /* DPPropertiesPanelLabelCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPPropertiesPanelLabelCell.h; sourceTree = "<group>"; };
 		5B82E119187CA88A000510E3 /* DPPropertiesPanelLabelCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPPropertiesPanelLabelCell.m; sourceTree = "<group>"; };
 		5B82E11C187CD49A000510E3 /* DPConcentratedParametersSimulationOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPConcentratedParametersSimulationOperation.h; sourceTree = "<group>"; };
-		5B82E11D187CD49A000510E3 /* DPConcentratedParametersSimulationOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPConcentratedParametersSimulationOperation.m; sourceTree = "<group>"; };
+		5B82E11D187CD49A000510E3 /* DPConcentratedParametersSimulationOperation.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = DPConcentratedParametersSimulationOperation.mm; sourceTree = "<group>"; };
 		5B82E11F187CD7E5000510E3 /* matrix.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = matrix.cpp; sourceTree = "<group>"; };
 		5B82E120187CD7E6000510E3 /* matrix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = matrix.h; sourceTree = "<group>"; };
 		5B82E122187CD9CC000510E3 /* eq_generator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = eq_generator.cpp; sourceTree = "<group>"; };
@@ -397,7 +397,7 @@
 			isa = PBXGroup;
 			children = (
 				5B82E11C187CD49A000510E3 /* DPConcentratedParametersSimulationOperation.h */,
-				5B82E11D187CD49A000510E3 /* DPConcentratedParametersSimulationOperation.m */,
+				5B82E11D187CD49A000510E3 /* DPConcentratedParametersSimulationOperation.mm */,
 				5B82E11F187CD7E5000510E3 /* matrix.cpp */,
 				5B82E120187CD7E6000510E3 /* matrix.h */,
 				5B82E122187CD9CC000510E3 /* eq_generator.cpp */,
@@ -661,7 +661,7 @@
 				5B1C89C018546D5C00DB5CF1 /* DPSettingsMasterViewController.m in Sources */,
 				5B1C89C61854D1EF00DB5CF1 /* DPSettingsDetailViewController.m in Sources */,
 				5B683366185389DC00CAD141 /* Graph.m in Sources */,
-				5B82E11E187CD49A000510E3 /* DPConcentratedParametersSimulationOperation.m in Sources */,
+				5B82E11E187CD49A000510E3 /* DPConcentratedParametersSimulationOperation.mm in Sources */,
 				5B74A0D41875D82800D35D81 /* DPTransparentContainerView.m in Sources */,
 				5B82E0F51878F982000510E3 /* DPSettingsDictionary.m in Sources */,
 				5B82E117187C9540000510E3 /* DPBlockActionSheet.m in Sources */,

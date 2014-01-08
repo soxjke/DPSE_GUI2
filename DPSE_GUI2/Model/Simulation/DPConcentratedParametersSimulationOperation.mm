@@ -31,6 +31,8 @@
 #import "DPGraphNet.h"
 #import "DPGraphNode.h"
 
+#import "eq_generator.h"
+
 #define LOG(fmt, ...) if (self.logBlock) dispatch_async(dispatch_get_main_queue(), ^(void) {self.logBlock(self, [NSString stringWithFormat:fmt, ##__VA_ARGS__]);})
 
 @interface DPConcentratedParametersSimulationOperation ()
@@ -105,8 +107,8 @@
     NSUInteger n = self.graph.nodes.count;
     NSUInteger m = self.graph.nets.count;
     
-    self.incidenceMatrixTree        = malloc((n - 1) * (n - 1) * sizeof(CGFloat));
-    self.incidenceMatrixAntitree    = malloc((n - 1) * (m - n + 1) * sizeof(CGFloat));
+    self.incidenceMatrixTree        = (CGFloat*)malloc((n - 1) * (n - 1) * sizeof(CGFloat));
+    self.incidenceMatrixAntitree    = (CGFloat*)malloc((n - 1) * (m - n + 1) * sizeof(CGFloat));
     
     __block NSUInteger currentNetIdx;
     __block DPGraphNet *net;
@@ -137,8 +139,8 @@
         [self.graph.nodes enumerateObjectsUsingBlock:nodeEnumerator];
     }];
     
-    self.meshMatrixTree     = malloc((m - n + 1) * (n - 1) * sizeof(CGFloat));
-    self.meshMatrixAntitree = malloc((m - n + 1) * (m - n + 1) * sizeof(CGFloat));
+    self.meshMatrixTree     = (CGFloat*)malloc((m - n + 1) * (n - 1) * sizeof(CGFloat));
+    self.meshMatrixAntitree = (CGFloat*)malloc((m - n + 1) * (m - n + 1) * sizeof(CGFloat));
    
     NSMutableArray *meshNetsPaths = [NSMutableArray arrayWithCapacity:n - m + 1];
     NSMutableArray *meshNodesPaths = [NSMutableArray arrayWithCapacity:n - m + 1];
@@ -205,6 +207,12 @@
 - (void)equationsGeneration
 {
     LOG(@"\nEquations generation...\n");
+    
+    NSUInteger n = self.graph.nodes.count;
+    NSUInteger m = self.graph.nets.count;
+    
+    eq_generate(n, m, [self.workingDirectoryURL.relativePath cStringUsingEncoding:NSASCIIStringEncoding]);
+    
     LOG(@"\nEquations generated successfully...\n");
 }
 
