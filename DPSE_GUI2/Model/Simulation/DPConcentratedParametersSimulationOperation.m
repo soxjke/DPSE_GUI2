@@ -43,8 +43,12 @@
 @property (nonatomic, strong) NSMutableArray *minimalSpanningTree;
 @property (nonatomic, strong) NSMutableArray *antiTree;
 
-@property (nonatomic) CGFloat *incidenceMatrix;
-@property (nonatomic) CGFloat *meshMatrix;
+@property (nonatomic) CGFloat *incidenceMatrixTree;
+@property (nonatomic) CGFloat *meshMatrixTree;
+@property (nonatomic) CGFloat *incidenceMatrixAntitree;
+@property (nonatomic) CGFloat *meshMatrixAntitree;
+
+@property (nonatomic) NSURL *workingDirectoryURL;
 
 @end
 
@@ -67,10 +71,18 @@
 
 - (void)main
 {
-//    [self parseGraph];
-    [self topologyAnalyze];
-    [self equationsGeneration];
-    [self equationsSolving];
+    NSError *error;
+    
+    self.workingDirectoryURL = [APP_DELEGATE.applicationDocumentsDirectory URLByAppendingPathComponent:[[NSUUID UUID] UUIDString]];
+    [[NSFileManager defaultManager] createDirectoryAtURL:self.workingDirectoryURL withIntermediateDirectories:NO attributes:nil error:&error];
+    
+    if (!error)
+    {
+        [self topologyAnalyze];
+        [self equationsGeneration];
+        [self equationsSolving];
+    }
+    
     if (self.operationCompletion)
     {
         dispatch_async(dispatch_get_main_queue(), ^(void)
@@ -79,12 +91,6 @@
         });
     }
 
-}
-
-- (void)parseGraph
-{
-    LOG(@"\nParsing graph...\n");
-    LOG(@"\nParsed successfully...\n");
 }
 
 - (void)topologyAnalyze
@@ -97,39 +103,48 @@
     [self.antiTree removeObjectsInArray:self.minimalSpanningTree];
     
     NSUInteger n = self.graph.nodes.count;
-    NSUInteger m = self.graph.nodes.count;
+    NSUInteger m = self.graph.nets.count;
     
-    self.incidenceMatrix = malloc((n - 1) * m * sizeof(CGFloat));
+    self.incidenceMatrixTree        = malloc((n - 1) * (n - 1) * sizeof(CGFloat));
+    self.incidenceMatrixAntitree    = malloc((n - 1) * (m - n + 1) * sizeof(CGFloat));
     
     __block NSUInteger currentNetIdx;
     __block DPGraphNet *net;
+    __block CGFloat *incidenceMatrix;
+    __block NSUInteger currentMatrixCols;
     
     void(^nodeEnumerator)(DPGraphNode *node, NSUInteger nodeIdx, BOOL *stop) = ^(DPGraphNode *node, NSUInteger nodeIdx, BOOL *stop)
     {
         if (nodeIdx == n - 1) return;
-        self.incidenceMatrix[m * nodeIdx + currentNetIdx] = [net.nodes.firstObject isEqual:node] ? -1 : ([net.nodes.lastObject isEqual:node] ? 1 : 0);
+        incidenceMatrix[currentMatrixCols * nodeIdx + currentNetIdx] = [net.nodes.firstObject isEqual:node] ? -1 : ([net.nodes.lastObject isEqual:node] ? 1 : 0);
     };
 
     [self.minimalSpanningTree enumerateObjectsUsingBlock:^(DPGraphNet *treeNet, NSUInteger netIdx, BOOL *stop)
     {
         currentNetIdx = netIdx;
         net = treeNet;
+        incidenceMatrix = self.incidenceMatrixTree;
+        currentMatrixCols = n - 1;
         [self.graph.nodes enumerateObjectsUsingBlock:nodeEnumerator];
     }];
     
     [self.antiTree enumerateObjectsUsingBlock:^(DPGraphNet *treeNet, NSUInteger netIdx, BOOL *stop)
     {
-        currentNetIdx = netIdx + n - 1;
+        currentNetIdx = netIdx;
         net = treeNet;
+        incidenceMatrix = self.incidenceMatrixAntitree;
+        currentMatrixCols = m - n + 1;
         [self.graph.nodes enumerateObjectsUsingBlock:nodeEnumerator];
     }];
     
-    self.meshMatrix = malloc((m - n + 1) * m * sizeof(CGFloat));
+    self.meshMatrixTree     = malloc((m - n + 1) * (n - 1) * sizeof(CGFloat));
+    self.meshMatrixAntitree = malloc((m - n + 1) * (m - n + 1) * sizeof(CGFloat));
    
+    NSMutableArray *meshNetsPaths = [NSMutableArray arrayWithCapacity:n - m + 1];
+    NSMutableArray *meshNodesPaths = [NSMutableArray arrayWithCapacity:n - m + 1];
+    
     [self.antiTree enumerateObjectsUsingBlock:^(DPGraphNet *antitreeNet, NSUInteger meshIdx, BOOL *stop)
     {
-//        self.meshMatrix[meshIdx * m + meshIdx] = 1;
-        
         NSMutableArray *meshNodes   = [NSMutableArray new];
         NSMutableArray *meshNets    = [NSMutableArray new];
         
@@ -138,12 +153,51 @@
         
         BOOL __unused foundPath = [self continuePathToNode:antitreeNet.nodes.firstObject withMeshNodes:meshNodes meshNets:meshNets];
         
-        NSLog(@"found path %@", meshNets);
+        [meshNetsPaths  addObject:meshNets];
+        [meshNodesPaths addObject:meshNodes];
         
+        LOG(@"\nfound mesh path %@\n", meshNets);
     }];
     
-    free(self.incidenceMatrix);
-    free(self.meshMatrix);
+    __block CGFloat *meshMatrix;
+    
+    void(^pathEnumerator)(DPGraphNet *node, NSUInteger netIdx, BOOL *stop) = ^(DPGraphNet *net, NSUInteger netIdx, BOOL *stop)
+    {
+        [meshNetsPaths enumerateObjectsUsingBlock:^(NSArray *meshNets, NSUInteger meshIdx, BOOL *stop)
+        {
+            meshMatrix[meshIdx * currentMatrixCols + netIdx] = [meshNets indexOfObject:net] != NSNotFound ? ([meshNodesPaths[meshIdx][[meshNets indexOfObject:net]] isEqual:net.nodes.firstObject] ? 1 : -1) : 0;
+        }];
+    };
+    
+    meshMatrix = self.meshMatrixTree;
+    currentMatrixCols = n - 1;
+    [self.minimalSpanningTree enumerateObjectsUsingBlock:pathEnumerator];
+    
+    meshMatrix = self.meshMatrixAntitree;
+    currentMatrixCols = m - n + 1;
+    [self.antiTree enumerateObjectsUsingBlock:pathEnumerator];
+    
+    [self writeMatrix:self.incidenceMatrixTree
+                 rows:n - 1
+                 cols:n - 1
+           toFileName:[[self.workingDirectoryURL.relativePath stringByAppendingPathComponent:@"ax"] cStringUsingEncoding:NSASCIIStringEncoding]];
+    [self writeMatrix:self.incidenceMatrixAntitree
+                 rows:n - 1
+                 cols:m - n + 1
+           toFileName:[[self.workingDirectoryURL.relativePath stringByAppendingPathComponent:@"ay"] cStringUsingEncoding:NSASCIIStringEncoding]];
+    [self writeMatrix:self.meshMatrixTree
+                 rows:m - n + 1
+                 cols:n - 1
+           toFileName:[[self.workingDirectoryURL.relativePath stringByAppendingPathComponent:@"sx"] cStringUsingEncoding:NSASCIIStringEncoding]];
+    [self writeMatrix:self.meshMatrixAntitree
+                 rows:m - n + 1
+                 cols:m - n + 1
+           toFileName:[[self.workingDirectoryURL.relativePath stringByAppendingPathComponent:@"sy"] cStringUsingEncoding:NSASCIIStringEncoding]];
+    
+    free(self.incidenceMatrixTree);
+    free(self.meshMatrixTree);
+    free(self.incidenceMatrixAntitree);
+    free(self.meshMatrixAntitree);
     
     LOG(@"\nTopology analyzed successfully...\n");
 }
@@ -168,7 +222,7 @@
 
 - (void)primsAlgorithm
 {
-    LOG(@"\nRunning prihm's alghorithm to get minimum spanning tree...\n");
+    LOG(@"\nRunning prim's alghorithm to get minimum spanning tree...\n");
     
     NSMutableArray *minimalSpanningTreeNodes = [NSMutableArray arrayWithCapacity:self.graph.nodes.count];
     
@@ -195,8 +249,7 @@
         }];
     }
     
-    NSLog(@"Minimal spanning tree nodes:\n%@", minimalSpanningTreeNodes);
-    NSLog(@"Minimal spanning tree:\n%@", self.minimalSpanningTree);
+    LOG(@"Minimal spanning tree:\n%@", self.minimalSpanningTree);
     
     LOG(@"\nMinimum spanning tree found successfully...\n");
 }
@@ -228,6 +281,23 @@
     }];
     
     return retVal;
+}
+
+- (void)writeMatrix:(CGFloat*)matrix rows:(NSUInteger)rows cols:(NSUInteger)cols toFileName:(const char*)name
+{
+    FILE *f = fopen(name, "wt");
+    if (f)
+    {
+        for(int i = 0; i < rows; i++)
+        {
+            for(int j = 0; j < cols; j++)
+            {
+                fprintf(f, "%s ", [[@(matrix[i * cols + j]) stringValue] cStringUsingEncoding:NSASCIIStringEncoding]);
+            }
+            fprintf(f, "\n");
+        }
+        fclose(f);
+    }
 }
 
 @end

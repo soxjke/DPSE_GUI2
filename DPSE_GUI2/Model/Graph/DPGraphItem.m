@@ -98,7 +98,7 @@ NSString * const kNameLabelKey = @"nameLabel";
 
 - (NSString*)description
 {
-    return [[super description] stringByAppendingFormat:@", Name:%@", self.itemAttributes[kNameLabelKey]];
+    return [NSString stringWithFormat:@"%@", self.itemAttributes[kNameLabelKey]];
 }
 
 @end
