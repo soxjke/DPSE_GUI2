@@ -46,25 +46,20 @@ void eq_generate(int n, int m, const char *workingDir)
 	Ax.inverse();
 	cout<<"Ax inverse="<<endl;
 	cout<<Ax;
-	matrix *W = new matrix(Ax * Ay);
+	matrix W = Ax * Ay;
 	cout<<"W="<<endl;
-	cout<<*W;
-	*pfout<<*W;
+	cout<<W;
+	*pfout<<W;
 	fout.close();
-    matrix *sxkx = new matrix(Sx * Kx);
-    matrix *sxkxw = new matrix(*sxkx * *W);
-    matrix *syky = new matrix(Sy * Ky);
-	matrix *tempTP = new matrix(*syky - *sxkxw);
-	cout<<*tempTP;
-	tempTP->inverse();
-    matrix *TP = new matrix(*tempTP * S);
+  
+    matrix sxkxw = ((Sx * Kx) * W);
+    matrix syky = (Sy * Ky);
+    matrix tempTP = syky - sxkxw;
+    
+	cout<<tempTP;
+	tempTP.inverse();
+    matrix TP = tempTP * S;
 	fout.open("tp");
-	*pfout<<*TP;
+	*pfout<<TP;
 	fout.close();
-    delete sxkx;
-    delete sxkxw;
-    delete syky;
-    delete tempTP;
-    delete TP;
-    delete W;
 }

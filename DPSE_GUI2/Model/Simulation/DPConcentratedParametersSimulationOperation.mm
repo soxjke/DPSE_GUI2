@@ -31,7 +31,8 @@
 #import "DPGraphNet.h"
 #import "DPGraphNode.h"
 
-#import "eq_generator.h"
+#include "eq_generator.h"
+#include "eq_solver.h"
 
 #define LOG(fmt, ...) if (self.logBlock) dispatch_async(dispatch_get_main_queue(), ^(void) {self.logBlock(self, [NSString stringWithFormat:fmt, ##__VA_ARGS__]);})
 
@@ -49,6 +50,13 @@
 @property (nonatomic) CGFloat *meshMatrixTree;
 @property (nonatomic) CGFloat *incidenceMatrixAntitree;
 @property (nonatomic) CGFloat *meshMatrixAntitree;
+@property (nonatomic) CGFloat *meshMatrix;
+@property (nonatomic) CGFloat *Rmatrix;
+@property (nonatomic) CGFloat *Kmatrix;
+@property (nonatomic) CGFloat *KXMatrix;
+@property (nonatomic) CGFloat *KYMatrix;
+@property (nonatomic) CGFloat *Hmatrix;
+@property (nonatomic) CGFloat *intitalFlowMatrix;
 
 @property (nonatomic) NSURL *workingDirectoryURL;
 
@@ -141,6 +149,8 @@
     
     self.meshMatrixTree     = (CGFloat*)malloc((m - n + 1) * (n - 1) * sizeof(CGFloat));
     self.meshMatrixAntitree = (CGFloat*)malloc((m - n + 1) * (m - n + 1) * sizeof(CGFloat));
+    
+    self.meshMatrix         = (CGFloat*)malloc((m - n + 1) * m * sizeof(CGFloat));
    
     NSMutableArray *meshNetsPaths = [NSMutableArray arrayWithCapacity:n - m + 1];
     NSMutableArray *meshNodesPaths = [NSMutableArray arrayWithCapacity:n - m + 1];
@@ -167,16 +177,27 @@
     {
         [meshNetsPaths enumerateObjectsUsingBlock:^(NSArray *meshNets, NSUInteger meshIdx, BOOL *stop)
         {
-            meshMatrix[meshIdx * currentMatrixCols + netIdx] = [meshNets indexOfObject:net] != NSNotFound ? ([meshNodesPaths[meshIdx][[meshNets indexOfObject:net]] isEqual:net.nodes.firstObject] ? 1 : -1) : 0;
+            meshMatrix[meshIdx * currentMatrixCols + currentNetIdx + netIdx] = [meshNets indexOfObject:net] != NSNotFound ? ([meshNodesPaths[meshIdx][[meshNets indexOfObject:net]] isEqual:net.nodes.firstObject] ? 1 : -1) : 0;
         }];
     };
     
     meshMatrix = self.meshMatrixTree;
     currentMatrixCols = n - 1;
+    currentNetIdx = 0;
     [self.minimalSpanningTree enumerateObjectsUsingBlock:pathEnumerator];
     
     meshMatrix = self.meshMatrixAntitree;
     currentMatrixCols = m - n + 1;
+    currentNetIdx = 0;
+    [self.antiTree enumerateObjectsUsingBlock:pathEnumerator];
+    
+    meshMatrix = self.meshMatrix;
+    currentMatrixCols = m;
+    currentNetIdx = 0;
+    [self.minimalSpanningTree enumerateObjectsUsingBlock:pathEnumerator];
+    
+    currentMatrixCols = m;
+    currentNetIdx = n - 1;
     [self.antiTree enumerateObjectsUsingBlock:pathEnumerator];
     
     [self writeMatrix:self.incidenceMatrixTree
@@ -195,11 +216,71 @@
                  rows:m - n + 1
                  cols:m - n + 1
            toFileName:[[self.workingDirectoryURL.relativePath stringByAppendingPathComponent:@"sy"] cStringUsingEncoding:NSASCIIStringEncoding]];
+    [self writeMatrix:self.meshMatrix
+                 rows:m - n + 1
+                 cols:m
+           toFileName:[[self.workingDirectoryURL.relativePath stringByAppendingPathComponent:@"s"] cStringUsingEncoding:NSASCIIStringEncoding]];
+    
+    self.Rmatrix = (CGFloat*)calloc(sizeof(CGFloat), m * m);
+    self.Kmatrix = (CGFloat*)calloc(sizeof(CGFloat), m * m);
+    self.KXMatrix = (CGFloat*)calloc(sizeof(CGFloat), m * m);
+    self.KYMatrix = (CGFloat*)calloc(sizeof(CGFloat), m * m);
+    self.Hmatrix = (CGFloat*)calloc(sizeof(CGFloat), m);
+    self.intitalFlowMatrix = (CGFloat*)calloc(sizeof(CGFloat), m - n + 1);
+    
+    [self.minimalSpanningTree enumerateObjectsUsingBlock:^(DPGraphNet *net, NSUInteger idx, BOOL *stop)
+    {
+        self.Rmatrix[idx * m + idx] = [[net valueForKey:kTotalResistanceKey] floatValue];
+        self.KXMatrix[idx * (n - 1) + idx] = (self.Kmatrix[idx * m + idx] = [[net valueForKey:kFlowInertionQuotientKey] floatValue]);
+        self.Hmatrix[idx]           = [[net valueForKey:kDeltaPressureKey] floatValue];
+    }];
+    
+    [self.antiTree enumerateObjectsUsingBlock:^(DPGraphNet *net, NSUInteger idx, BOOL *stop)
+    {
+        self.intitalFlowMatrix[idx] = [[net valueForKey:kInitialFlowKey] floatValue];
+        self.KYMatrix[idx * (n - m + 1) + idx] = [[net valueForKey:kFlowInertionQuotientKey] floatValue];
+        idx += n - 1;
+        self.Rmatrix[idx * m + idx] = [[net valueForKey:kTotalResistanceKey] floatValue];
+        self.Kmatrix[idx * m + idx] = [[net valueForKey:kFlowInertionQuotientKey] floatValue];
+        self.Hmatrix[idx]           = [[net valueForKey:kDeltaPressureKey] floatValue];
+    }];
+    
+    [self writeMatrix:self.Rmatrix
+                 rows:m
+                 cols:m
+           toFileName:[[self.workingDirectoryURL.relativePath stringByAppendingPathComponent:@"r"] cStringUsingEncoding:NSASCIIStringEncoding]];
+    [self writeMatrix:self.Kmatrix
+                 rows:m
+                 cols:m
+           toFileName:[[self.workingDirectoryURL.relativePath stringByAppendingPathComponent:@"k"] cStringUsingEncoding:NSASCIIStringEncoding]];
+    [self writeMatrix:self.KXMatrix
+                 rows:n - 1
+                 cols:n - 1
+           toFileName:[[self.workingDirectoryURL.relativePath stringByAppendingPathComponent:@"kx"] cStringUsingEncoding:NSASCIIStringEncoding]];
+    [self writeMatrix:self.KYMatrix
+                 rows:m - n + 1
+                 cols:m - n + 1
+           toFileName:[[self.workingDirectoryURL.relativePath stringByAppendingPathComponent:@"ky"] cStringUsingEncoding:NSASCIIStringEncoding]];
+    [self writeMatrix:self.Hmatrix
+                 rows:m
+                 cols:1
+           toFileName:[[self.workingDirectoryURL.relativePath stringByAppendingPathComponent:@"h"] cStringUsingEncoding:NSASCIIStringEncoding]];
+    [self writeMatrix:self.intitalFlowMatrix
+                 rows:m - n + 1
+                 cols:1
+           toFileName:[[self.workingDirectoryURL.relativePath stringByAppendingPathComponent:@"y0"] cStringUsingEncoding:NSASCIIStringEncoding]];
     
     free(self.incidenceMatrixTree);
     free(self.meshMatrixTree);
     free(self.incidenceMatrixAntitree);
     free(self.meshMatrixAntitree);
+    free(self.meshMatrix);
+    free(self.Rmatrix);
+    free(self.Kmatrix);
+    free(self.KXMatrix);
+    free(self.KYMatrix);
+    free(self.Hmatrix);
+    free(self.intitalFlowMatrix);
     
     LOG(@"\nTopology analyzed successfully...\n");
 }
@@ -219,6 +300,12 @@
 - (void)equationsSolving
 {
     LOG(@"\nEquations solution...\n");
+    
+    NSUInteger n = self.graph.nodes.count;
+    NSUInteger m = self.graph.nets.count;
+    
+    eq_solve(n, m, [self.workingDirectoryURL.relativePath cStringUsingEncoding:NSASCIIStringEncoding]);
+    
     LOG(@"\nEquations solved successfully...\n");
 }
 
