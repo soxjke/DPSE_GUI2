@@ -27,6 +27,10 @@
 
 #import "DPConcentratedParametersSimulationOperation.h"
 
+#import "DPGraph.h"
+#import "DPGraphNet.h"
+#import "DPGraphNode.h"
+
 #define LOG(fmt, ...) if (self.logBlock) dispatch_async(dispatch_get_main_queue(), ^(void) {self.logBlock(self, [NSString stringWithFormat:fmt, ##__VA_ARGS__]);})
 
 @interface DPConcentratedParametersSimulationOperation ()
@@ -35,6 +39,9 @@
 @property (nonatomic, copy) DPConcentratedParametersSimulationOperationCompletionBlock operationCompletion;
 
 @property (nonatomic, strong) DPGraph *graph;
+
+@property (nonatomic, strong) NSMutableArray *minimalSpanningTree;
+@property (nonatomic, strong) NSMutableArray *antiTree;
 
 @end
 
@@ -57,7 +64,7 @@
 
 - (void)main
 {
-    [self parseGraph];
+//    [self parseGraph];
     [self topologyAnalyze];
     [self equationsGeneration];
     [self equationsSolving];
@@ -80,6 +87,8 @@
 - (void)topologyAnalyze
 {
     LOG(@"\nTopology analyze...\n");
+    [self primsAlgorithm];
+    
     LOG(@"\nTopology analyzed successfully...\n");
 }
 
@@ -93,6 +102,47 @@
 {
     LOG(@"\nEquations solution...\n");
     LOG(@"\nEquations solved successfully...\n");
+}
+
+- (void)checkConnectivity
+{
+    LOG(@"\nChecking given graph's connectivity...\n");
+    LOG(@"\nGraph is connective...\n");
+}
+
+- (void)primsAlgorithm
+{
+    LOG(@"\nRunning prihm's alghorithm to get minimum spanning tree...\n");
+    
+    NSMutableArray *minimalSpanningTreeNodes = [NSMutableArray arrayWithCapacity:self.graph.nodes.count];
+    
+    self.minimalSpanningTree = [NSMutableArray arrayWithCapacity:self.graph.nodes.count - 1];
+    
+    [minimalSpanningTreeNodes addObject:self.graph.nodes[0]];
+    
+    for (int i = 0; i < self.graph.nodes.count - 1; i++)
+    {
+        [minimalSpanningTreeNodes enumerateObjectsUsingBlock:^(DPGraphNode *treeNode, NSUInteger idx, BOOL *outerStop)
+        {
+            [treeNode.nets enumerateObjectsUsingBlock:^(DPGraphNet *connectedNet, NSUInteger idx, BOOL *innerStop)
+            {
+                DPGraphNode *connectedNode = [treeNode isEqual:connectedNet.nodes.firstObject] ? connectedNet.nodes.lastObject : connectedNet.nodes.firstObject;
+                
+                if ([minimalSpanningTreeNodes indexOfObject:connectedNode] == NSNotFound)
+                {
+                    [minimalSpanningTreeNodes addObject:connectedNode];
+                    [self.minimalSpanningTree addObject:connectedNet];
+                    *innerStop = YES;
+                    *outerStop = YES;
+                }
+            }];
+        }];
+    }
+    
+    NSLog(@"Minimal spanning tree nodes:\n%@", minimalSpanningTreeNodes);
+    NSLog(@"Minimal spanning tree:\n%@", self.minimalSpanningTree);
+    
+    LOG(@"\nMinimum spanning tree found successfully...\n");
 }
 
 @end

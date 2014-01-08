@@ -25,6 +25,9 @@
 //  THE SOFTWARE.
 
 #import "DPGraphNet.h"
+
+#import "DPGraphNode.h"
+
 #import "DPAttributesManager.h"
 
 NSString * const kFlowInertionQuotientKey   = @"K";
@@ -58,6 +61,9 @@ NSString * const kEndNodeKey                = @"endNode.nameLabel";
     if (self)
     {
         _nodes = @[startNode, toNode];
+        
+        [startNode connectNet:self];
+        [toNode connectNet:self];
         
         self.itemAttributes[kFlowInertionQuotientKey] = @(0.001f);
         self.itemAttributes[kTotalResistanceKey]      = @(0.001f);
