@@ -27,6 +27,7 @@
 #import "DPSimulationViewController.h"
 
 #import "DPConcentratedParametersSimulationOperation.h"
+#import "DPGraphicCanvasView.h"
 
 @interface DPSimulationViewController () <UITableViewDelegate, UITableViewDataSource>
 {
@@ -35,7 +36,7 @@
 
 @property (nonatomic, weak) IBOutlet UITextView *logTextView;
 @property (nonatomic, weak) IBOutlet UITableView *netsTableView;
-@property (nonatomic, weak) IBOutlet UIView *canvasView;
+@property (nonatomic, weak) IBOutlet DPGraphicCanvasView *canvasView;
 
 @property (nonatomic, strong) NSArray *netNames;
 @property (nonatomic, strong) NSMutableSet *selectedNetNames;
