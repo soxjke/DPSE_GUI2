@@ -60,6 +60,7 @@
 
 - (void)drawRect:(CGRect)rect
 {
+    CGFloat selfHeight = CGRectGetHeight(self.bounds);
     CGContextRef context = UIGraphicsGetCurrentContext();
     CGContextSetLineWidth(context, 1.0f);
     for (int i = 0; i < self.simulationVectors.count; i++)
@@ -69,11 +70,11 @@
         CGFloat *simulationVector = [self.simulationVectors pointerAtIndex:i];
         UIColor *curGraphColor = [UIColor colorWithRed:(float)i / (float)self.simulationVectors.count green:0.0f blue:1.0f - (float)i / (float)self.simulationVectors.count alpha:1.0f];
         CGContextSetStrokeColorWithColor(context, curGraphColor.CGColor);
-        CGContextMoveToPoint(context, curTime * xScale, simulationVector[j] * yScale);
+        CGContextMoveToPoint(context, (curTime - self.minTime) * xScale, selfHeight - (simulationVector[j] - minValue) * yScale);
         do
         {
             curTime += self.timeStep;
-            CGContextAddLineToPoint(context, curTime * xScale, simulationVector[++j] * yScale);
+            CGContextAddLineToPoint(context, (curTime - self.minTime) * xScale, selfHeight - (simulationVector[++j] - minValue) * yScale);
         }
         while (curTime < self.maxTime);
 

@@ -9,8 +9,9 @@
 #include "eq_solver.h"
 #include <fstream>
 
-#define h 0.01
-#define delta 0.00001
+#define MAX_TIME 100
+#define h 0.001
+#define delta 0.0001
 
 using namespace std;
 
@@ -47,6 +48,7 @@ void eq_solve(int n, int m, const char *workingDir)
 	matrix X = ((W*Y0)*(-1));
     matrix Q_glob = X&Y0;
     Q_prev = Q_glob;
+    matrix Q_horizontal = Q_glob;
     ofstream fout;
 	ostream *pfout;
 	fout.open("q");
@@ -66,8 +68,24 @@ void eq_solve(int n, int m, const char *workingDir)
 		matrix Q=X&Y;
         Q_glob = Q;
 		tcur+=h;
-		*pfout<<tcur<<endl<<Q;
+        matrix Q_horizontal_temp = Q_horizontal | Q;
+        Q_horizontal = Q_horizontal_temp;
+		*pfout<<"t="<<tcur<<endl<<Q;
 	}
-	while (((Q_glob-Q_prev).sum())>delta);
+	while (((Q_glob-Q_prev).sum())>delta && tcur < MAX_TIME);
 	fout.close();
+    
+    ofstream fout1;
+	ostream *pfout1;
+	fout1.open("q_hor");
+	pfout1=dynamic_cast<ostream*>(&fout1);
+    *pfout1 << Q_horizontal;
+    fout1.close();
+
+    ofstream ftime;
+	ostream *pftime;
+	ftime.open("time");
+	pftime=dynamic_cast<ostream*>(&ftime);
+    *pftime << 0.0f << " " << tcur << " " << h;
+    ftime.close();
 }

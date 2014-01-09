@@ -331,7 +331,7 @@ inline long double* matrix::operator [](size_t index)
 ostream& operator<<(ostream& os, const matrix& m)
 {
 	streamsize prec=os.precision();
-	os.precision(4);
+	os.precision(6);
 	for(size_t i=0; i<m.n; i++)
 	{
 		size_t str_base=i*m.m;

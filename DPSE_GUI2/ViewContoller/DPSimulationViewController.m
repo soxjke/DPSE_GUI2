@@ -44,6 +44,11 @@
 @end
 
 @implementation DPSimulationViewController
+{
+    CGFloat minTime;
+    CGFloat maxTime;
+    CGFloat timeStep;
+}
 
 - (void)viewDidLoad
 {
@@ -59,16 +64,57 @@
     }
                                                        completionBlock:^(DPConcentratedParametersSimulationOperation *operation, NSString *resultFilePath)
     {
-        self.logTextView.text = [self.logTextView.text stringByAppendingString:@"Simulation finished succsesfully!"];
-        self.netNames = [NSArray arrayWithContentsOfFile:[resultFilePath stringByAppendingPathComponent:@"netNames"]];
-        self.selectedNetNames = [NSMutableSet setWithArray:self.netNames];
-        [self.netsTableView reloadData];
+        @autoreleasepool
+        {
+            self.logTextView.text = [self.logTextView.text stringByAppendingString:@"Simulation finished succsesfully!"];
+            self.netNames = [NSArray arrayWithContentsOfFile:[resultFilePath stringByAppendingPathComponent:@"netNames"]];
+            self.selectedNetNames = [NSMutableSet setWithArray:self.netNames];
+
+            NSScanner *timeScanner = [NSScanner scannerWithString:[NSString stringWithContentsOfFile:[resultFilePath stringByAppendingPathComponent:@"time"] encoding:NSASCIIStringEncoding error:nil]];
+            
+            [timeScanner scanFloat:&minTime];
+            [timeScanner scanFloat:&maxTime];
+            [timeScanner scanFloat:&timeStep];
+            
+            self.canvasView.minTime = minTime;
+            self.canvasView.maxTime = maxTime;
+            self.canvasView.timeStep = timeStep;
+            
+            NSUInteger count = (maxTime - minTime) / timeStep + 1;
+            
+            NSScanner *globalScanner = [NSScanner scannerWithString:[NSString stringWithContentsOfFile:[resultFilePath stringByAppendingPathComponent:@"q_hor"] encoding:NSASCIIStringEncoding error:nil]];
+            
+            for (int i = 0; i < self.netNames.count; i++)
+            {
+                CGFloat *simulationVector = malloc(count * sizeof(CGFloat));
+                for (int j = 0; j < count; j++)
+                {
+                    [globalScanner scanFloat:simulationVector + j];
+                }
+                [self.canvasView.simulationVectors addPointer:simulationVector];
+            }
+            
+            self.canvasView.vectorNames = [self.netNames mutableCopy];
+            
+            [self.netsTableView reloadData];
+            [self.canvasView setNeedsDisplay];
+            
+        }
     }];
     
     op.simulation = self.simulation;
     
     [APP_DELEGATE.operationQueue addOperation:op];
     
+}
+
+- (void)dealloc
+{
+    for (int i = 0; i < self.canvasView.simulationVectors.count; i++)
+    {
+        CGFloat *simulationVector = [self.canvasView.simulationVectors pointerAtIndex:i];
+        free(simulationVector);
+    }
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -84,7 +130,7 @@
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [[UITableViewCell alloc] init];
-    cell.accessoryType = [self.selectedNetNames containsObject:self.netNames[indexPath.row]] != NSNotFound ? UITableViewCellAccessoryCheckmark : UITableViewCellAccessoryNone;
+    cell.accessoryType = [self.selectedNetNames containsObject:self.netNames[indexPath.row]] ? UITableViewCellAccessoryCheckmark : UITableViewCellAccessoryNone;
     cell.textLabel.text = self.netNames[indexPath.row];
     return cell;
 }
