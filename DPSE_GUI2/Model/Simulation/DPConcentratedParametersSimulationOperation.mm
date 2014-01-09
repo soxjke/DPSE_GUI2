@@ -152,8 +152,8 @@
     
     self.meshMatrix         = (CGFloat*)malloc((m - n + 1) * m * sizeof(CGFloat));
    
-    NSMutableArray *meshNetsPaths = [NSMutableArray arrayWithCapacity:n - m + 1];
-    NSMutableArray *meshNodesPaths = [NSMutableArray arrayWithCapacity:n - m + 1];
+    NSMutableArray *meshNetsPaths = [NSMutableArray arrayWithCapacity:m - n + 1];
+    NSMutableArray *meshNodesPaths = [NSMutableArray arrayWithCapacity:m - n + 1];
     
     [self.antiTree enumerateObjectsUsingBlock:^(DPGraphNet *antitreeNet, NSUInteger meshIdx, BOOL *stop)
     {
