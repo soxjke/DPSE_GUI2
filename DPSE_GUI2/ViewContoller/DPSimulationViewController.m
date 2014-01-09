@@ -132,6 +132,19 @@
     UITableViewCell *cell = [[UITableViewCell alloc] init];
     cell.accessoryType = [self.selectedNetNames containsObject:self.netNames[indexPath.row]] ? UITableViewCellAccessoryCheckmark : UITableViewCellAccessoryNone;
     cell.textLabel.text = self.netNames[indexPath.row];
+    
+    UIColor *curGraphColor = [UIColor colorWithRed:(float)indexPath.row / (float)self.netNames.count green:0.0f blue:1.0f - (float)indexPath.row / (float)self.netNames.count alpha:1.0f];
+
+    UIView *view = [cell viewWithTag:0x11];
+    if (!view)
+    {
+        view = [[UIView alloc] initWithFrame:CGRectMake(250, 16, 20, 10)];
+        view.tag = 0x11;
+        [cell addSubview:view];
+    }
+
+    view.backgroundColor = curGraphColor;
+    
     return cell;
 }
 
