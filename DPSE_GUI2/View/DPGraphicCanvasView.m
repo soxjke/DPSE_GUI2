@@ -33,6 +33,9 @@
     
     CGFloat xScale;
     CGFloat yScale;
+    
+    UILabel *xCaption;
+    UILabel *yCaption;
 }
 
 - (void)awakeFromNib
@@ -44,6 +47,12 @@
     self.maxTime = 1.0f;
     self.minTime = 0.0f;
     self.timeStep = 0.01f;
+    
+    xCaption = [[UILabel alloc] init];
+    yCaption = [[UILabel alloc] init];
+    
+    [self addSubview:xCaption];
+    [self addSubview:yCaption];
 }
 
 - (void)layoutSubviews
@@ -54,17 +63,40 @@
 
 - (void)recalculate
 {
+    CGFloat selfHeight = CGRectGetHeight(self.bounds);
+    CGFloat selfWidth = CGRectGetWidth(self.bounds);
+    
     xScale = CGRectGetWidth(self.bounds)  / (self.maxTime - self.minTime);
     yScale = CGRectGetHeight(self.bounds) / (maxValue - minValue);
+    
+    xCaption.text = [@(self.maxTime) stringValue];
+    xCaption.center = CGPointMake(selfWidth - 30.0f, selfHeight + minValue * yScale - 16.0f);
+
+    yCaption.text = [@(maxValue) stringValue];
+    yCaption.center = CGPointMake(- self.minTime * xScale + 31.0f, 16.0f);
 }
 
 - (void)drawRect:(CGRect)rect
 {
     CGFloat selfHeight = CGRectGetHeight(self.bounds);
+    CGFloat selfWidth = CGRectGetWidth(self.bounds);
     CGContextRef context = UIGraphicsGetCurrentContext();
     CGContextSetLineWidth(context, 1.0f);
+    
+    // draw axes
+    // x
+    CGContextSetStrokeColorWithColor(context, [UIColor blackColor].CGColor);
+    CGContextMoveToPoint(context, 0, selfHeight + minValue * yScale - 1.0f);
+    CGContextAddLineToPoint(context, selfWidth, selfHeight + minValue * yScale - 1.0f);
+    CGContextStrokePath(context);
+    // y
+    CGContextMoveToPoint(context, - self.minTime * xScale + 1.0f, 0);
+    CGContextAddLineToPoint(context, - self.minTime * xScale + 1.0f, selfHeight);
+    CGContextStrokePath(context);
+    
     for (int i = 0; i < self.simulationVectors.count; i++)
     {
+        // draw functions
         int j = 0;
         CGFloat curTime = self.minTime;
         CGFloat *simulationVector = [self.simulationVectors pointerAtIndex:i];

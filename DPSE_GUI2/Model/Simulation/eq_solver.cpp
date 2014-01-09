@@ -54,6 +54,7 @@ void eq_solve(int n, int m, const char *workingDir)
 	fout.open("q");
 	pfout=dynamic_cast<ostream*>(&fout);
 	long double tcur=0;
+    *pfout<<"t="<<tcur<<endl<<Q_glob;
 	do
 	{
 		Q_prev=Q_glob;
