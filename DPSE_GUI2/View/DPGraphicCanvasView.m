@@ -48,11 +48,14 @@
     self.minTime = 0.0f;
     self.timeStep = 0.01f;
     
-    xCaption = [[UILabel alloc] init];
-    yCaption = [[UILabel alloc] init];
+    xCaption = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 60, 60)];
+    yCaption = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 60, 60)];
     
     [self addSubview:xCaption];
     [self addSubview:yCaption];
+    
+    UIGestureRecognizer *tapGR = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap:)];
+    [self addGestureRecognizer:tapGR];
 }
 
 - (void)layoutSubviews
@@ -118,6 +121,11 @@
 {
     [self recalculate];
     [super setNeedsDisplay];
+}
+
+- (void)tap:(UITapGestureRecognizer*)recognizer
+{
+    [self setNeedsDisplay];
 }
 
 @end

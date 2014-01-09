@@ -80,7 +80,7 @@
             self.canvasView.maxTime = maxTime;
             self.canvasView.timeStep = timeStep;
             
-            NSUInteger count = ceil(maxTime - minTime) / timeStep + 1;
+            NSUInteger count = ceil((maxTime - minTime) / timeStep) + 1;
             
             NSScanner *globalScanner = [NSScanner scannerWithString:[NSString stringWithContentsOfFile:[resultFilePath stringByAppendingPathComponent:@"q_hor"] encoding:NSASCIIStringEncoding error:nil]];
             
